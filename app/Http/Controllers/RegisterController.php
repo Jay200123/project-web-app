@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Student;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -66,18 +67,19 @@ class RegisterController extends Controller
             $destinationPath = public_path().'/images';
             $input['student_image'] = 'images/'.$fileName;
             $file->move($destinationPath, $fileName);
-            $image = $input['student_image'] = '/images'.$fileName;
+            $image = $input['student_image'] = 'images/'.$fileName;
             $student->student_image = $image;
         }
 
         $student->save();
         Auth::login($user);
-        return redirect()->route('')->with('Successfully Registered!');
+        return redirect()->route('student.profile')->with('Successfully Registered!');
     }
 
     public function studentProfile(){
 
         $student = Student::where('user_id', Auth::id())->get();
+        return view('profiles.students', compact('student'));
 
     }
 }
