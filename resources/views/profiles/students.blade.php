@@ -79,7 +79,7 @@
     border-radius: 25px;
     font-size: 18px;
     white-space: nowrap;
-    background: linear-gradient(to left, black 0%, red 100%);
+    background: linear-gradient(to left, black 0%, blue 100%);
   } 
 
   .buttons .btn-submit:hover{
@@ -104,8 +104,8 @@
       </div><br />
   </div>     
 @endif
-<h3>Welcome to MTICS Web Application</h3>
 <div class="profile-containers">
+  <h3>Welcome to MTICS Web Application</h3>
 @foreach($student as $student)
     <div class="profile-cards">
         <div class="image">

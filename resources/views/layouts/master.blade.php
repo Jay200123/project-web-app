@@ -6,7 +6,6 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-        <link rel="stylsheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="{{ url('src/css/app.css')}}">
         @yield('styles')
     </head>
