@@ -29,9 +29,15 @@ Route::group(['prefix' => 'user'], function(){
         //post request for student registration form
         Route::post('signup',[RegisterController::class, 'postStudent'])->name('student.signups');
 
+        //gets the signin form
+        Route::get('signin', [LoginController::class, 'getSignIn'])->name('user.signin');
+
+        //post request for sign in
+        Route::post('login', [LoginController::class, 'postSignin'])->name('login');
+
     });
 
-    Route::group(['middleware' => 'student'], function(){
+    Route::group(['middleware' => 'role:student'], function(){
         //gets the profile for student
         Route::get('student/profile', [RegisterController::class, 'studentProfile'])->name('student.profile');
     });

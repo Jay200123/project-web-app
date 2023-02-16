@@ -1,13 +1,22 @@
 @extends('layouts.master')
 @section('content')
 <style>
+
+.background{
+     margin: 0;
+     padding: 0;
+     height: 100vh;
+     overflow: hidden;
+     background: linear-gradient(to left, blue, lightblue);
+    }
+    
 .profile-containers{
     margin:10px;
     text-align: center;
     position: absolute;
     top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .profile-cards{

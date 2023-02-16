@@ -35,7 +35,7 @@
               <li><i class="fa fa-sign-out" aria-hidden="true"><a href="{{route('user.logout')}}"></i>Logout</a></li>
               @else
               <li><i class="fa fa-user-plus" aria-hidden="true"><a href="{{route('student.signup')}}"></i>Student Signup</a></li>
-              <li><i class="fa fa-sign-in" aria-hidden="true"><a href="#"></i>Signin</a></li>
+              <li><i class="fa fa-sign-in" aria-hidden="true"><a href="{{route('user.signin')}}"></i>Signin</a></li>
             @endif
           </ul>
         </li>
