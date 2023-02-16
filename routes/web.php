@@ -19,13 +19,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//gets the sign up form for students
-Route::get('student/signup', [RegisterController::class, 'getStudentSignup'])->name('student.signup');
+Route::group(['prefix' => 'user'], function(){
 
-//post request for student registration form
-Route::post('signup',[RegisterController::class, 'postStudent'])->name('student.signups');
+    Route::group(['middleware' => 'guest'], function(){
 
-//gets the profile for student
-Route::get('student/profile', [RegisterController::class, 'studentProfile'])->name('student.profile');
+        //gets the sign up form for students
+        Route::get('student/signup', [RegisterController::class, 'getStudentSignup'])->name('student.signup');
+
+        //post request for student registration form
+        Route::post('signup',[RegisterController::class, 'postStudent'])->name('student.signups');
+
+    });
+
+    Route::group(['middleware' => 'student'], function(){
+        //gets the profile for student
+        Route::get('student/profile', [RegisterController::class, 'studentProfile'])->name('student.profile');
+    });
+
+});
 
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
