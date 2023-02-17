@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -40,8 +41,7 @@ Route::group(['prefix' => 'user'], function(){
     });
 
     Route::group(['middleware' => 'role:student'], function(){
-        //gets the profile for student
-        Route::get('student/profile', [RegisterController::class, 'studentProfile'])->name('student.profile');
+        Route::get('annoucements', [EventsController::class, 'index'])->name('events.index');
     });
 
     Route::group(['middleware' => 'role:officer'], function(){
@@ -55,6 +55,12 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard.index');
     });
 
+    Route::group(['middleware' => 'role:student,unregistered'], function(){
+
+        Route::get('student/profile', [RegisterController::class, 'studentProfile'])->name('student.profile');
+    });
+
 });
+
 
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');

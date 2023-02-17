@@ -11,6 +11,8 @@ class Student extends Model
 
     public $table='students';
 
+    protected $primaryKey = 'student_id';
+
     public $fillable = ['title','fname','lname','phone','address','town','city','student_image','user_id'];
 
     public function user(){

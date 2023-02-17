@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Student;
 use Auth;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -34,7 +35,7 @@ class RegisterController extends Controller
             'name' => $request->input('fname').''.$request->lname,
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
-            'role' => $request->input('role').''.$request->role='student'
+            'role' => $request->input('role').''.$request->role='unregistered'
         ]);
 
         $user->save();

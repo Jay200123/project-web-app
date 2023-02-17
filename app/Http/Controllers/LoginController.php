@@ -24,6 +24,9 @@ class LoginController extends Controller
             } else if (auth()->user()->role === 'officer'){
              return redirect()->route('officer.profile');
             }
+            else if(auth()->user()->role === 'student'){
+                return redirect()->route('events.index');
+            }
             else{
                 return redirect()->route('student.profile');
             }
@@ -35,6 +38,6 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->guest('/');
+        return redirect()->route('user.signin');
     }
 }

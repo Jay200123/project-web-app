@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    <a class="navbar-brand" href="#"><i class="fa fa-globe" aria-hidden="true"></i>Test Website</a>
+    <a class="navbar-brand" href="{{url('/')}}"><i class="fa fa-globe" aria-hidden="true"></i>Test Website</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -24,7 +24,11 @@
   </form>
   </li>
 
-  
+  <li>
+  <a href="{{route('events.index')}}">
+  <i class="fa fa-calendar" aria-hidden="true"></i>Events
+  </a>
+  </li>
 
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
