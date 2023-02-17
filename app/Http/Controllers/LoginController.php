@@ -11,7 +11,7 @@ class LoginController extends Controller
     public function getSignIn(){
         return view('user.signin');
     }
-    
+        
     public function postSignin(Request $request){
         $this->validate($request, [
             'email' => 'email| required',

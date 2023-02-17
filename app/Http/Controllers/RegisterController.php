@@ -83,8 +83,9 @@ class RegisterController extends Controller
 
     }
 
-    public function adminProfile(){
-        $admin = User::where(Auth::id())->get();
-        return view('profiles.admin', compact('admin'));
+    public function officerProfile(){
+        
+        $officer = Student::where('user_id', Auth::id())->get();
+        return view('profiles.officer', compact('officer'));
     }
 }

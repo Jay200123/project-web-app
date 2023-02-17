@@ -44,6 +44,11 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('student/profile', [RegisterController::class, 'studentProfile'])->name('student.profile');
     });
 
+    Route::group(['middleware' => 'role:officer'], function(){
+
+        Route::get('officer/profile', [RegisterController::class, 'officerProfile'])->name('officer.profile');
+    });
+
     Route::group(['middleware' => 'role:admin'], function(){
 
         Route::get('student', [StudentController::class, 'index'])->name('student.index');
