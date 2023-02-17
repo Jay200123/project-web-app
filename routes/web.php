@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +42,12 @@ Route::group(['prefix' => 'user'], function(){
     Route::group(['middleware' => 'role:student'], function(){
         //gets the profile for student
         Route::get('student/profile', [RegisterController::class, 'studentProfile'])->name('student.profile');
+    });
+
+    Route::group(['middleware' => 'role:admin'], function(){
+
+        Route::get('student', [StudentController::class, 'index'])->name('student.index');
+        Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard.index');
     });
 
 });

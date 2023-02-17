@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -14,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        $student = Student::orderBy('student_id', 'ASC')->get();
+        return view('student.index',compact('student'));
     }
 
     /**
@@ -24,7 +26,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        // in register controller
     }
 
     /**
@@ -35,7 +37,7 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // in register controller
     }
 
     /**

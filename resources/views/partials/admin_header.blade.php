@@ -15,25 +15,36 @@
     <ul class="nav navbar-nav navbar-right">
 
   <li>
+
   <form class="navbar-form navbar-left" method="GET" role="search" action="#">
   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
   <div class="form-group">
   <input type="text" name="search" class="form-control" placeholder="Search">
   </div>
+
   <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
   </form>
+
   </li>
 
-  
+  <li>
+  <a href="{{route('dashboard.index')}}">
+  <i class="fa fa-area-chart" aria-hidden="true"></i>Dashboard
+  </a>
+  </li>
+
+  <li>
+  <a href="{{route('student.index')}}">
+  <i class="fa fa-users" aria-hidden="true"></i>Student
+  </a>
+  </li>
 
           <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
           aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
           <ul class="dropdown-menu">
             @if (Auth::check())
-              <li><i class="fa fa-user" aria-hidden="true"><a href="{{route('student.profile')}}"></i>Student Profile</a></li>
-              <li role="separator" class="divider"></li>
-
               <li><i class="fa fa-sign-out" aria-hidden="true"><a href="{{route('user.logout')}}"></i>Logout</a></li>
               @else
               <li><i class="fa fa-user-plus" aria-hidden="true"><a href="{{route('student.signup')}}"></i>Student Signup</a></li>

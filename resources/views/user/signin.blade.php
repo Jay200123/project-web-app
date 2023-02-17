@@ -22,12 +22,12 @@
     }
     .row{
         background-color:  #ffffff;
-        border-radius:5px;
+        border-radius:15px;
         text-align:center;
         color:black;
         border: solid black 1px;
         box-shadow: 15px 10px black;
-        width: min(30% - 2rem, 600px);
+        width: min(35% - 2rem, 600px);
         margin-inline: auto;
         padding: 10px;
     }
@@ -49,10 +49,7 @@
            <h3>Log In to MTICS Website<i class="fa fa-globe" aria-hidden="true"></i></h3>
         <div class="avatar">
             <img class="avatar_image" src="{{url('images/user.png')}}" alt="profile.jpeg">
-        </div>
-        <h3>
-        <i class="fa fa-sign-in" aria-hidden="true"></i>Sign In
-        </h3>    
+        </div> 
             <div class="card-body">
     @if ($errors->any())
       <div class="alert alert-danger">

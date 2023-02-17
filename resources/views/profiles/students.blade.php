@@ -139,7 +139,7 @@
           </div>
         </div>
         <div class="buttons">
-          <a href="#" class="btn">Test</a>
+          <a href="#" class="btn">Update</a>
           <a href="#" class="btn">Test</a>
         </div>
       </div>
