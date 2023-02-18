@@ -16,4 +16,8 @@ class Member extends Model
     protected $primaryKey='info_id';
 
     protected $fillable = ['user_id', 'date_placed', 'status'];
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

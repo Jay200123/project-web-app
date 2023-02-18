@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TransactionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,12 @@ Route::group(['prefix' => 'user'], function(){
 
         Route::get('student', [StudentController::class, 'index'])->name('student.index');
         Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard.index');
+    });
+
+    Route::group(['middleware' => 'role:unregistered'], function(){
+        //gets the form for membership
+        Route::get('form', [TransactionsController::class, 'getForms'])->name('member.forms');
+        Route::post('forms', [TransactionsController::class, 'register'])->name('member.register');
     });
 
     Route::group(['middleware' => 'role:student,unregistered'], function(){

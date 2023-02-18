@@ -44,6 +44,7 @@ class RegisterController extends Controller
             'title' => 'required|max:255',
             'fname' => 'required|max:255',
             'lname' => 'required|max:255',
+            'section' => 'required|max:255',
             'phone' => 'required|max:255',
             'address' => 'required|max:255',
             'town' => 'required|max:255',
@@ -57,6 +58,7 @@ class RegisterController extends Controller
         $student->title = $request->title;
         $student->fname = $request->fname;
         $student->lname = $request->lname;
+        $student->section = $request->section;
         $student->phone = $request->phone;
         $student->address = $request->address;
         $student->town = $request->town;

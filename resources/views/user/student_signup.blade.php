@@ -37,6 +37,11 @@
           </div>
 
           <div class="form-group">
+              <label for="section">Section</label>
+              <input type="text" class="form-control" name="section" id="section"/>
+          </div>
+
+          <div class="form-group">
               <label for="phone">Phone</label>
               <input type="tel" class="form-control" name="phone" id="phone"/>
           </div>

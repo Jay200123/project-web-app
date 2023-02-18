@@ -13,7 +13,7 @@ class Student extends Model
 
     protected $primaryKey = 'student_id';
 
-    public $fillable = ['title','fname','lname','phone','address','town','city','student_image','user_id'];
+    protected $fillable = ['title','fname','lname','section','phone','address','town','city','student_image','user_id'];
 
     public function user(){
         return $this->belongsTo('App/Models/User');

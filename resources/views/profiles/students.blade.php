@@ -134,13 +134,13 @@
             <span>{{$student->lname}}</span>
           </div>
           <div class="info">
-            <h5><i class="fa fa-mobile" aria-hidden="true"></i>Mobile Number</h5>
-            <span>{{$student->phone}}</span>
+            <h5><i class="fa fa-address-card" aria-hidden="true"></i>Course & Section</h5>
+            <span>{{$student->section}}</span>
           </div>
         </div>
         <div class="buttons">
           <a href="#" class="btn">Update</a>
-          <a href="#" class="btn">Membership</a>
+          <a href="{{route('member.forms')}}" class="btn">Membership</a>
         </div>
       </div>
       @endforeach

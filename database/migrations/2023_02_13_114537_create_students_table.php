@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('fname');
             $table->string('lname');
+            $table->string('section');
             $table->string('phone');
             $table->string('address');
             $table->string('town');
