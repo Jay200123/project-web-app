@@ -59,6 +59,7 @@ Route::group(['prefix' => 'user'], function(){
 
         // routes for edit roles
         Route::get('role/{id}/edit', [UserController::class, 'editRole'])->name('roles.edit');
+        Route::put('role/{id}/update', [UserController::class, 'updateRole'])->name('roles.update');
     });
 
     Route::group(['middleware' => 'role:unregistered'], function(){

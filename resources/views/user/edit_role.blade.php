@@ -8,6 +8,7 @@
     .push-top {
       margin-top: 50px;
     }
+
 </style>
 <div class="card push-top">
   <div class="card-header">
@@ -24,9 +25,8 @@
         </ul>
       </div><br />
     @endif
-      <form method="PUT" action="#" enctype ="multipart/form-data">
-      @csrf 
-              @method('PUT')
+      <form method="POST" action="{{ route('roles.update', $user->id) }}" enctype ="multipart/form-data">
+
          <div class="form-group">
          <label for="name">Name</label>
               <input type="text" class="form-control" name="name" value="{{ $user->name }}" readonly/>
@@ -38,6 +38,8 @@
           </div>
 
           <div class="form-group">
+          @csrf 
+              @method('PUT')
               <label for="role">Role</label>
               <input type="text" class="form-control" name="role" value="{{ $user->role }}"/>
           </div>

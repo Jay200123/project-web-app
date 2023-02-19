@@ -20,4 +20,20 @@ class UserController extends Controller
         return view('user.edit_role', compact('user'));
         
     }
+
+    public function updateRole(Request $request, $id){
+
+        $user = User::with('students')->findOrFail($id);
+
+        $request->validate([
+          'role' => 'required|max:255'
+        ]);
+
+        $user->role = $request->role;
+
+        $user->update();
+
+        return redirect()->route('user.index')->with('User Role Updated Successfully');
+
+    }
 }

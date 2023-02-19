@@ -46,6 +46,6 @@ class User extends Authenticatable
 
     public function students()
     {
-        return $this->belongsTo(Student::class, 'student_id');
+        return $this->belongsTo(Student::class, 'user_id');
     }
 }
