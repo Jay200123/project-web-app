@@ -47,7 +47,7 @@
      @csrf
     <div class="form-group">
       <label for="amount">Amount:</label>
-              <input type="decimal" class="form-control" name="amount" id="amount" value="25.00" readonly/>
+              <input type="decimal" class="form-control" name="amount" id="amount" value="120.00" readonly/>
               <br>
               <button type="submit" class="btn btn-block btn-danger">Register</button>
     </div>

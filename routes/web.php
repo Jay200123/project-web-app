@@ -7,6 +7,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionsController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,7 +54,11 @@ Route::group(['prefix' => 'user'], function(){
     Route::group(['middleware' => 'role:admin'], function(){
 
         Route::get('student', [StudentController::class, 'index'])->name('student.index');
+        Route::get('users', [UserController::class, 'index'])->name('user.index');
         Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard.index');
+
+        // routes for edit roles
+        Route::get('role/{id}/edit', [UserController::class, 'editRole'])->name('roles.edit');
     });
 
     Route::group(['middleware' => 'role:unregistered'], function(){
