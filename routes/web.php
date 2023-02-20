@@ -24,6 +24,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::resource('TransactionController');
 Route::group(['prefix' => 'user'], function(){
 
     Route::group(['middleware' => 'guest'], function(){
@@ -47,8 +48,11 @@ Route::group(['prefix' => 'user'], function(){
     });
 
     Route::group(['middleware' => 'role:officer'], function(){
-
+        
         Route::get('officer/profile', [RegisterController::class, 'officerProfile'])->name('officer.profile');
+        Route::get('membership', [TransactionsController::class, 'index'])->name('members.index');
+        Route::get('membership/{id}/edit', [TransactionsController::class, 'editMember'])->name('members.edit');
+        Route::put('membership/{id}/update', [TransactionsController::class, 'updateMember'])->name('members.update');
     });
 
     Route::group(['middleware' => 'role:admin'], function(){

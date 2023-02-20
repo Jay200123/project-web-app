@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Student;
+use App\Events\SendMail;
 use Auth;
 use DB;
+use Event;
 
 class RegisterController extends Controller
 {
@@ -75,6 +77,7 @@ class RegisterController extends Controller
         }
 
         $student->save();
+        Event::dispatch(new SendMail($user));
         Auth::login($user);
         return redirect()->route('student.profile')->with('Successfully Registered!');
     }

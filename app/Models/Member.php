@@ -17,7 +17,12 @@ class Member extends Model
 
     protected $fillable = ['user_id', 'date_placed', 'status'];
 
-    public function user(){
-        return $this->belongsTo('App\Models\User');
+    public function users(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function stats()
+    {
+        return $this->belongsTo(Status::class,'info_id');
     }
 }
