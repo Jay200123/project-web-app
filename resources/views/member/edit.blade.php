@@ -54,11 +54,6 @@
               <input type="decimal" class="form-control" name="amount" value="{{ $member->stats->amount }}" readonly/>
           </div>
 
-          <div class="form-group" hidden>
-              <label for="role">Role</label>
-              <input type="text" class="form-control" name="role" id="role" value="student" readonly/>
-          </div>
-
           <button type="submit" class="btn btn-block btn-danger">Update</button>
       </form>
   </div>

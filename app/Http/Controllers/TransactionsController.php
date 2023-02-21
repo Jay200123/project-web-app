@@ -67,12 +67,15 @@ class TransactionsController extends Controller
 
     public function updateMember(Request $request, $id){
 
-
-        $member = Member::with('users')->findOrFail($id);
-        $member->status='paid';
-        $member->users()->role = $request->role;
         
-        // dd($member);
+        $member = Member::with('users')->findOrFail($id);
+        $member->status = 'paid';
+        // dd($member->info_id);
+        $users = User::with('members')->find($member->user_id);
+        $users->role="student";
+
+        $users->update();
+        
         $member->update();
 
         $stats = Status::findOrFail($id);

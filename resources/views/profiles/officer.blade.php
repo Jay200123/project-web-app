@@ -118,7 +118,7 @@
 @foreach($officer as $officer)
     <div class="profile-cards">
         <div class="image">
-        <img src="{{ asset($officer->student_image) }}" class="profile-pic">
+        <img src="{{ asset($officer->student_image) }}" class="profile-pic" readonly>
         </div>
         <div class="data">
           <h4>{{Auth::user()->name}}</h4>
