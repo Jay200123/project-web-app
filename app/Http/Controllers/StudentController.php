@@ -72,9 +72,44 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        //
+        $students = Student::find($id);
+
+        $request->validate([
+            'title' => 'required|max:255',
+            'fname' => 'required|max:255',
+            'lname' => 'required|max:255',
+            'section' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'address' => 'required|max:255',
+            'town' => 'required|max:255',
+            'city' => 'required|max:255',
+            'student_image' => 'mimes:png,jpg,gif,svg'
+        ]);
+
+        $students->title = $request->title;
+        $students->fname = $request->fname;
+        $students->lname = $request->lname;
+        $students->section = $request->section;
+        $students->phone = $request->phone;
+        $students->address = $request->address;
+        $students->town = $request->town;
+        $students->city = $request->city;
+
+        if($file = $request->hasFile('student_image')){
+            $file = $request->file('student_image');
+            $fileName = $file->getClientOriginalName();
+            $destinationPath  = public_path().'/images';
+            $input['student_image'] = 'images/'.$fileName;
+            $image = $input['student_image'] = 'images/'.$fileName;
+            $file->move($destinationPath, $fileName);
+            $students->student_image = $image;
+            }
+
+            // dd($students);
+            $students->update();
+            return redirect()->route('student.profile')->with('Record Successfully Updated');
     }
 
     /**

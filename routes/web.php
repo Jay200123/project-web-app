@@ -44,8 +44,9 @@ Route::group(['prefix' => 'user'], function(){
     });
 
     Route::group(['middleware' => 'role:student'], function(){
-        Route::get('annoucements', [EventsController::class, 'index'])->name('events.index');
-        Route::get('student/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
+        Route::get('annoucements', [EventsController::class, 'index'])->name('events.index'); // routes for accessing events
+        Route::get('student/{id}/edit', [StudentController::class, 'edit'])->name('students.edit'); // routes for student editing
+        Route::put('student/{id}/update', [StudentController::class, 'update'])->name('students.update'); //routes for updating
     });
 
     Route::group(['middleware' => 'role:officer'], function(){

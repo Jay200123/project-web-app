@@ -23,7 +23,7 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="#" enctype ="multipart/form-data">
+      <form method="post" action="{{ route('students.update', $students->student_id) }}" enctype ="multipart/form-data">
 
           <div class="form-group">
           @csrf 
@@ -69,7 +69,7 @@
 
           <div class="form-group">
           <label for="image" class="control-label">Your Photo:</label>
-          <input type="file" class="form-control" id="id" name="customer_image" value="{{$students->student_image}}"/>
+          <input type="file" class="form-control" id="student_image" name="student_image" value="{{$students->student_image}}"/>
            @if($errors->has('student_image'))
            <small>{{ $errors->first('student_image') }}</small>
            @endif
