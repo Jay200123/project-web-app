@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Auth;
 
 class StudentController extends Controller
 {
@@ -57,9 +58,11 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        $students = Student::where('user_id', Auth::id())->find($id);
+        // dd($students);
+        return view('student.edit', compact('students'));
     }
 
     /**

@@ -45,6 +45,7 @@ Route::group(['prefix' => 'user'], function(){
 
     Route::group(['middleware' => 'role:student'], function(){
         Route::get('annoucements', [EventsController::class, 'index'])->name('events.index');
+        Route::get('student/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
     });
 
     Route::group(['middleware' => 'role:officer'], function(){

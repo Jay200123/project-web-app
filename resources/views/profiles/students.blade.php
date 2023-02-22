@@ -139,7 +139,7 @@
           </div>
         </div>
         <div class="buttons">
-          <a href="#" class="btn">Update</a>
+          <a href="{{ route('students.edit', $student->student_id) }}" class="btn">Update</a>
           <a href="{{route('member.forms')}}" class="btn">Membership</a>
         </div>
       </div>
