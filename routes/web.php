@@ -60,8 +60,12 @@ Route::group(['prefix' => 'user'], function(){
     Route::group(['middleware' => 'role:admin'], function(){
 
         Route::get('student', [StudentController::class, 'index'])->name('student.index');
-        Route::get('users', [UserController::class, 'index'])->name('user.index');
+        Route::get('user', [UserController::class, 'index'])->name('user.index');
         Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard.index');
+
+        //datatable routes
+        Route::get('/students', [StudentController::class, 'getStudents'])->name('students.datatable');
+        Route::get('/users/datatable', [UserController::class, 'getUsers'])->name('users.datatable');
 
         // routes for edit roles
         Route::get('role/{id}/edit', [UserController::class, 'editRole'])->name('roles.edit');

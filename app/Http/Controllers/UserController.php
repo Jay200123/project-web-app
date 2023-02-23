@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\DataTables\UserDataTable;
+use Yajra\DataTables\Facades\DataTables;
 use App\Models\User;
 
 class UserController extends Controller
@@ -12,6 +14,13 @@ class UserController extends Controller
         $users = User::with('students')->get();
         // dd($users);
         return view('user.index', compact('users'));
+    }
+
+    public function getUsers(UserDataTable $dataTable){
+
+        $users = User::with([])->get();
+        return $dataTable->render('user.users');
+        
     }
 
     public function editRole($id){

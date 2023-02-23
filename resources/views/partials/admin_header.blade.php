@@ -35,13 +35,13 @@
   </li>
 
   <li>
-  <a href="{{route('student.index')}}">
+  <a href="{{route('students.datatable')}}">
   <i class="fa fa-users" aria-hidden="true"></i>Student
   </a>
   </li>
 
   <li>
-  <a href="{{route('user.index')}}">
+  <a href="{{route('users.datatable')}}">
   <i class="fa fa-user-circle" aria-hidden="true"></i>Users
   </a>
   </li>

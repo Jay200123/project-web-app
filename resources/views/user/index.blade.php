@@ -19,6 +19,7 @@
           <td>ID</td>
           <td>Name</td>
           <td>Email</td>
+          <td>Section</td>
           <td>Roles</td>
           <td class="text-center">Action</td>
         </tr>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\User;
+use App\DataTables\StudentDataTable;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -121,5 +123,12 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         //
+    }
+
+    public function getStudents(StudentDataTable $dataTable){
+
+        $students = Student::where([])->get();
+        return $dataTable->render('student.students');
+
     }
 }
