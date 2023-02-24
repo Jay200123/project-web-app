@@ -7,16 +7,21 @@
 
 </style>
 <div class="push-top">
-  @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}  
-    </div><br />
-  @endif
+<div class="card-body">
+@if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+  </div>     
+
+
  
   <table class="table">
     <thead>
         <tr class="table-warning">
           <td>ID</td>
+          <td>Student Name</td>
           <td>Email</td>
           <td>Date Placed</td>
           <td>Status</td>
@@ -29,6 +34,7 @@
         @foreach($members as $member)
         <tr>
             <td>{{$member->info_id}}</td>
+            <td>{{$member->users->name}}</td>
             <td>{{$member->users->email}}</td>
             <td>{{$member->date_placed}}</td>
             <td>{{$member->status}}</td>

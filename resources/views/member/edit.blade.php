@@ -41,7 +41,7 @@
 
           <div class="form-group">
          <label for="status">Status</label>
-              <input type="date" class="form-control" name="status" value="{{ $member->status }}" readonly/>
+              <input type="text" class="form-control" name="status" value="{{ $member->status }}" readonly/>
           </div>
 
           <div class="form-group">

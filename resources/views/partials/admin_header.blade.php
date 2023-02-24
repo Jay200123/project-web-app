@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-    <a class="navbar-brand" href="#"><i class="fa fa-globe" aria-hidden="true"></i>Test Website</a>
+    <a class="navbar-brand"><i class="fa fa-globe" aria-hidden="true"></i>MTICS Website</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -51,7 +51,7 @@
           aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
           <ul class="dropdown-menu">
             @if (Auth::check())
-              <li><i class="fa fa-sign-out" aria-hidden="true"><a href="{{route('user.logout')}}"></i>Logout</a></li>
+              <li><i class="fa fa-power-off" aria-hidden="true"><a href="{{route('user.logout')}}"></i>Logout</a></li>
               @else
               <li><i class="fa fa-user-plus" aria-hidden="true"><a href="{{route('student.signup')}}"></i>Student Signup</a></li>
               <li><i class="fa fa-sign-in" aria-hidden="true"><a href="{{route('user.signin')}}"></i>Signin</a></li>

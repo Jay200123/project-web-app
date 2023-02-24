@@ -36,7 +36,7 @@
 <div class="content">
 <h2>Thank you for registering ! {{  $name }} {{$email}}</h2>
 <div class="image">
-<img class="img-icon" src="{{ $message->embed(public_path('/images/user.png')) }}"/>
+<img class="img-icon" src="{{ $message->embed(public_path('/images/mtics.jpg')) }}"/>
 </div>
 </div>
 </body>

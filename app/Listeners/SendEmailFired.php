@@ -35,7 +35,7 @@ class SendEmailFired
 
         $message->to($user->email, $user->name);
         $message->subject('Thank you');
-         $message->attach(public_path('/images/user.png'));
+         $message->attach(public_path('/images/mtics.jpg'));
         });
     }
 }

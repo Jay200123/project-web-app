@@ -21,6 +21,10 @@ class Member extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function students(){
+        return $this->belongsTo(Student::class, 'user_id');
+    }
+
     public function stats()
     {
         return $this->belongsTo(Status::class,'info_id');

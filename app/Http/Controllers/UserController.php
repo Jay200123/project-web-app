@@ -42,7 +42,7 @@ class UserController extends Controller
 
         $user->update();
 
-        return redirect()->route('user.index')->with('User Role Updated Successfully');
+        return redirect()->route('users.datatable')->with('User Role Updated Successfully');
 
     }
 }

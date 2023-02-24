@@ -53,6 +53,7 @@ Route::group(['prefix' => 'user'], function(){
         
         Route::get('officer/profile', [RegisterController::class, 'officerProfile'])->name('officer.profile');
         Route::get('membership', [TransactionsController::class, 'index'])->name('members.index');
+        Route::get('memberships', [TransactionsController::class, 'getMembers'])->name('members.datatable');
         Route::get('membership/{id}/edit', [TransactionsController::class, 'editMember'])->name('members.edit');
         Route::put('membership/{id}/update', [TransactionsController::class, 'updateMember'])->name('members.update');
     });

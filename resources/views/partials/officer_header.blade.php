@@ -25,8 +25,8 @@
   </li>
 
   <li>
-  <a href="{{route('members.index')}}">
-  <i class="fa fa-database" aria-hidden="true"></i>Transactions
+  <a href="{{route('members.datatable')}}">
+  <i class="fa fa-users" aria-hidden="true"></i>Membership
   </a>
   </li>
 

@@ -7,6 +7,8 @@ use App\Models\Member;
 use App\Models\Student;
 use App\Models\User;
 use App\Models\Status;
+use App\DataTables\MemberDataTable;
+use Yajra\DataTables\Facades\DataTables;
 use DB;
 use Auth;
 use Carbon\Carbon;
@@ -16,9 +18,16 @@ class TransactionsController extends Controller
     
     public function index(){
 
-        $members = Member::all();
+        $members = Member::with(['users', 'students'])->get();
         // dd($members);
         return view('member.index', compact('members'));
+    }
+
+    public function getMembers(MemberDataTable $dataTable){
+
+        $members = Member::with(['users', 'stats'])->get();
+        return $dataTable->render('member.members');
+
     }
 
     public function getForms(){
@@ -70,14 +79,15 @@ class TransactionsController extends Controller
         
         $member = Member::with('users')->findOrFail($id);
         $member->status = 'paid';
-        // dd($member->info_id);
-        $users = User::with('members')->find($member->user_id);
+        $Id = $member->user_id;
+
+        $member->update();
+
+        $users = User::with('members')->find($Id);
         $users->role="student";
 
         $users->update();
         
-        $member->update();
-
         $stats = Status::findOrFail($id);
         $stats->date_paid = Carbon::now();
 
@@ -85,7 +95,7 @@ class TransactionsController extends Controller
 
     
 
-        return redirect()->route('members.index')->with('Status Change Successfully');
+        return redirect()->route('members.members')->with('Status Change Successfully');
 
     }
 

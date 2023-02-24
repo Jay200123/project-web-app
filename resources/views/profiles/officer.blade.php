@@ -86,7 +86,7 @@
     margin: 0 20px;
     padding: 8px 25px;
     border-radius: 25px;
-    font-size: 18px;
+    font-size: 15px;
     white-space: nowrap;
     background: linear-gradient(to left, black 0%, blue 100%);
   } 
@@ -103,16 +103,13 @@
 </style>
 <body class="background">
 <div class="card-body">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div><br />
+@if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
   </div>     
-@endif
+
 <div class="profile-containers">
   <h3>Welcome to MTICS Web Application</h3>
 @foreach($officer as $officer)
@@ -140,7 +137,8 @@
         </div>
         <div class="buttons">
           <a href="#" class="btn">Update</a>
-          <a href="#" class="btn">Test</a>
+          <a href="#" class="btn">Time In</a>
+          <a href="#" class="btn">Time Out</a>
         </div>
       </div>
       @endforeach

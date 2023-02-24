@@ -39,7 +39,7 @@
 
 <div class="form-containers">
      <div class="image">
-        <img src="{{url('/images/mtics-logo.jpeg')}}" class="logo-image">
+        <img src="{{url('/images/mtics.jpg')}}" class="logo-image">
      </div>
      <form method="POST" action="{{route('member.register')}}">
      <h4>MTICS</h4>
