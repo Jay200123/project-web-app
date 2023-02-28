@@ -51,7 +51,7 @@ class RegisterController extends Controller
             'address' => 'required|max:255',
             'town' => 'required|max:255',
             'city' => 'required|max:255',
-            'student_image' => 'required|mimes:png, jpg, gif, svg'
+            'student_image' => 'required|mimes:png,jpg,jpeg,gif,svg'
         ]);
 
         $student = new Student();

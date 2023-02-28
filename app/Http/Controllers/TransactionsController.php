@@ -95,7 +95,7 @@ class TransactionsController extends Controller
 
     
 
-        return redirect()->route('members.members')->with('Status Change Successfully');
+        return redirect()->route('members.datatable')->with('Status Change Successfully');
 
     }
 

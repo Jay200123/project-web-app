@@ -8,6 +8,7 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LogBookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,10 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('memberships', [TransactionsController::class, 'getMembers'])->name('members.datatable');
         Route::get('membership/{id}/edit', [TransactionsController::class, 'editMember'])->name('members.edit');
         Route::put('membership/{id}/update', [TransactionsController::class, 'updateMember'])->name('members.update');
+
+        //routes for time in and time out
+        Route::get('officer/timein', [LogBookController::class, 'timeIn'])->name('officer.timeIn');
+        Route::post('officer/store', [LogBookController::class, 'store'])->name('officer.store');
     });
 
     Route::group(['middleware' => 'role:admin'], function(){
