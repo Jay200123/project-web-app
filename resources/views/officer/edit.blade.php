@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.officer_master')
 @section('content')
 
 <style>
@@ -23,53 +23,53 @@
         </ul>
       </div><br />
     @endif
-      <form method="post" action="{{ route('students.update', $students->student_id) }}" enctype ="multipart/form-data">
+      <form method="post" action="{{route('officers.update', $officer->student_id)}}" enctype ="multipart/form-data">
 
           <div class="form-group">
           @csrf 
               @method('PUT')
               <label for="title">Title</label>
-              <input type="text" class="form-control" name="title" value="{{ $students->title }}"/>
+              <input type="text" class="form-control" name="title" value="{{ $officer->title }}"/>
           </div>
 
           <div class="form-group">
               <label for="fname">First Name</label>
-              <input type="text" class="form-control" name="fname" value="{{ $students->fname }}"/>
+              <input type="text" class="form-control" name="fname" value="{{ $officer->fname }}"/>
           </div>
 
           <div class="form-group">
               <label for="lname">Last Name</label>
-              <input type="text" class="form-control" name="lname" value="{{ $students->lname }}"/>
+              <input type="text" class="form-control" name="lname" value="{{ $officer->lname }}"/>
           </div>
 
           <div class="form-group">
               <label for="section">Section</label>
-              <input type="text" class="form-control" name="section" value="{{ $students->section }}"/>
+              <input type="text" class="form-control" name="section" value="{{ $officer->section }}"/>
           </div>
 
           <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="text" class="form-control" name="phone" value="{{ $students->phone }}"/>
+              <input type="text" class="form-control" name="phone" value="{{ $officer->phone }}"/>
           </div>
 
           <div class="form-group">
               <label for="address">Address</label>
-              <input type="text" class="form-control" name="address" value="{{ $students->address }}"/>
+              <input type="text" class="form-control" name="address" value="{{ $officer->address }}"/>
           </div>
 
           <div class="form-group">
               <label for="town">Town</label>
-              <input type="text" class="form-control" name="town" value="{{ $students->town }}"/>
+              <input type="text" class="form-control" name="town" value="{{ $officer->town }}"/>
           </div>
 
           <div class="form-group">
               <label for="city">City</label>
-              <input type="text" class="form-control" name="city" value="{{ $students->city }}"/>
+              <input type="text" class="form-control" name="city" value="{{ $officer->city }}"/>
           </div>
 
           <div class="form-group">
           <label for="image" class="control-label">Your Photo:</label>
-          <input type="file" class="form-control" id="student_image" name="student_image" value="{{asset($students->student_image)}}"/>
+          <input type="file" class="form-control" id="student_image" name="student_image" value="{{asset($officer->student_image)}}"/>
            @if($errors->has('student_image'))
            <small>{{ $errors->first('student_image') }}</small>
            @endif

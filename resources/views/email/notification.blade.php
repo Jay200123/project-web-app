@@ -11,6 +11,7 @@
         padding: 10px;
         position: absolute;
         border-radius: 10px;
+        border:solid black;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -24,8 +25,8 @@
         border:solid 2px black;
     }
     .image .img-icon{
-      width: 100%;
-      height: 100%;
+      width: 150%;
+      height: 150%;
       object-fit: cover;
       border-radius: 50%;
       box-shadow: 0 5px 20px rgba(0,0,0,0.4);

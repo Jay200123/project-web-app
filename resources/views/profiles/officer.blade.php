@@ -136,7 +136,7 @@
           </div>
         </div>
         <div class="buttons">
-          <a href="#" class="btn">Update</a>
+          <a href="{{route('officers.edit', $officer->student_id)}}" class="btn">Update</a>
           <a href="{{route('officer.timeIn')}}" class="btn">Time In</a>
           <a href="#" class="btn">Time Out</a>
         </div>

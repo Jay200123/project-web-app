@@ -10,6 +10,7 @@
     border-radius: 10px;
     text-align: center;
     position: absolute;
+    width: 300px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -41,11 +42,22 @@
      <h4>MTICS LOGBOOK</h4>
      <h4>Time In and Time Out</h4>
      @csrf
+     @method('PUT')
     <div class="form-group">
-      <label for="amount">Amount:</label>
-      <input type="decimal" class="form-control" name="amount" id="amount" value="120.00" readonly/>   
+      <label for="log_date">Date Logged</label>
+      <input type="date" class="form-control" name="log_date" id="log_date" value="{{logs->log_date}}" readonly/>   
     </div>
-    <button type="submit" class="btn btn-block btn-danger">Register</button>
+
+    <div class="form-group">
+      <label for="timeIn">Time In</label>
+      <input type="time" class="form-control" name="timeIn" id="timeIn" value="{{logs->timeIn}}" readonly/>   
+    </div>
+
+    <div class="form-group">
+      <label for="timeOut">timeOut</label>
+      <input type="time" class="form-control" name="timeOut" id="timeOut"/>   
+    </div>
+    <button type="submit" class="btn btn-block btn-danger">Time Out</button>
    
     </form>
 </div>

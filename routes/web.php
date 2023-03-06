@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LogBookController;
+use App\Http\Controllers\OfficerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,12 @@ Route::group(['prefix' => 'user'], function(){
         //routes for time in and time out
         Route::get('officer/timein', [LogBookController::class, 'timeIn'])->name('officer.timeIn');
         Route::post('officer/store', [LogBookController::class, 'store'])->name('officer.store');
+
+        Route::get('officer/{id}/timeout', [LogBookController::class, 'edit'])->name('officer.timeOut');
+
+        //routes for editing and updating officer's data
+        Route::get('officer/{id}/edit', [OfficerController::class, 'edit'])->name('officers.edit');
+        Route::put('officer/{id}/update', [OfficerController::class, 'update'])->name('officers.update');
     });
 
     Route::group(['middleware' => 'role:admin'], function(){

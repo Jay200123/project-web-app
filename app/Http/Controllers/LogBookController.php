@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\LogBook;
+use App\Models\Student;
 use App\Models\User;
 use Auth;
 use Carbon\Carbon;
@@ -25,12 +26,9 @@ class LogBookController extends Controller
 
         $logs = New LogBook();
 
-        // fetch the users id and role in the database
-        $user = User::where('id',Auth::id())->first();
-
-        // dd($user);
-        $logs->user_id = $user->id;
-        $logs->position = $user->role;
+        $users = User::where('id', Auth::id())->first();
+        $logs->user_id = $users->id;
+        $logs->position = $users->role;
         $logs->log_date = Carbon::now();
 
         //fetch the data from the request form
@@ -40,5 +38,12 @@ class LogBookController extends Controller
         $logs->save();
 
         return redirect()->route('officer.profile');
+    }
+
+    public function edit($id){
+
+            $logs = LogBook::find($id);
+            return view('log.edit', compact('logs'));
+
     }
 }
