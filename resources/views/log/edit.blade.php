@@ -38,19 +38,25 @@
 </style>
 
 <div class="form-containers">
-     <form method="POST" action="#">
+     <form method="POST" action="{{route('officer.timeouts', $logs->user_id)}}">
      <h4>MTICS LOGBOOK</h4>
      <h4>Time In and Time Out</h4>
      @csrf
      @method('PUT')
     <div class="form-group">
       <label for="log_date">Date Logged</label>
-      <input type="date" class="form-control" name="log_date" id="log_date" value="{{logs->log_date}}" readonly/>   
+      <input type="date" class="form-control" name="log_date" id="log_date" value="{{$logs->log_date}}" readonly/>   
     </div>
+
+    <div class="form-group" hidden>
+      <label for="timeIn">Position</label>
+      <input type="text" class="form-control" name="position" id="position" value="{{$logs->position}}" readonly/>   
+    </div>
+
 
     <div class="form-group">
       <label for="timeIn">Time In</label>
-      <input type="time" class="form-control" name="timeIn" id="timeIn" value="{{logs->timeIn}}" readonly/>   
+      <input type="time" class="form-control" name="timeIn" id="timeIn" value="{{$logs->timeIn}}" readonly/>   
     </div>
 
     <div class="form-group">

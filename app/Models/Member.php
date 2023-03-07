@@ -15,14 +15,10 @@ class Member extends Model
 
     protected $primaryKey='info_id';
 
-    protected $fillable = ['user_id', 'date_placed', 'status'];
+    protected $fillable = ['student_id', 'date_placed', 'status'];
 
-    public function users(){
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function students(){
-        return $this->belongsTo(Student::class, 'user_id');
+    public function student(){
+        return $this->belongsTo(Student::class, 'student_id');
     }
 
     public function stats()

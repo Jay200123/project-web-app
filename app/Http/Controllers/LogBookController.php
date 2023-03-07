@@ -42,8 +42,29 @@ class LogBookController extends Controller
 
     public function edit($id){
 
-            $logs = LogBook::find($id);
-            return view('log.edit', compact('logs'));
+        $user = User::where('id', Auth::id())->first();
+        $uid = $user->id;
+
+        $logs = LogBook::where(['user_id' => $uid])->first();
+        return view('log.edit', compact('logs'));
+
+    }
+
+    public function update(Request $request ){
+
+        $user = User::where('id', Auth::id())->first();
+        $uid = $user->id;
+
+        $logs = LogBook::where(['user_id' => $uid])->first();
+
+        $logs->log_date = $request->log_date;
+        $logs->position = $request->position;
+        $logs->timeIn = $request->timeIn;
+        $logs->timeOut = $request->timeOut;
+
+        $logs->update();
+
+        return redirect()->route('officer.profile')->with('Successfully Time Out');
 
     }
 }

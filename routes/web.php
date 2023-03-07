@@ -63,7 +63,9 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('officer/timein', [LogBookController::class, 'timeIn'])->name('officer.timeIn');
         Route::post('officer/store', [LogBookController::class, 'store'])->name('officer.store');
 
+        //routes for time in and time out
         Route::get('officer/{id}/timeout', [LogBookController::class, 'edit'])->name('officer.timeOut');
+        Route::put('officer/{id}/timeout/update', [LogBookController::class, 'update'])->name('officer.timeouts');
 
         //routes for editing and updating officer's data
         Route::get('officer/{id}/edit', [OfficerController::class, 'edit'])->name('officers.edit');

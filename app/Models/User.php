@@ -44,12 +44,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function students()
-    {
-        return $this->belongsTo(Student::class, 'user_id', 'id');
-    }
-
-    public function members(){
-        return $this->belongsTo(Member::class, 'user_id');
-    }
 }

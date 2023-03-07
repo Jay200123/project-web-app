@@ -23,7 +23,7 @@ class MemberDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
 
-        $members = Member::with(['users', 'stats']);
+        $members = Member::with(['student', 'stats']);
         return datatables()
         ->eloquent($members)
 
@@ -31,12 +31,16 @@ class MemberDataTable extends DataTable
         return "<a href=". route('members.edit', $row->info_id)." class=\"btn btn-warning\">Edit</a>";
     })
 
-    ->addColumn('users', function(Member $members){
-        return $members->users->name;
+    ->addColumn('fname', function(Member $members){
+        return $members->student->fname;
     })
 
-    ->addColumn('email', function(Member $members){
-        return $members->users->email;
+    ->addColumn('lname', function(Member $members){
+        return $members->student->lname;
+    })
+
+    ->addColumn('section', function(Member $members){
+        return $members->student->section;
     })
 
     ->addColumn('Amount', function(Member $members){
@@ -47,7 +51,7 @@ class MemberDataTable extends DataTable
         return $members->stats->date_paid;
     })
 
-    ->rawColumns([ 'users', 'email','amount','date_paid','action']);
+    ->rawColumns([ 'fname', 'lname','section','email','amount','date_paid','action']);
     }
 
     /**
@@ -94,8 +98,9 @@ class MemberDataTable extends DataTable
     {
         return [
             Column::make('info_id')->title('ID'),
-            Column::make('users')->name('users.name')->title('Student Name'),
-            Column::make('email')->name('users.email')->title('Email'),
+            Column::make('fname')->name('student.fname')->title('Student Name'),
+            Column::make('lname')->name('student.lname')->title('Last Name'),
+            Column::make('section')->name('student.section')->title('Section'),
             Column::make('status')->title('Condition'),
             Column::make('Amount')->name('stats.amount')->title('Amount'),
             Column::make('date_placed')->title('Date Placed'),

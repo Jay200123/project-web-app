@@ -29,10 +29,21 @@
 
       @csrf 
               @method('PUT')
-         <div class="form-group">
-         <label for="email">Email</label>
-              <input type="text" class="form-control" name="email" value="{{ $member->users->email }}" readonly/>
+          <div class="form-group">
+          <label for="fname">Student Name</label>
+          <input type="text" class="form-control" name="fname" value="{{ $member->student->fname }}" readonly/>
           </div>
+
+          <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" class="form-control" name="lname" value="{{ $member->student->lname }}" readonly/>
+          </div>
+
+        <div class="form-group">
+         <label for="section">Section</label>
+         <input type="text" class="form-control" name="section" value="{{ $member->student->section }}" readonly/>
+        </div>
+
 
          <div class="form-group">
          <label for="date_placed">Date Placed</label>

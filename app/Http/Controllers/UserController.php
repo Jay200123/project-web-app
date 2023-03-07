@@ -11,8 +11,7 @@ class UserController extends Controller
 {
     public function index(){
         
-        $users = User::with('students')->get();
-        // dd($users);
+        $users = User::orderBy('id', 'ASC')->get();
         return view('user.index', compact('users'));
     }
 

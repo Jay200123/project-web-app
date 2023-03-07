@@ -138,7 +138,8 @@
         <div class="buttons">
           <a href="{{route('officers.edit', $officer->student_id)}}" class="btn">Update</a>
           <a href="{{route('officer.timeIn')}}" class="btn">Time In</a>
-          <a href="#" class="btn">Time Out</a>
+
+          <a href="{{route('officer.timeOut', $officer->user_id)}}" class="btn">Time Out</a>
         </div>
       </div>
       @endforeach

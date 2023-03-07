@@ -18,14 +18,16 @@ class TransactionsController extends Controller
     
     public function index(){
 
-        $members = Member::with(['users', 'students'])->get();
-        // dd($members);
+        $members = Member::with("student")->get();
+        // foreach($members as $member);
+        // $member->student->fname;
+        // dd($member);
         return view('member.index', compact('members'));
     }
 
     public function getMembers(MemberDataTable $dataTable){
 
-        $members = Member::with(['users', 'stats'])->get();
+        $members = Member::with(['student', 'stats'])->get();
         return $dataTable->render('member.members');
 
     }
@@ -41,10 +43,9 @@ class TransactionsController extends Controller
 
             $member = new Member();
             
-            // $student = Student::where('user_id', Auth::id())->first();
-            $user = User::where('id',Auth::id())->first();
-
-            $member->user_id = $user->id;
+            $student = Student::where('user_id',Auth::id())->first();
+            // dd($student->student_id);
+            $member->student_id = $student->student_id;
             $member->date_placed = Carbon::now();
             $member->status='unpaid';
             $member->save();
@@ -68,7 +69,7 @@ class TransactionsController extends Controller
 
     public function editMember($id){
         
-        $member = Member::with('stats')->findOrFail($id);
+        $member = Member::with('student','stats')->findOrFail($id);
         // dd($members);
         return view('member.edit', compact('member'));
 
@@ -77,14 +78,20 @@ class TransactionsController extends Controller
     public function updateMember(Request $request, $id){
 
         
-        $member = Member::with('users')->findOrFail($id);
+        $member = Member::findOrFail($id);
         $member->status = 'paid';
-        $Id = $member->user_id;
-
+        $Id = $member->student_id;
+    
+        // dd($Id);
         $member->update();
 
-        $users = User::with('members')->find($Id);
-        $users->role="student";
+        //gets the student id from the membership table
+        $students = Student::findOrFail($Id);
+
+        $u_id = $students->user_id; //fetch the user id from the students table
+
+        $users = User::findOrFail($u_id); //gets the user id 
+        $users->role="student"; //update the user role
 
         $users->update();
         
