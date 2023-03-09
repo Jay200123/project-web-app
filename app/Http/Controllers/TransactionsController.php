@@ -79,8 +79,8 @@ class TransactionsController extends Controller
 
         
         $member = Member::findOrFail($id);
-        $member->status = 'paid';
-        $Id = $member->student_id;
+        $member->status = 'paid'; //changes the status to paid
+        $Id = $member->student_id; //fetch the student id from membership table
     
         // dd($Id);
         $member->update();
@@ -93,10 +93,10 @@ class TransactionsController extends Controller
         $users = User::findOrFail($u_id); //gets the user id 
         $users->role="student"; //update the user role
 
-        $users->update();
+        $users->update(); 
         
-        $stats = Status::findOrFail($id);
-        $stats->date_paid = Carbon::now();
+        $stats = Status::findOrFail($id); //gets the info_id from the membership table
+        $stats->date_paid = Carbon::now(); //updates the paid 
 
         $stats->update();
 

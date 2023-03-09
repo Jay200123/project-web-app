@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\User;
 
 class OfficerController extends Controller
 {
+
+    public function index(){
+        $users = User::with('students')->where(['role' => 'officer'])->get();
+    }
  
     public function edit($id){
         

@@ -1,0 +1,6 @@
+
+composer require maatwebsite/excel --ignore-platform-reqs //for installing excel in laravel
+
+
+composer require yajra/laravel-datatables // installing datatables in laravel
+php artisan vendor:publish --tag=datatables-buttons //use publish buttons if the datatable doesn't display any ouput

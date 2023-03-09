@@ -7,6 +7,9 @@ use App\Models\User;
 use App\DataTables\StudentDataTable;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Http\Request;
+use App\Imports\StudentImport;
+use App\Rules\ExcelRule;
+use Excel;
 use Auth;
 
 class StudentController extends Controller
@@ -122,13 +125,24 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+    //     $student = Student::findOrFail($id);
+    //     $student->delete();
     }
 
     public function getStudents(StudentDataTable $dataTable){
 
         $students = Student::where([])->get();
         return $dataTable->render('student.students');
+
+    }
+
+    public function import(Request $request){
+
+        $request->validate(['student_import'  => ['required', new ExcelRule($request->file('student_import'))], ]);
+
+        Excel::import(new StudentImport, request()->file('student_import'));
+
+        return redirect()->back()->with('success', 'Excel File Imported Successfully');
 
     }
 }

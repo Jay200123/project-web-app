@@ -30,6 +30,7 @@
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->email}}</td>
+            <td>{{$user->students->section}}</td>
             <td>{{$user->role}}</td>
             <td class="text-center">
             <a href="{{ route('roles.edit', $user->id) }}" class = "btn btn-primary btn-sm">Edit Role</a>
