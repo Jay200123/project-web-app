@@ -123,10 +123,16 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-    //     $student = Student::findOrFail($id);
-    //     $student->delete();
+        $student = Student::findOrFail($id);
+        $student->delete();
+
+        $Id = $student->user_id;
+
+        // dd($Id);
+        $user = User::findOrFail($id);
+        $user->delete();
     }
 
     public function getStudents(StudentDataTable $dataTable){

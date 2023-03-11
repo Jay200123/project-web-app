@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('statusline', function(Blueprint $table){
             $table->integer('info_id')->unsigned();
-            $table->foreign('info_id')->references('info_id')->on('membershipinfo');
+            $table->foreign('info_id')->references('info_id')->on('membershipinfo')->onDelete('cascade');
             $table->date('date_paid');
             $table->decimal('amount');
             $table->timestamps();

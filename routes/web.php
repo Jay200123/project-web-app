@@ -88,6 +88,11 @@ Route::group(['prefix' => 'user'], function(){
 
         //Routes for Excel Import
         Route::post('student/import', [StudentController::class, 'import'])->name('student.imports');
+
+        //Route for delete
+        Route::delete('students/{id}', [StudentController::class, 'destroy'])->name('students.delete');
+
+        Route ::delete('users/{id}', [UserController::class, 'delete'])->name('users.delete');
     });
 
     Route::group(['middleware' => 'role:unregistered'], function(){
@@ -103,5 +108,7 @@ Route::group(['prefix' => 'user'], function(){
 
 });
 
+Route::get('password/form', [UserController::class, 'changePassword'])->name('getPassword');
+Route::post('password/update', [UserController::class, 'updatePassword'])->name('updatePassword');
 
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');

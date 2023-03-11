@@ -102,6 +102,13 @@
 
 </style>
 <body class="background">
+
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <div class="card-body">
     @if ($errors->any())
       <div class="alert alert-danger">
@@ -113,6 +120,7 @@
       </div><br />
   </div>     
 @endif
+
 <div class="profile-containers">
   <h3>Welcome to MTICS Web Application</h3>
 @foreach($student as $student)

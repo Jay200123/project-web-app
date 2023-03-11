@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('loginfo', function(Blueprint $table){
             $table->increments('log_id');
             $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('position');
             $table->date('log_date');
             $table->string('timeIn');

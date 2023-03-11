@@ -108,7 +108,19 @@
                 <p>{{ $message }}</p>
             </div>
         @endif
+  </div>  
+  
+  <div class="card-body">
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+      </div><br />
   </div>     
+@endif
 
 <div class="profile-containers">
   <h3>Welcome to MTICS Web Application</h3>

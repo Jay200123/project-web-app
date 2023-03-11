@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('membershipinfo', function(Blueprint $table){
             $table->increments('info_id');
             $table->integer('student_id')->unsigned();
-            $table->foreign('student_id')->references('student_id')->on('students');
+            $table->foreign('student_id')->references('student_id')->on('students')->onDelete('cascade');
             $table->date('date_placed');
             $table->string('status');
             $table->timestamps();

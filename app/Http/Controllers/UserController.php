@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\DataTables\UserDataTable;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\User;
+use Hash;
+use Auth;
 
 class UserController extends Controller
 {
@@ -45,4 +47,38 @@ class UserController extends Controller
         return redirect()->route('users.datatable')->with('User Role Updated Successfully');
 
     }
+
+    public function delete($id){
+        
+        $user = User::findOrFail($id);
+        $user->delete();
+    }
+
+    public function changePassword(){
+
+        return view('password.password');
+    }
+
+    public function updatePassword(Request $request)
+{
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+        #Match The Old Password
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+
+        #Update the new Password
+        User::where('id', Auth::id())->first()->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return redirect()->route('student.profile')->with("status", "Password changed successfully!");
+}
 }

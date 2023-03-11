@@ -26,7 +26,7 @@ class StudentDataTable extends DataTable
         ->eloquent($query)
 
         ->addColumn('action', function($row){
-            return "<form action=". route('students.datatable') ." method=\"POST\" >". csrf_field().
+            return "<form action=". route('students.delete', $row->student_id) ." method=\"POST\" >". csrf_field().
             '<input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
             </form>';
