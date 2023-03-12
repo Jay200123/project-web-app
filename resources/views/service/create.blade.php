@@ -1,18 +1,16 @@
 @extends('layouts.master')
 @section('content')
 <div class="card push-top">
-  <div class="card-header">
-  <h3>Welcome to MTICS Official Website<i class="fa fa-globe" aria-hidden="true"></i></h3>
-  <h4><i class="fa fa-print" aria-hidden="true"></i>MTICS Printing Services</h4>
-  </div>
-
-  @if ( Session::has('success'))
+@if ( Session::has('success'))
       <div class="alert alert-success">
         <p>{{ Session::get('success') }}</p>
       </div><br />
      @endif
+  </div> 
+  <div class="card-header">
+  <h3>Welcome to MTICS Official Website<i class="fa fa-globe" aria-hidden="true"></i></h3>
+  <h4><i class="fa fa-print" aria-hidden="true"></i>MTICS Printing Services</h4>
   </div>
-
   <div class="card-body">
     @if ($errors->any())
     <h1>Sign Up</h1>

@@ -75,6 +75,15 @@ Route::group(['prefix' => 'user'], function(){
         //routes for editing and updating officer's data
         Route::get('officer/{id}/edit', [OfficerController::class, 'edit'])->name('officers.edit');
         Route::put('officer/{id}/update', [OfficerController::class, 'update'])->name('officers.update');
+
+        //service index
+        Route::get('service', [ServiceController::class, 'index'])->name('service.index');
+
+        //edit service
+        Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit');
+        Route::put('service/{id}/update', [ServiceController::class, 'update'])->name('service.update');
+        Route::delete('service/{id}', [ServiceController::class, 'destroy'])->name('service.delete');
+        Route::get('services', [ServiceController::class, 'getService'])->name('service.datatable');
     });
 
     Route::group(['middleware' => 'role:admin'], function(){

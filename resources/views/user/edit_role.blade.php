@@ -26,7 +26,8 @@
       </div><br />
     @endif
       <form method="POST" action="{{ route('roles.update', $user->id) }}" enctype ="multipart/form-data">
-
+      @csrf 
+              @method('PUT')
          <div class="form-group">
          <label for="name">Name</label>
               <input type="text" class="form-control" name="name" value="{{ $user->name }}" readonly/>
@@ -38,10 +39,15 @@
           </div>
 
           <div class="form-group">
-          @csrf 
-              @method('PUT')
-              <label for="role">Role</label>
-              <input type="text" class="form-control" name="role" value="{{ $user->role }}"/>
+          <label for="role">User Current Role:</label>
+          <input type="text" class="form-control" name="text" value="{{ $user->role }}" readonly/>
+          <br>
+          <label for="role">Change Role:</label>
+          <select id="role" name="role">
+          <option value="officer">Officer</option>
+          <option value="student">Student</option>
+          <option value="unregistered">Unregistered</option>
+          </select>
           </div>
 
           <button type="submit" class="btn btn-block btn-danger">Update</button>

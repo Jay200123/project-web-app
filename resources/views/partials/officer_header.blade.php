@@ -25,6 +25,12 @@
   </li>
 
   <li>
+  <a href="{{route('service.datatable')}}">
+  <i class="fa fa-wrench" aria-hidden="true"></i>Services
+  </a>
+  </li>
+
+  <li>
   <a href="{{route('members.datatable')}}">
   <i class="fa fa-users" aria-hidden="true"></i>Membership
   </a>
