@@ -10,6 +10,7 @@ use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LogBookController;
 use App\Http\Controllers\OfficerController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::group(['prefix' => 'user'], function(){
 
         //post request for sign in
         Route::post('login', [LoginController::class, 'postSignin'])->name('login');
+
+        //routes for services
+        Route::get('services/form', [ServiceController::class, 'create'])->name('service.create');
+        Route::post('services/store', [ServiceController::class, 'store'])->name('service.store');
 
     });
 
@@ -106,9 +111,13 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('student/profile', [RegisterController::class, 'studentProfile'])->name('student.profile');
     });
 
+    Route::group(['middleware' => 'role:student,officer'], function(){
+
+        Route::get('password/form', [UserController::class, 'changePassword'])->name('getPassword');
+        Route::post('password/update', [UserController::class, 'updatePassword'])->name('updatePassword');
+    });
+
 });
 
-Route::get('password/form', [UserController::class, 'changePassword'])->name('getPassword');
-Route::post('password/update', [UserController::class, 'updatePassword'])->name('updatePassword');
 
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');

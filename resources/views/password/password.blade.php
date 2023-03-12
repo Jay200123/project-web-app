@@ -1,9 +1,25 @@
 @extends('layouts.master')
 @section('content')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
+<style>
+.row{
+    text-align:center;
+    position: absolute;
+    border-radius:10px;
+    border:solid black;
+    width: 400px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    }
+
+    .row input{
+        padding: 5px;
+        width: 95%;
+        margin: 10px;
+    }
+</style>
+
+    <div class="row">
                     <div class="card-header">{{ __('Change Password') }}</div>
 
                     <form action="{{route('updatePassword')}}" method="POST">
@@ -19,7 +35,7 @@
                                 </div>
                             @endif
 
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <label for="oldPasswordInput" class="form-label">Old Password</label>
                                 <input name="old_password" type="password" class="form-control @error('old_password') is-invalid @enderror" id="oldPasswordInput"
                                     placeholder="Old Password">
@@ -27,7 +43,8 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+
+                            <div class="form-group">
                                 <label for="newPasswordInput" class="form-label">New Password</label>
                                 <input name="new_password" type="password" class="form-control @error('new_password') is-invalid @enderror" id="newPasswordInput"
                                     placeholder="New Password">
@@ -35,7 +52,7 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                            <div class="mb-3">
+                            <div class="form-group">
                                 <label for="confirmNewPasswordInput" class="form-label">Confirm New Password</label>
                                 <input name="new_password_confirmation" type="password" class="form-control" id="confirmNewPasswordInput"
                                     placeholder="Confirm New Password">
@@ -44,12 +61,9 @@
                         </div>
                         <br>
                         <div class="card-footer">
-                            <button class="btn btn-success">Submit</button>
+                            <button class="btn btn-success">Change Password</button>
                         </div>
-
+                         <br>
                     </form>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection

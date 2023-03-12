@@ -25,6 +25,12 @@
   </li>
 
   <li>
+  <a href="{{route('service.create')}}">
+  <i class="fa fa-wrench" aria-hidden="true"></i>Services
+  </a>
+  </li>
+
+  <li>
   <a href="{{route('events.index')}}">
   <i class="fa fa-calendar" aria-hidden="true"></i>Events
   </a>
@@ -38,6 +44,7 @@
               <li><i class="fa fa-user-circle" aria-hidden="true"><a href="{{route('student.profile')}}"></i>Student Profile</a></li>
               <li role="separator" class="divider"></li>
               <li><i class="fa fa-cog"  aria-hidden="true"><a href="{{route('getPassword')}}"></i>Settings</a></li>
+              <li role="separator" class="divider"></li>
               <li><i class="fa fa-power-off" aria-hidden="true"><a href="{{route('user.logout')}}"></i>Logout</a></li>
               @else
               <li><i class="fa fa-user-plus" aria-hidden="true"><a href="{{route('student.signup')}}"></i>Student Signup</a></li>

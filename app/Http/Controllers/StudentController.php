@@ -114,7 +114,7 @@ class StudentController extends Controller
 
             // dd($students);
             $students->update();
-            return redirect()->route('student.profile')->with('Record Successfully Updated');
+            return redirect()->route('student.profile')->with('success', 'Record Successfully Updated');
     }
 
     /**

@@ -9,6 +9,11 @@
   <title>Home Page</title>
 </head>
 <body>
-  
+@if ( Session::has('success'))
+      <div class="alert alert-success">
+        <p>{{ Session::get('success') }}</p>
+      </div><br />
+     @endif
+  </div>
 </body>
 </html>

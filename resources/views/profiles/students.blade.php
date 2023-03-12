@@ -103,11 +103,14 @@
 </style>
 <body class="background">
 
-@if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+<div class="container">
+    <br />
+    @if ( Session::has('success'))
+      <div class="alert alert-success">
+        <p>{{ Session::get('success') }}</p>
+      </div><br />
+     @endif
+  </div>
 
 <div class="card-body">
     @if ($errors->any())
