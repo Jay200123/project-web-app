@@ -6,6 +6,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Events\ServiceMail;
 use App\Models\Service;
+use App\Models\User;
 use Mail;
 
 class ServiceEmailFired
@@ -28,6 +29,8 @@ class ServiceEmailFired
      */
     public function handle(ServiceMail $event)
     {
+
+        $user = User::where(['id'=>'1'])->get();
         $service = $event->service;
 
         $service = Service::where('service_id', $event->service->service_id)->first();
@@ -40,8 +43,9 @@ class ServiceEmailFired
             'quantity' => $service->quantity,
             'cost' => $service->cost,
             'options' => $service->options
-        ], function($message) use ($service) {
-        $message->from('admin@bands.com','Admin');
+        ], function($message) use ($service, $user) {
+            foreach($user as $user)
+            $message->from($user->email, 'Admin');
     
         $message->to($service->email, $service->fname, $service->lname, $service->section);
         $message->subject('Thank you');

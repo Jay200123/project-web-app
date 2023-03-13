@@ -34,6 +34,10 @@ class ServiceController extends Controller
         return view('service.create');
     }
 
+    public function getMessage(){
+        return view('service.message');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -79,7 +83,7 @@ class ServiceController extends Controller
         }
 
         DB::commit();
-        return redirect()->route('service.create')->with('Success', 'Transaction Successful!');
+        return redirect()->route('service.msg')->with('Success', 'Transaction Successful!');
     }
 
     /**

@@ -127,4 +127,9 @@ Route::group(['prefix' => 'user'], function(){
 //routes for services
 Route::get('services/form', [ServiceController::class, 'create'])->name('service.create');
 Route::post('services/store', [ServiceController::class, 'store'])->name('service.store');
+
+//route for service message
+Route::get('service/message', [ServiceController::class, 'getMessage'])->name('service.msg');
+
+//Routes for Login
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
