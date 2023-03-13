@@ -44,10 +44,6 @@ Route::group(['prefix' => 'user'], function(){
         //post request for sign in
         Route::post('login', [LoginController::class, 'postSignin'])->name('login');
 
-        //routes for services
-        Route::get('services/form', [ServiceController::class, 'create'])->name('service.create');
-        Route::post('services/store', [ServiceController::class, 'store'])->name('service.store');
-
     });
 
     Route::group(['middleware' => 'role:student'], function(){
@@ -128,5 +124,7 @@ Route::group(['prefix' => 'user'], function(){
 
 });
 
-
+//routes for services
+Route::get('services/form', [ServiceController::class, 'create'])->name('service.create');
+Route::post('services/store', [ServiceController::class, 'store'])->name('service.store');
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');

@@ -29,12 +29,6 @@
   </li>
 
   <li>
-  <a href="{{route('service.index')}}">
-  <i class="fa fa-wrench" aria-hidden="true"></i>Services
-  </a>
-  </li>
-
-  <li>
   <a href="{{route('dashboard.index')}}">
   <i class="fa fa-area-chart" aria-hidden="true"></i>Dashboard
   </a>

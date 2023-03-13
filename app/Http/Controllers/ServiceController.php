@@ -6,7 +6,9 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use App\DataTables\ServiceDataTable;
 use Yajra\DataTables\Facades\DataTables;
+use App\Events\ServiceMail;
 use DB;
+use Event;
 use Carbon\Carbon;
 
 class ServiceController extends Controller
@@ -135,9 +137,11 @@ class ServiceController extends Controller
                 $service->service_file = $serv_file;
             }
 
+            
             $service->update();
+            Event::dispatch(new ServiceMail($service));
 
-            return redirect()->route('service.index')->with('success', 'Transaction Updated Sucessfully');
+            return redirect()->route('service.datatable')->with('success', 'Transaction Updated Sucessfully');
 
 
     }

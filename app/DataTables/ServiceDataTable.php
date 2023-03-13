@@ -22,19 +22,17 @@ class ServiceDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return datatables()
-        ->eloquent($query)
-
-        ->addColumn('action', function($row){
-            return "<a href=". route('service.edit', $row->service_id)." class=\"btn btn-warning\">Edit</a>";
+    return datatables()
+    ->eloquent($query)
+    ->addColumn('action', function($row){
+        return "<a href=". route('service.edit', $row->service_id)." class=\"btn btn-warning\">Edit</a>".
             "<form action=". route('service.delete', $row->service_id) ." method=\"POST\" >". csrf_field().
             '<input name="_method" type="hidden" value="DELETE">
             <button class="btn btn-danger" type="submit">Delete</button>
             </form>';
     })
-
     ->rawColumns(['action']);
-    }
+}
 
     /**
      * Get query source of dataTable.
