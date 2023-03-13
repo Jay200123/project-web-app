@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\DataTables\ServiceDataTable;
 use Yajra\DataTables\Facades\DataTables;
 use App\Events\ServiceMail;
+use App\Events\ServiceMessageMail;
 use DB;
 use Event;
 use Carbon\Carbon;
@@ -74,6 +75,7 @@ class ServiceController extends Controller
             }
 
             $service->save();
+            Event::dispatch(new ServiceMessageMail($service));
             
 
         }catch(\Exception $e){

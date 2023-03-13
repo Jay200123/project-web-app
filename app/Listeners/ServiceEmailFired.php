@@ -30,7 +30,7 @@ class ServiceEmailFired
     public function handle(ServiceMail $event)
     {
 
-        $user = User::where(['id'=>'1'])->get();
+        $user = User::where(['role'=>'admin'])->get();
         $service = $event->service;
 
         $service = Service::where('service_id', $event->service->service_id)->first();
@@ -44,10 +44,11 @@ class ServiceEmailFired
             'cost' => $service->cost,
             'options' => $service->options
         ], function($message) use ($service, $user) {
+
             foreach($user as $user)
             $message->from($user->email, 'Admin');
     
-        $message->to($service->email, $service->fname, $service->lname, $service->section);
+        $message->to($service->email, $service->lname);
         $message->subject('Thank you');
         $message->attach(public_path('/images/mtics.jpg'));
         });
