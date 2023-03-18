@@ -18,12 +18,9 @@
       .img-icon{
         border-radius: 50%;
       }
-      .background{
-        background-color: #66ccff;
-      }
 
 </style>
-<body class="background">
+<body>
 <div class="msg-container">
     <h3>Thank You for Using the MTICS Printing Services</h3>
     <h5>Please Check Your Email for Confirmation<i class="fa fa-envelope" aria-hidden="true"></i></h5>

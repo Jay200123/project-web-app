@@ -1,4 +1,4 @@
-@extends('layouts.officer_base')
+@extends('layouts.admin_base')
 @section('body')
   <div class="container">
     <br />

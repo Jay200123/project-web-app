@@ -52,14 +52,21 @@ Route::group(['prefix' => 'user'], function(){
         Route::put('student/{id}/update', [StudentController::class, 'update'])->name('students.update'); //routes for updating
     });
 
-    Route::group(['middleware' => 'role:officer'], function(){
-        
+    Route::group(['middleware' => 'role:officer,president'], function(){
         Route::get('officer/profile', [RegisterController::class, 'officerProfile'])->name('officer.profile');
-        Route::get('membership', [TransactionsController::class, 'index'])->name('members.index');
-        Route::get('memberships', [TransactionsController::class, 'getMembers'])->name('members.datatable');
+         
+        //membership index
+        Route::get('/membership', [TransactionsController::class, 'index'])->name('members.index');
+        
+    });
+
+    Route::group(['middleware' => 'role:president'], function(){
         Route::get('membership/{id}/edit', [TransactionsController::class, 'editMember'])->name('members.edit');
         Route::put('membership/{id}/update', [TransactionsController::class, 'updateMember'])->name('members.update');
+    });
 
+    Route::group(['middleware' => 'role:officer'], function(){
+        
         //routes for time in and time out
         Route::get('officer/timein', [LogBookController::class, 'timeIn'])->name('officer.timeIn');
         Route::post('officer/store', [LogBookController::class, 'store'])->name('officer.store');
@@ -78,7 +85,6 @@ Route::group(['prefix' => 'user'], function(){
         //edit service
         Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit');
         Route::put('service/{id}/update', [ServiceController::class, 'update'])->name('service.update');
-        Route::delete('service/{id}', [ServiceController::class, 'destroy'])->name('service.delete');
         Route::get('services', [ServiceController::class, 'getService'])->name('service.datatable');
     });
 
@@ -91,6 +97,7 @@ Route::group(['prefix' => 'user'], function(){
         //datatable routes
         Route::get('/students', [StudentController::class, 'getStudents'])->name('students.datatable');
         Route::get('/users/datatable', [UserController::class, 'getUsers'])->name('users.datatable');
+        Route::get('memberships', [TransactionsController::class, 'getMembers'])->name('members.datatable');
 
         // routes for edit roles
         Route::get('role/{id}/edit', [UserController::class, 'editRole'])->name('roles.edit');
@@ -103,6 +110,10 @@ Route::group(['prefix' => 'user'], function(){
         Route::delete('students/{id}', [StudentController::class, 'destroy'])->name('students.delete');
 
         Route ::delete('users/{id}', [UserController::class, 'delete'])->name('users.delete');
+
+        Route::delete('service/{id}', [ServiceController::class, 'destroy'])->name('service.delete');
+
+        Route::delete('members/{id}', [TransactionsController::class, 'deletemembers'])->name('members.delete');
     });
 
     Route::group(['middleware' => 'role:unregistered'], function(){
@@ -116,7 +127,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('student/profile', [RegisterController::class, 'studentProfile'])->name('student.profile');
     });
 
-    Route::group(['middleware' => 'role:student,officer'], function(){
+    Route::group(['middleware' => 'role:student,officer,president'], function(){
 
         Route::get('password/form', [UserController::class, 'changePassword'])->name('getPassword');
         Route::post('password/update', [UserController::class, 'updatePassword'])->name('updatePassword');
@@ -130,6 +141,8 @@ Route::post('services/store', [ServiceController::class, 'store'])->name('servic
 
 //route for service message
 Route::get('service/message', [ServiceController::class, 'getMessage'])->name('service.msg');
+
+Route::get('reciept', [TransactionsController::class, 'getpdf'])->name('pdf');
 
 //Routes for Login
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');

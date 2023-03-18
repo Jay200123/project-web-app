@@ -28,7 +28,10 @@ class MemberDataTable extends DataTable
         ->eloquent($members)
 
     ->addColumn('action', function($row){   
-        return "<a href=". route('members.edit', $row->info_id)." class=\"btn btn-warning\">Edit</a>";
+        return "<form action=". route('members.delete', $row->info_id)." method=\"POST\" >". csrf_field().
+        '<input name="_method" type="hidden" value="DELETE">
+        <button class="btn btn-danger" type="submit">Delete</button>
+        </form>';
     })
 
     ->addColumn('fname', function(Member $members){
@@ -76,13 +79,14 @@ class MemberDataTable extends DataTable
                     ->setTableId('member-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    //->dom('Bfrtip')
+                    ->dom('Bfrtip')
                     ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
                         // Button::make('excel'),
                         // Button::make('csv'),
                         // Button::make('pdf'),
+                        Button::make('export'),
                         // Button::make('print'),
                         // Button::make('reset'),
                         // Button::make('reload')

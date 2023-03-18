@@ -29,9 +29,14 @@ class SendEmailFired
     public function handle(SendMail $event)
     {
         $user = $event->user;
+        
+        //query for getting the email for admin user
+        $admin = User::where(['role' => 'admin'])->first();
+
         $user = User::where('id',$event->user->id)->first();
-        Mail::send( 'email.notification', ['name' => $user->name, 'email' => $user->email], function($message) use ($user) {
-        $message->from('admin@bands.com','Admin');
+        Mail::send( 'email.notification', ['name' => $user->name, 'email' => $user->email], function($message) use ($user, $admin) {
+
+        $message->from($admin->email, 'Admin');
 
         $message->to($user->email, $user->name);
         $message->subject('Thank you');

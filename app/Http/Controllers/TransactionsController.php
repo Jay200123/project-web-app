@@ -11,6 +11,9 @@ use App\DataTables\MemberDataTable;
 use Yajra\DataTables\Facades\DataTables;
 use DB;
 use Auth;
+use DomPDF;
+use Session;
+use Redirect;
 use Carbon\Carbon;
 
 class TransactionsController extends Controller
@@ -64,7 +67,7 @@ class TransactionsController extends Controller
                 return redirect()->route('member.forms')->with('error', $e->getMessage());
             }
         DB::commit();
-        return redirect()->route('student.profile')->with('Success', 'Successfully Registered!');
+        return redirect()->route('student.profile')->with('success', 'Membership transaction successful!');
     }
 
     public function editMember($id){
@@ -78,7 +81,7 @@ class TransactionsController extends Controller
     public function updateMember(Request $request, $id){
 
         
-        $member = Member::findOrFail($id);
+        $member = Member::with('student','stats')->findOrFail($id);
         $member->status = 'paid'; //changes the status to paid
         $Id = $member->student_id; //fetch the student id from membership table
     
@@ -100,10 +103,35 @@ class TransactionsController extends Controller
 
         $stats->update();
 
-    
+        $data = [
+            'title' => 'MTICS Reciept',
+            'member_id' =>  $member->info_id,
+            'date_placed' => $member->date_placed,
+            'date_paid' => now(),
+            'fname' => $member->student->fname,
+            'lname' => $member->student->lname,
+            'section' => $member->student->section,
+            'amount' => $member->stats->amount,
+        ];
 
-        return redirect()->route('members.datatable')->with('Status Change Successfully');
+        $pdf = DomPDF::loadView('member.reciept', $data)->setOptions(['defaultFont' => 'sans-serif']);
 
+        Session::flash('success', 'Membership Successfully Updated');
+
+        return $pdf->download('mtics_reciept.pdf');
+
+    }
+
+    public function deletemembers($id){
+        
+        $member = Member::findOrFail($id);
+        $member->delete();
+
+        return redirect()->route('members.datatable')->with('success', 'Record Successfully Deleted');
+    }
+
+    public function getpdf(){
+        return view('member.reciept');
     }
 
     

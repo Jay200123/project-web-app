@@ -44,7 +44,7 @@ class UserController extends Controller
 
         $user->update();
 
-        return redirect()->route('users.datatable')->with('User Role Updated Successfully');
+        return redirect()->route('users.datatable')->with('success','User Role Updated Successfully');
 
     }
 
@@ -52,6 +52,8 @@ class UserController extends Controller
         
         $user = User::findOrFail($id);
         $user->delete();
+
+        return redirect()->routes('users.datatable')->with('success', 'Record Deleted Successfully');
     }
 
     public function changePassword(){
@@ -79,6 +81,6 @@ class UserController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
 
-        return redirect()->route('student.profile')->with("status", "Password changed successfully!");
+        return redirect()->back()->with("status", "Password changed successfully!");
 }
 }

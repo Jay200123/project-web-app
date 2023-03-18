@@ -21,9 +21,10 @@ class LoginController extends Controller
         {
             if (auth()->user()->role === 'admin') {
                 return redirect()->route('dashboard.index');
-            } else if (auth()->user()->role === 'officer'){
+            } else if (auth()->user()->role === 'officer'|| auth()->user()->role ==='president'){
              return redirect()->route('officer.profile');
             }
+            
             else if(auth()->user()->role === 'student'){
                 return redirect()->route('events.index');
             }

@@ -29,7 +29,7 @@ class MessageEmailFired
      */
     public function handle(ServiceMessageMail $event)
     {
-        $user = User::where(['role'=>'admin'])->get();
+        $user = User::where(['role'=>'admin'])->first();
         $service = $event->service;
 
         $service = Service::where('service_id', $event->service->service_id)->first();
@@ -39,7 +39,6 @@ class MessageEmailFired
             'section' => $service->section, 
 
         ], function($message) use ($service, $user) {
-            foreach($user as $user)
             $message->from($user->email, 'Admin');
     
         $message->to($service->email, $service->lname);

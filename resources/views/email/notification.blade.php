@@ -5,33 +5,32 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 <style>
-    .content{
+   .content{
         text-align:center;
+        position: absolute;
         margin:10px;
         padding: 10px;
-        position: absolute;
         border-radius: 10px;
         border:solid black;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+        width:50%;
+    
+      }
 
-    .image{
-        position: relative;
-        height: 150px;
-        width: 150px;
+      .left-footer{
+        text-align:left;
+      }
+
+      .image{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      }
+
+      .image img-icon{
         border-radius: 50%;
-        border:solid 2px black;
-    }
-    .image .img-icon{
-      width: 150%;
-      height: 150%;
-      object-fit: cover;
-      border-radius: 50%;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-    }
-
+      }
 </style>
 <body>
 <div class="content">

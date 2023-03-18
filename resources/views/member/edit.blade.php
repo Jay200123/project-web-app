@@ -9,11 +9,24 @@
       margin-top: 50px;
     }
 
+    a{
+      color:White;
+    }
+
 </style>
 <div class="card push-top">
   <div class="card-header">
   <i class="fa fa-address-card" aria-hidden="true"></i> Membership Info
   </div>
+
+  <div class="push-top">
+<div class="card-body">
+@if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+  </div>     
 
   <div class="card-body">
     @if ($errors->any())
@@ -65,8 +78,10 @@
               <input type="decimal" class="form-control" name="amount" value="{{ $member->stats->amount }}" readonly/>
           </div>
 
-          <button type="submit" class="btn btn-block btn-danger">Update</button>
+          <button type="submit" class="btn btn-block btn-success">Update</button>
+          <br>
       </form>
+      <a href="{{url('user/membership')}}" class="btn btn-block btn-danger" >Back</a>
   </div>
 </div>
 @endsection

@@ -76,6 +76,8 @@
           </div>
 
           <button type="submit" class="btn btn-block btn-danger">Update</button>
+
+          <br>
       </form>
   </div>
 </div>

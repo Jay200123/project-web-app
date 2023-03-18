@@ -44,6 +44,7 @@
           <br>
           <label for="role">Change Role:</label>
           <select id="role" name="role">
+          <option value="president">President</option>
           <option value="officer">Officer</option>
           <option value="student">Student</option>
           <option value="unregistered">Unregistered</option>
