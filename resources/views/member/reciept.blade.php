@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTICS Payment Receipt</title>
     <style>
-        body {
+          body {
             font-family: Arial, sans-serif;
             font-size: 14px;
             margin: 0;
@@ -17,6 +17,7 @@
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
+            text-align: left;
         }
         
         .header {
@@ -36,7 +37,7 @@
         }
         
         .content {
-            text-align: center;
+            text-align: left;
         }
         
         .title {
@@ -72,10 +73,24 @@
             text-align: center;
             font-size: 12px;
         }
+
+        .university-address {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
     <div class="receipt">
+
+    <div class="university-address">
+            <p>Manila Technician Institute Computer Society</p>
+            <p>Tehnological University of the Philippines Taguig</p>
+            <p> Km. 14, East Service Road, South Luzon Expressway, Taguig, 1630 Metro Manila</p>
+            <p>(02) 8823 2456</p>
+        </div>
+
         <div class="header">
             <h1>MTICS Payment Receipt</h1>
             <h4>Membership ID: {{$member_id}}</h4>
@@ -90,6 +105,7 @@
             <p class="amount">Membership Amount: {{$amount}}</p>
             <p class="officer">Thank you for your payment, which has been updated by: {{Auth::user()->name}}</p>
         </div>
+       
         <div class="payment-amount">
             Payment Amount: {{$amount}}
         </div>

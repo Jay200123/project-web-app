@@ -55,12 +55,11 @@ Route::group(['prefix' => 'user'], function(){
     Route::group(['middleware' => 'role:officer,president'], function(){
         Route::get('officer/profile', [RegisterController::class, 'officerProfile'])->name('officer.profile');
          
-        //membership index
-        Route::get('/membership', [TransactionsController::class, 'index'])->name('members.index');
         
     });
 
     Route::group(['middleware' => 'role:president'], function(){
+        Route::get('/membership', [TransactionsController::class, 'index'])->name('members.index');
         Route::get('membership/{id}/edit', [TransactionsController::class, 'editMember'])->name('members.edit');
         Route::put('membership/{id}/update', [TransactionsController::class, 'updateMember'])->name('members.update');
     });
@@ -92,7 +91,7 @@ Route::group(['prefix' => 'user'], function(){
 
         Route::get('student', [StudentController::class, 'index'])->name('student.index');
         Route::get('user', [UserController::class, 'index'])->name('user.index');
-        Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard.index');
+        // Route::get('dashboard', [DashboardController::class, 'getDashboard'])->name('dashboard.index');
 
         //datatable routes
         Route::get('/students', [StudentController::class, 'getStudents'])->name('students.datatable');
@@ -114,6 +113,13 @@ Route::group(['prefix' => 'user'], function(){
         Route::delete('service/{id}', [ServiceController::class, 'destroy'])->name('service.delete');
 
         Route::delete('members/{id}', [TransactionsController::class, 'deletemembers'])->name('members.delete');
+
+        //Routes for Chart
+        Route::get('chart', [DashboardController::class, 'index'])->name('dashboard.index');
+        Route::get('/member-chart', [DashboardController::class, 'MemberChart']);
+        Route::get('/service-chart', [DashboardController::class, 'ServiceChart']);
+        Route::get('/service-qty', [DashboardController::class, 'serviceQty']);
+
     });
 
     Route::group(['middleware' => 'role:unregistered'], function(){

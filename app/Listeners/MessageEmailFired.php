@@ -42,7 +42,7 @@ class MessageEmailFired
             $message->from($user->email, 'Admin');
     
         $message->to($service->email, $service->lname);
-        $message->subject('Thank you');
+        $message->subject('MTICS Confirmation Message');
         $message->attach(public_path('/images/mtics.jpg'));
         });
 
