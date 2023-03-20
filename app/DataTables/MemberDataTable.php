@@ -28,7 +28,8 @@ class MemberDataTable extends DataTable
         ->eloquent($members)
 
     ->addColumn('action', function($row){   
-        return "<form action=". route('members.delete', $row->info_id)." method=\"POST\" >". csrf_field().
+        return "<a href=". route('members.edit', $row->info_id)." class=\"btn btn-warning\">Edit</a>".
+        "<form action=". route('members.delete', $row->info_id) ." method=\"POST\" >". csrf_field().
         '<input name="_method" type="hidden" value="DELETE">
         <button class="btn btn-danger" type="submit">Delete</button>
         </form>';

@@ -34,16 +34,6 @@ class UserDataTable extends DataTable
         })
         ->rawColumns(['action']);
 
-    //     ->addColumn('action', function($row){
-    //         return "<a href=". route('roles.edit', $row->id)." class=\"btn btn-warning\">Edit</a>";
-    //         "<form action=". route('students.delete', $row->id) ." method=\"POST\" >". csrf_field().
-    //         '<input name="_method" type="hidden" value="DELETE">
-    //         <button class="btn btn-danger" type="submit">Delete</button>
-    //         </form>';
-    // })
-
-    // ->rawColumns(['action']);
-
     }
     /**
      * Get query source of dataTable.

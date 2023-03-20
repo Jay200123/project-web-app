@@ -96,7 +96,6 @@ Route::group(['prefix' => 'user'], function(){
         //datatable routes
         Route::get('/students', [StudentController::class, 'getStudents'])->name('students.datatable');
         Route::get('/users/datatable', [UserController::class, 'getUsers'])->name('users.datatable');
-        Route::get('memberships', [TransactionsController::class, 'getMembers'])->name('members.datatable');
 
         // routes for edit roles
         Route::get('role/{id}/edit', [UserController::class, 'editRole'])->name('roles.edit');
@@ -119,6 +118,8 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('/member-chart', [DashboardController::class, 'MemberChart']);
         Route::get('/service-chart', [DashboardController::class, 'ServiceChart']);
         Route::get('/service-qty', [DashboardController::class, 'serviceQty']);
+        Route::get('/service-color', [DashboardController::class, 'serviceColor']);
+        Route::get('/user-role', [DashboardController::class, 'userRole']);
 
     });
 
@@ -137,6 +138,10 @@ Route::group(['prefix' => 'user'], function(){
 
         Route::get('password/form', [UserController::class, 'changePassword'])->name('getPassword');
         Route::post('password/update', [UserController::class, 'updatePassword'])->name('updatePassword');
+    });
+
+    Route::group(['middleware' => 'role:president,admin'], function(){
+        Route::get('memberships', [TransactionsController::class, 'getMembers'])->name('members.datatable');
     });
 
 });

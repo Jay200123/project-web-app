@@ -11,6 +11,15 @@
     <div class="col-md-4 h">
       <canvas id="QtyChart"></canvas>
     </div>
+
+    <div class="col-md-4 h">
+     Majority of Color Options for Printing Service
+      <canvas id="colorChart"></canvas>
+    </div>
+
+    <div class="col-md-4 h">
+      <canvas id="userChart"></canvas>
+    </div>
   </div>
 </div>
 @endsection

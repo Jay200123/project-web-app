@@ -1,64 +1,139 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    <a class="navbar-brand" href="{{url('/')}}"><i class="fa fa-globe" aria-hidden="true"></i>Test Website</a>
-    </div>
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" type="text/css" href="{{asset('css/sidebar.css')}}">
+<nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <img src="{{asset('images/MTICS3.gif')}}">
+                </span>
+                
+                <div class="text logo-text">
+                    <span class="name">MTICS</span>
+                    <span class="profession">TUP-T</span>
+                </div>
+            </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right">
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
 
-  <li>
-  <form class="navbar-form navbar-left" method="GET" role="search" action="#">
-  <input type="hidden" name="_token" value="{{ csrf_token() }}">
-  <div class="form-group">
-  <input type="text" name="search" class="form-control" placeholder="Search">
-  </div>
-  <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
-  </form>
-  </li>
-
-  <li>
-  <a href="{{route('service.datatable')}}">
-  <i class="fa fa-wrench" aria-hidden="true"></i>Services
-  </a>
-  </li>
-
-  <li>
-  <a href="{{route('members.index')}}">
-  <i class="fa fa-users" aria-hidden="true"></i>Membership
-  </a>
-  </li>
-
-  <li>
-  <a href="{{route('events.index')}}">
-  <i class="fa fa-calendar" aria-hidden="true"></i>Events
-  </a>
-  </li>
-
-          <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-          aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
-          <ul class="dropdown-menu">
+        <div class="menu-bar">
+            <div class="menu">
             @if (Auth::check())
-              <li><i class="fa fa-user" aria-hidden="true"><a href="{{route('officer.profile')}}"></i>Officer Profile</a></li>
-              <li role="separator" class="divider"></li>
-              <li><i class="fa fa-cog"  aria-hidden="true"><a href="{{route('getPassword')}}"></i>Settings</a></li>
-              <li role="separator" class="divider"></li>
-              <li><i class="fa fa-sign-out" aria-hidden="true"><a href="{{route('user.logout')}}"></i>Logout</a></li>
-              @else
-              <li><i class="fa fa-user-plus" aria-hidden="true"><a href="{{route('student.signup')}}"></i>Student Signup</a></li>
-              <li><i class="fa fa-sign-in" aria-hidden="true"><a href="{{route('user.signin')}}"></i>Signin</a></li>
-            @endif
-          </ul>
-        </li>
-    </ul>
-</div>
-</div> 
-</nav>      
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{{route('service.datatable')}}">
+                            <i class='bx bx-abacus icon' ></i>
+                            <span class="text nav-text">Service</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{{route('officer.profile')}}">
+                            <i class='bx bx-user icon' ></i>
+
+                            <span class="text nav-text">Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-calendar-event icon' ></i>
+                            <span class="text nav-text">Events Setting</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Shop Items</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{{route('members.index')}}">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Membership</span>
+                        </a>
+                    </li>
+                    @else
+
+                    @endif
+       
+                </ul>
+            </div>
+
+            <div class="bottom-content">
+            @if (Auth::check())
+                <li class="">
+                    <a href="{{route('user.logout')}}">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            @else
+                <li class="">
+                    <a href="{{route('user.signin')}}">
+                    <i class='bx bx-log-in icon'></i>
+                        <span class="text nav-text">Sign In</span>
+                    </a>
+                </li>
+                <li class=""> 
+                    <a href="{{route('student.signup')}}">
+                    <i class='bx bx-log-in-circle icon'></i>
+                        <span class="text nav-text">Register</span>
+                    </a>
+                </li>
+                @endif
+
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                
+            </div>
+        </div>
+
+    </nav>
+
+    <script>
+        const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle"),
+      searchBtn = body.querySelector(".search-box"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
+
+
+toggle.addEventListener("click" , () =>{
+    sidebar.classList.toggle("close");
+})
+
+searchBtn.addEventListener("click" , () =>{
+    sidebar.classList.remove("close");
+})
+
+modeSwitch.addEventListener("click" , () =>{
+    body.classList.toggle("dark");
+    
+    if(body.classList.contains("dark")){
+        modeText.innerText = "Light mode";
+    }else{
+        modeText.innerText = "Dark mode";
+        
+    }
+});
+</script>
+

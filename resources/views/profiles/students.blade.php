@@ -1,119 +1,9 @@
 @extends('layouts.master')
 @section('content')
-<style>
-
-.background{
-     margin: 0;
-     padding: 0;
-     height: 100vh;
-     overflow: hidden;
-     background: linear-gradient(to left, blue, lightblue);
-    }
-    
-.profile-containers{
-    margin:10px;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .profile-cards{
-    display: flex;
-    background-color: white;
-     color: black;
-    flex-direction: column;
-    align-items: center;
-    max-width: 400px;
-    width: 100%;
-    border-radius: 25px;
-    padding: 30px;
-    border: 1px solid #ffffff40;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-  }
-
-  .image{
-    position: relative;
-    height: 150px;
-    width: 150px;
-  }
-
-  .image .profile-pic{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-  }
-
-  .data{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15px;
-  }
-
-  .data h2{
-    font-size: 33px;
-    font-weight: 600;
-  }
-
-  span{
-    font-size: 15px;
-  }
-
-  .row{
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
-  }
-
-  .row .info{
-    text-align: center;
-    padding: 0 20px;
-  }
-
-  .buttons{
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
-  }
-
-  .buttons .btn{
-    color: #fff;
-    text-decoration: none;
-    margin: 0 20px;
-    padding: 8px 25px;
-    border-radius: 25px;
-    font-size: 18px;
-    white-space: nowrap;
-    background: linear-gradient(to left, black 0%, blue 100%);
-  } 
-
-  .buttons .btn-submit:hover{
-    color: red;
-
-  }
-
-  .buttons .btn:hover{
-    box-shadow: inset 0 5px 20px rgba(0,0,0,0.4);
-  }
-
-</style>
-<body class="background">
-
-<div class="container">
-    <br />
-    @if ( Session::has('success'))
-      <div class="alert alert-success">
-        <p>{{ Session::get('success') }}</p>
-      </div><br />
-     @endif
-  </div>
-
-<div class="card-body">
-    @if ($errors->any())
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+<link rel="icon" href="{{asset('images/MTICS.png')}}" type = "image/x-icon"> 
+<link rel="stylesheet" type="text/css" href="{{asset('css/profile.css')}}">
+@if ($errors->any())
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -124,36 +14,85 @@
   </div>     
 @endif
 
-<div class="profile-containers">
-  <h3>Welcome to MTICS Web Application</h3>
 @foreach($student as $student)
-    <div class="profile-cards">
-        <div class="image">
-        <img src="{{ asset($student->student_image) }}" class="profile-pic">
+
+<div align="right">
+<span class="image">
+    <img src="/../images/MTICS1.png" width="500px">
+</span>
+</div>
+
+<div class="wrapper">
+  
+    <div class="left" id="stud">
+        <div class="stud">
+        <img src="{{ asset($student->student_image) }}" alt="user">
         </div>
-        <div class="data">
-          <h4>{{Auth::user()->name}}</h4>
-          <span><i class="fa fa-envelope" aria-hidden="true"></i>Email:{{Auth::user()->email}}</span>
+        <p>{{Auth::user()->role}}</p>
+        <h3>{{$student->title}}. {{$student->fname}} {{$student->lname}}</h3>
+        <BR>
+         <p>Course & Section</p>
+         <h4>{{$student->section}}</h4>
+    </div>
+    <div class="right">
+        <div class="info">
+
+            
+            <h3>Student Info.</h3>
+            
+            <div class="info_data">
+                 <div class="data">
+                    <h4>Email</h4>
+                    <p>{{Auth::user()->email}}</p>
+                 </div> 
+                 <div class="data">
+                    <h4>Phone</h4>
+                    <p>{{$student->phone}}</p>                
+                </div> 
+            </div>
+
         </div>
-        <div class="row">
-          <div class="info">
-            <h5><i class="fa fa-id-card" aria-hidden="true"></i>First Name</h5>
-            <span>{{$student->fname}}</span>
-          </div>
-          <div class="info">
-            <h5><i class="fa fa-id-card" aria-hidden="true"></i>Last Name</h5>
-            <span>{{$student->lname}}</span>
-          </div>
-          <div class="info">
-            <h5><i class="fa fa-address-card" aria-hidden="true"></i>Course & Section</h5>
-            <span>{{$student->section}}</span>
-          </div>
+
+        <div class="social_media">
+          
+            <ul>
+            <div class="row">
+            <div class="col-sm-6 col-md-6">
+            <a href="{{route('member.forms')}}" type="button" class="btn btn-success">Access Membership</a>
+            </div>
+            </div>
+          </ul>
+          <ul>
+            <div class="row">
+            <div class="col-sm-6 col-md-6">
+            <a href="{{route('member.forms')}}" type="button" class="btn btn-primary">Update <Datag></Datag></a>
+            </div>
+            </div>
+          </ul>
         </div>
-        <div class="buttons">
-          <a href="{{ route('students.edit', $student->student_id) }}" class="btn">Update</a>
-          <a href="{{route('member.forms')}}" class="btn">Membership</a>
+
+        <br>
+      
+      <div class="projects">
+            <h3>INFORMATION</h3>
+            <div class="projects_data">
+                 <div class="data">
+                    <h4>Address</h4>
+                    <p>{{$student->address}}</p>
+                 </div>
+                 <div class="data">
+                    <h4>Town</h4>
+                    <p>{{$student->town}}</p>
+                 </div>
+                 <div class="data">
+                   <h4>City</h4>
+                    <p>{{$student->city}}</p>
+              </div>
+            </div>
         </div>
-      </div>
-      @endforeach
-      </div>          
+@endforeach
+      
+        
+    </div>
+</div>
 @endsection

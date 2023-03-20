@@ -22,3 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/chart/member-chart', [DashboardController::class, 'MemberChart'])->name('member.chart');
 Route::get('/chart/service-chart', [DashboardController::class, 'ServiceChart'])->name('service.chart');
 Route::get('/chart/service-qty', [DashboardController::class, 'serviceQty'])->name('service.quantity');
+Route::get('/chart/service-color', [DashboardController::class, 'serviceColor'])->name('service.color');
+Route::get('chart/user-role', [DashboardController::class, 'userRole'])->name('users.role');

@@ -40,4 +40,25 @@ class DashboardController extends Controller
        
         return response()->json(array('data' => $data, 'labels' => $labels));
     }
+
+    public function serviceColor()
+    {
+        $service = DB::table('serviceinfo')->groupBy('options')->orderBy('total')->pluck(DB::raw('count(options) as total'), 'options')->all();
+        $labels = (array_keys($service));
+
+        $data = array_values($service);
+
+        return response()->json(array('data' => $data, 'labels' => $labels));
+    }
+
+    public function userRole(){
+
+        $user = DB::table('users')->groupBy('role')->orderBy('total')->pluck(DB::raw('count(role) as total'), 'role')->all();
+        $labels = (array_keys($user));
+
+        $data = array_values($user);
+
+        return response()->json(array('data' => $data, 'labels' => $labels));
+        
+    }
 }

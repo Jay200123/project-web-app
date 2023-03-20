@@ -37,7 +37,7 @@ class LogBookController extends Controller
 
         $logs->save();
 
-        return redirect()->route('officer.profile');
+        return redirect()->route('officer.profile')->with('success', 'You Have Successfully Time In!');
     }
 
     public function edit($id){
@@ -45,7 +45,13 @@ class LogBookController extends Controller
         $user = User::where('id', Auth::id())->first();
         $uid = $user->id;
 
-        $logs = LogBook::where(['user_id' => $uid])->first();
+        $logs = LogBook::where(['user_id' => $uid, 'log_date' => now()->format('Y-m-d')])
+        ->orderBy('created_at', 'desc')
+        ->first();
+
+        // dd($logs);
+        // $logs = LogBook::where(['user_id' => $uid, 'log_date' => now()])->first();
+        // dd($logs);
         return view('log.edit', compact('logs'));
 
     }
@@ -64,7 +70,7 @@ class LogBookController extends Controller
 
         $logs->update();
 
-        return redirect()->route('officer.profile')->with('Successfully Time Out');
+        return redirect()->route('officer.profile')->with('success','You Have Successfully Time Out!');
 
     }
 }

@@ -1,56 +1,41 @@
 @extends('layouts.master')
 @section('content')
-<style>
+<link rel="stylesheet" type="text/css" href="{{asset('css/member.form.css')}}">
+<div class="tuf" align="center">
+    <img src="/../images/MTICS.png" width="300px">
+</div>
 
-    .form-containers{
-    margin:5px;
-    color: black;
-    padding:10px;
-    box-shadow:10px 15px black;
-    border:solid 3px black;
-    border-radius: 10px;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+@if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+      </div><br />
+      
+    @endif
 
-  .image{
-    position: relative;
-    height: 120px;
-    width: 120px;
-    border-radius:50%;
-     top: 50%;
-    left: 50%;
-    box-shadow:5px 10px black;
-    transform: translate(-50%, -50%);
-    border: solid 3px black;
-  }
+ 
+    <h4 align="center">Membership fee</h4>
+    <form method="POST" action="{{route('member.register')}}">
+    @csrf
+        <div class="field">
+        <input type="decimal" class="form-control" name="amount" id="amount" value="120.00" readonly/>       
+        </div>
 
-  .image .logo-image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-  }
-</style>
+        <div class="content">
+          <div class="checkbox">
+        </div>
 
-<div class="form-containers">
-     <div class="image">
-        <img src="{{url('/images/mtics.jpg')}}" class="logo-image">
-     </div>
-     <form method="POST" action="{{route('member.register')}}">
-     <h4>MTICS</h4>
-     <h4>Membership fee:</h4>
-     @csrf
-    <div class="form-group">
-      <label for="amount">Amount:</label>
-              <input type="decimal" class="form-control" name="amount" id="amount" value="120.00" readonly/>
-              <br>
-              <button type="submit" class="btn btn-block btn-danger">Register</button>
+        <div></div>
+        </div>
+
+        <div class="field">
+        <input type="submit" class="btn btn-block btn-danger"></input>
+        </div>
+      </form>
     </div>
-    </form>
+
 </div>
 @endsection
