@@ -30,7 +30,6 @@
     <br>
     <footer>@2023 Manila Technician Institute Computer Society TUP Taguig All rights reserved.</footer>
     <br>
-    <button type="submit" class="btn btn-success"><a href="{{url('/')}}"><i class="fa fa-home" aria-hidden="true"></i>Go Back to Home Page</a></button>
 </div>
 </body>
 @endsection

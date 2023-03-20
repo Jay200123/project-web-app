@@ -33,13 +33,21 @@
                         </a>
                     </li>
 
+                    <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{{route('service.create')}}">
+                            <i class='bx bx-abacus icon' ></i>
+                            <span class="text nav-text">Printing Service</span>
+                        </a>
+                    </li>
+
                     @if (Auth::check())
 
                     <li class="nav-link">
                         <a href="{{route('student.profile')}}">
                             <i class='bx bx-user icon' ></i>
 
-                            <span class="text nav-text">Profile</span>
+                            <span class="text nav-text">Student Profile</span>
                         </a>
                     </li>
 
@@ -56,8 +64,6 @@
                             <span class="text nav-text">Events</span>
                         </a>
                     </li> 
-
-
                     
                     @else
 

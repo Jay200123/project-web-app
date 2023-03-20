@@ -37,7 +37,7 @@
                         <a href="{{route('officer.profile')}}">
                             <i class='bx bx-user icon' ></i>
 
-                            <span class="text nav-text">Profile</span>
+                            <span class="text nav-text">Officer Profile</span>
                         </a>
                     </li>
 

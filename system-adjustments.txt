@@ -1,0 +1,24 @@
+System Designs Adjustment Task
+home page css - done
+sidebar - done
+login page - done
+register page - done
+profile - working
+
+routes for officer
+
+membership
+services
+profile
+events
+
+route update data, time in and time out needs to be adjusted(where the president also have authority)
+
+Route for admin
+Dashboard
+Membership
+Student
+Users
+
+for students
+services & events\

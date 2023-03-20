@@ -65,7 +65,7 @@
           <ul>
             <div class="row">
             <div class="col-sm-6 col-md-6">
-            <a href="{{route('member.forms')}}" type="button" class="btn btn-primary">Update <Datag></Datag></a>
+            <a href="{{route('students.edit', $student->student_id)}}" type="button" class="btn btn-primary">Update <Datag></Datag></a>
             </div>
             </div>
           </ul>

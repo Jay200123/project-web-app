@@ -1,9 +1,4 @@
 @extends('layouts.master')
-@section('content')
-
-@section('title')
-MTICS Sign-in
-@endsection 
 <link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
 <div class="tuf" align="center">
     <img src="{{asset('images/MTICS.png')}}" width="200px" height="200px">
@@ -53,5 +48,6 @@ MTICS Sign-in
         <div class="signup-link">Not a member? <a href="{{route('student.signup')}}">Signup now</a></div>
       </form>
     </div>
+
 
  
