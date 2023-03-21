@@ -1,17 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.home-master')
 @section('content')
-<div class="card push-top">
-@if ( Session::has('success'))
-      <div class="alert alert-success">
-        <p>{{ Session::get('success') }}</p>
-      </div><br />
-     @endif
-  </div> 
-  <div class="card-header">
-  <h3>Welcome to MTICS Official Website<i class="fa fa-globe" aria-hidden="true"></i></h3>
-  <h4><i class="fa fa-print" aria-hidden="true"></i>MTICS Printing Services</h4>
-  </div>
-  <div class="card-body">
+<link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
+<div class="card-body">
     @if ($errors->any())
     <h1>Sign Up</h1>
       <div class="alert alert-danger">
@@ -21,38 +11,38 @@
             @endforeach
         </ul>
       </div><br />
-      
-    @endif
-      <form method="post" action="{{route('service.store')}}" enctype ="multipart/form-data">
-        @csrf
-          <div class="form-group">
-              @csrf
-              <label for="fname">First Name</label>
-              <input type="text" class="form-control" name="fname" id="lname"/>
+@endif
+
+ <div class="container">
+    <div class="title">Printing Service</div>
+    <div class="content">
+
+    <form method="post" action="{{route('service.store')}}" enctype ="multipart/form-data">
+@csrf
+        <div class="user-details">
+
+          <div class="input-box">
+          <label for="fname">First Name</label>
+            <input type="text" class="form-control" name="fname" id="fname"/>
           </div>
 
-          <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" class="form-control" name="lname" id="lname"/>
+          <div class="input-box">
+          <label for="lname">Last Name</label>
+            <input type="text" class="form-control" name="lname" id="lname"/>
           </div>
 
-          <div class="form-group">
-              <label for="section">Course & Section</label>
-              <input type="text" class="form-control" name="section" id="section"/>
+          <div class="input-box">
+          <label for="section">Course & Section</label>
+            <input type="text" class="form-control" name="section" id="section"/>
           </div>
 
-          <div class="form-group">
-                <label for="email">Email: </label>
-                <input type="text" name="email" id="email" class="form-control">
-          </div>  
-          
-          <div class="form-group">
-                <label for="filename">File Name: </label>
-                <input type="text" name="filename" id="filename" class="form-control">
-          </div>  
+          <div class="input-box">
+          <label for="filename">File Name</label>
+            <input type="text" class="form-control" name="filename" id="filename"/>
+          </div>
 
-          <div class="form-group">
-          <label for="options">Color Options:</label>
+          <div class="input-box">
+           <label for="options">Color Options:</label>
 
           <select id="options" name="options">
           <option value="blackWhite">Black and White</option>
@@ -60,20 +50,42 @@
           </select>
           </div>
 
-          <div class="form-group">
-              <label for="quantity">Quantity</label>
-              <input type="number" class="form-control" name="quantity" id="quantity"/>
+          <div class="input-box">
+           <label for="options">Paper Size:</label>
+
+          <select id="size" name="size">
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+          </select>
+          </div>
+  
+          </div>
+
+          <div class="title">Email & File</div>
+
+          <div class="user-details">
+
+          <div class="input-box">
+          <label for="email">Email </label>
+          <input type="text" name="email" id="email" class="form-control">
+          </div>
+
+          <div class="input-box">
+          <label for="town">Quantity</label>
+            <input type="number" class="form-control" name="quantity" id="quantity"/>
           </div>
 
           <div class="form-group">
-                <label for="file">Upload File</label>
-                <input type="file" name="service_file" id="service_file" class="form-control">
+          <label for="image">Upload File </label>
+          <input type="file" name="service_file" id="service_file" class="form-control">
           </div>
 
-
-             <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+        <div class="button">
+          <input type="submit" value="Submit">
+        </div>
       </form>
-      <br>
+    </div>
   </div>
-</div>
 @endsection
