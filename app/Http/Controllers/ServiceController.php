@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use App\DataTables\ServiceDataTable;
 use Yajra\DataTables\Facades\DataTables;
 use App\Events\ServiceMail;
 use App\Events\ServiceMessageMail;
 use DB;
+use Auth;
 use Event;
 use Carbon\Carbon;
 
@@ -33,6 +35,12 @@ class ServiceController extends Controller
     public function create()
     {
         return view('service.create');
+    }
+
+    public function studentCreate(){
+        $students = Student::where('user_id', Auth::id())->first();
+        // dd($students);
+        return view('service.student_create', compact('students'));
     }
 
     public function getMessage(){

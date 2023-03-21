@@ -1,4 +1,4 @@
-@extends('partials.home-sidebar')
+@extends('layouts.home-master')
 @section('content')
 <style>
     .msg-container{

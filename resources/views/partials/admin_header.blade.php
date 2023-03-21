@@ -49,7 +49,7 @@
 
                   <li class="nav-link">
                         <a href="{{route('users.datatable')}}">
-                            <i class='bx bx-user-circle'></i>
+                            <i class='bx bx-user-circle icon'></i>
                             <span class="text nav-text">Users</span>
                         </a>
                     </li>

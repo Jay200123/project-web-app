@@ -53,6 +53,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('annoucements', [EventsController::class, 'index'])->name('events.index'); // routes for accessing events
         Route::get('student/{id}/edit', [StudentController::class, 'edit'])->name('students.edit'); // routes for student editing
         Route::put('student/{id}/update', [StudentController::class, 'update'])->name('students.update'); //routes for updating
+        Route::get('students/service-form', [ServiceController::class, 'studentCreate'])->name('students.service');
     });
 
     Route::group(['middleware' => 'role:officer,president'], function(){
