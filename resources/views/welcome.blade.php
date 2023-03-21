@@ -1,4 +1,4 @@
-@include('layouts.master')
+@extends('partials.home-sidebar')
 @section('title')
 MTICS 
 @endsection 

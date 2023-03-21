@@ -6,6 +6,9 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\DataTables\ProductDataTable;
 use Yajra\DataTables\Facades\DataTables;
+use App\Imports\ProductImport;
+use App\Rules\ExcelRule;
+use Excel;
 
 class ProductController extends Controller
 {
@@ -55,9 +58,9 @@ class ProductController extends Controller
          if($file = $request->hasFile('product_image')) {
          $file = $request->file('product_image') ;
          $fileName = $file->getClientOriginalName();
-         $destinationPath = public_path().'/img_path' ;
-         $input['product_image'] = 'img_path/'.$fileName;
-         $image =  $input['product_image'] = 'img_path/'.$fileName;
+         $destinationPath = public_path().'/images' ;
+         $input['product_image'] = 'images/'.$fileName;
+         $image =  $input['product_image'] = 'images/'.$fileName;
          $file->move($destinationPath,$fileName);
          $product->product_image = $image;
         }
@@ -146,6 +149,16 @@ return redirect()->route('products.datatable')->with('success','Product Successf
 
         $products = Product::with([])->get();
         return $dataTable->render('product.products');
+
+    }
+
+    public function import(Request $request){
+
+        $request->validate(['product_import'  => ['required', new ExcelRule($request->file('product_import'))], ]);
+
+        Excel::import(new ProductImport, request()->file('product_import'));
+
+        return redirect()->back()->with('success', 'Excel File Imported Successfully');
 
     }
 }

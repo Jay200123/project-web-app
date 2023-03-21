@@ -94,6 +94,8 @@ Route::group(['prefix' => 'user'], function(){
 
         //product datatable
         Route::get('/products', [ProductController::class, 'getProduct'])->name('products.datatable');
+        //routes for excel
+        Route::post('product/import', [ProductController::class, 'import'])->name('product.import');
 
         //edit service
         Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit');

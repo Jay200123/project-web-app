@@ -13,5 +13,5 @@ class Service extends Model
 
     protected $primaryKey='service_id';
 
-    protected $fillable=['fname','lname','section','email','cost','options','quantity','date_placed','filename','service_file'];
+    protected $fillable=['fname','lname','size','section','email','cost','options','quantity','date_placed','filename','service_file'];
 }

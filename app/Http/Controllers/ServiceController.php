@@ -55,6 +55,7 @@ class ServiceController extends Controller
 
             $service->fname = $request->fname;
             $service->lname = $request->lname;
+            $service->size = $request->size;
             $service->section = $request->section;
             $service->email = $request->email;
             $service->cost = "00.00";
@@ -124,6 +125,7 @@ class ServiceController extends Controller
 
         $service->fname = $request->fname;
             $service->lname = $request->lname;
+            $service->size = $request->size;
             $service->section = $request->section;
             $service->email = $request->email;
             $service->cost = $request->cost;

@@ -83,6 +83,7 @@ class ServiceDataTable extends DataTable
             Column::make('section')->title('Course & Section'),
             Column::make('email'),
             Column::make('filename')->title('File Name'),
+            Column::make('size')->title('Size'),
             Column::make('options')->title('Color Options'),
             Column::make('quantity')->title('Quantity'),
             Column::make('cost')->title('Service Cost'),
