@@ -1,20 +1,9 @@
 @extends('layouts.master')
 @section('content')
-
-<style>
-    .container {
-      max-width: 450px;
-    }
-    .push-top {
-      margin-top: 50px;
-    }
-</style>
-<div class="card push-top">
-  <div class="card-header">
-  <i class="fa fa-address-card" aria-hidden="true"></i> Update Student's Data
-  </div>
-  <div class="card-body">
+<link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
+<div class="card-body">
     @if ($errors->any())
+    <h1>Update Data</h1>
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -22,63 +11,70 @@
             @endforeach
         </ul>
       </div><br />
-    @endif
-      <form method="post" action="{{ route('students.update', $students->student_id) }}" enctype ="multipart/form-data">
+@endif
 
-          <div class="form-group">
-          @csrf 
-              @method('PUT')
-              <label for="title">Title</label>
-              <input type="text" class="form-control" name="title" value="{{ $students->title }}"/>
+<br>
+ <div class="container">
+    <div class="title">Update Student's Data</div>
+    <div class="content">
+
+    <form method="post" action="{{ route('students.update', $students->student_id) }}" enctype ="multipart/form-data">
+@csrf
+@method('PUT')
+        <div class="user-details">
+
+         <div class="input-box">
+          <label for="title">Title</label>
+            <input type="text" class="form-control" name="title" value="{{ $students->title }}"/>
           </div>
 
-          <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" class="form-control" name="fname" value="{{ $students->fname }}"/>
+          <div class="input-box">
+          <label for="fname">First Name</label>
+            <input type="text" class="form-control" name="fname" value="{{ $students->fname }}"/>
           </div>
 
-          <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" class="form-control" name="lname" value="{{ $students->lname }}"/>
+          <div class="input-box">
+          <label for="lname">Last Name</label>
+            <input type="text" class="form-control" name="lname" value="{{ $students->lname }}"/>
           </div>
 
-          <div class="form-group">
-              <label for="section">Section</label>
-              <input type="text" class="form-control" name="section" value="{{ $students->section }}"/>
+          <div class="input-box">
+          <label for="section">Section</label>
+            <input type="text" class="form-control" name="section" value="{{ $students->section }}"/>
           </div>
 
-          <div class="form-group">
-              <label for="phone">Phone</label>
-              <input type="text" class="form-control" name="phone" value="{{ $students->phone }}"/>
+          <div class="input-box">
+          <label for="phone">Phone</label>
+            <input type="text" class="form-control" name="phone" value="{{ $students->phone }}"/>
           </div>
 
-          <div class="form-group">
-              <label for="address">Address</label>
-              <input type="text" class="form-control" name="address" value="{{ $students->address }}"/>
+          <div class="input-box">
+          <label for="address">Address</label>
+            <input type="text" class="form-control" name="address" value="{{ $students->address }}"/>
           </div>
 
-          <div class="form-group">
-              <label for="town">Town</label>
-              <input type="text" class="form-control" name="town" value="{{ $students->town }}"/>
+          <div class="input-box">
+          <label for="town">Town</label>
+            <input type="text" class="form-control" name="town" value="{{ $students->town }}"/>
           </div>
 
-          <div class="form-group">
-              <label for="city">City</label>
-              <input type="text" class="form-control" name="city" value="{{ $students->city }}"/>
+          <div class="input-box">
+          <label for="city">City</label>
+            <input type="text" class="form-control" name="city"value="{{ $students->city }}"/>
           </div>
 
-          <div class="form-group">
-          <label for="image" class="control-label">Your Photo:</label>
-          <input type="file" class="form-control" id="student_image" name="student_image" value="{{asset($students->student_image)}}"/>
-           @if($errors->has('student_image'))
-           <small>{{ $errors->first('student_image') }}</small>
-           @endif
+          <div class="input-box">
+          <label for="file">Photo</label>
+            <input type="file" class="form-control" name="city"value="{{asset($students->student_image)}}"/>
+          </div>
+  
           </div>
 
-          <button type="submit" class="btn btn-block btn-danger">Update</button>
-
-          <br>
+        <div class="button">
+          <input type="submit" value="Update Record">
+        </div>
       </form>
+    </div>
   </div>
-</div>
 @endsection
+  

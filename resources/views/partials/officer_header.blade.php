@@ -33,6 +33,14 @@
                         </a>
                     </li>
 
+                    <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{{route('products.datatable')}}">
+                        <i class='bx bxl-product-hunt icon'></i>
+                            <span class="text nav-text">Product</span>
+                        </a>
+                    </li>
+
                     <li class="nav-link">
                         <a href="{{route('officer.profile')}}">
                             <i class='bx bx-user icon' ></i>
@@ -41,8 +49,16 @@
                         </a>
                     </li>
 
+                    
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{route('officerPassword')}}">
+                            <i class='bx bxs-cog icon' ></i>
+                            <span class="text nav-text">Setting</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                    <a href="{{route('getEvents')}}">
                             <i class='bx bx-calendar-event icon' ></i>
                             <span class="text nav-text">Events Setting</span>
                         </a>

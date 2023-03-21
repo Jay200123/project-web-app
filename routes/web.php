@@ -11,6 +11,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LogBookController;
 use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ProductController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -81,10 +84,27 @@ Route::group(['prefix' => 'user'], function(){
         //service index
         Route::get('service', [ServiceController::class, 'index'])->name('service.index');
 
+        //Product Routes
+        Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+        Route::get('product/create', [ProductController::class, 'create'])->name('product.create');
+        Route::post('product/store', [ProductController::class, 'store'])->name('product.store');
+        Route::get('product/{id}/edit', [ProductController::class, 'edit'])->name('product.edit');
+        Route::put('product/{id}/update', [ProductController::class, 'update'])->name('product.update');
+        Route::delete('product/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+
+        //product datatable
+        Route::get('/products', [ProductController::class, 'getProduct'])->name('products.datatable');
+
         //edit service
         Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit');
         Route::put('service/{id}/update', [ServiceController::class, 'update'])->name('service.update');
         Route::get('services', [ServiceController::class, 'getService'])->name('service.datatable');
+
+        //routes for events
+        Route::get('event/create', [EventsController::class, 'create'])->name('events.create');
+        Route::post('event/store', [EventsController::class, 'store'])->name('events.store');
+        Route::get('/events', [EventsController::class, 'getEvents'])->name('getEvents');
+        Route::delete('/event/{id}', [EventsController::class, 'destroy'])->name('events.destroy');
     });
 
     Route::group(['middleware' => 'role:admin'], function(){
@@ -135,8 +155,12 @@ Route::group(['prefix' => 'user'], function(){
     });
 
     Route::group(['middleware' => 'role:student,officer,president'], function(){
-
+ 
+        //password form for students
         Route::get('password/form', [UserController::class, 'changePassword'])->name('getPassword');
+        //password form for officer & president of MTICS
+        Route::get('password/officer', [UserController::class, 'officerPassword'])->name('officerPassword');
+        //password update
         Route::post('password/update', [UserController::class, 'updatePassword'])->name('updatePassword');
     });
 

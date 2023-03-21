@@ -61,6 +61,10 @@ class UserController extends Controller
         return view('password.password');
     }
 
+    public function officerPassword(){
+        return view('password.officer_password');
+    }
+
     public function updatePassword(Request $request)
 {
         # Validation

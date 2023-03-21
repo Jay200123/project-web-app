@@ -2,18 +2,18 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/sidebar.css')}}">
 <nav class="sidebar close">
         <header>
-            <div class="image-text">
-                <span class="image">
-                    <img src="/../images/MTICS3.gif">
-                </span>
-                
-                <div class="text logo-text">
-                    <span class="name">MTICS</span>
-                    <span class="profession">TUP-T</span>
-                </div>
-            </div>
+        <div class="image-text">
+     <span class="image">
+        <img src="/../images/MTICS3.gif">
+    </span>
+    
+    <div class="text logo-text">
+        <span class="name">MTICS</span>
+        <span class="profession">TUP-T</span>
+    </div>
+</div>
 
-            <i class='bx bx-chevron-right toggle'></i>
+<i class='bx bx-chevron-right toggle'></i>
         </header>
 
         <div class="menu-bar">
@@ -48,6 +48,13 @@
                             <i class='bx bx-user icon' ></i>
 
                             <span class="text nav-text">Student Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{{route('getPassword')}}">
+                            <i class='bx bxs-cog icon' ></i>
+                            <span class="text nav-text">Setting</span>
                         </a>
                     </li>
 

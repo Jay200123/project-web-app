@@ -22,3 +22,5 @@ Users
 
 for students
 services & events\
+
+sidebars for student and president, officer are need to be applied by change password
