@@ -1,34 +1,7 @@
 @extends('layouts.officer_master')
 @section('content')
-
-<style>
-    .container {
-      max-width: 450px;
-    }
-    .push-top {
-      margin-top: 50px;
-    }
-
-    a{
-      color:White;
-    }
-
-</style>
-<div class="card push-top">
-  <div class="card-header">
-  <i class="fa fa-address-card" aria-hidden="true"></i> Membership Info
-  </div>
-
-  <div class="push-top">
+<link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
 <div class="card-body">
-@if ($message = Session::get('success'))
-            <div class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
-  </div>     
-
-  <div class="card-body">
     @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -37,51 +10,55 @@
             @endforeach
         </ul>
       </div><br />
-    @endif
-      <form method="POST" action="{{route('members.update', $member->info_id)}}" enctype ="multipart/form-data">
+@endif
 
-      @csrf 
-              @method('PUT')
-          <div class="form-group">
-          <label for="fname">Student Name</label>
-          <input type="text" class="form-control" name="fname" value="{{ $member->student->fname }}" readonly/>
+<br>
+ <div class="container">
+    <div class="title">Update Membership</div>
+    <div class="content">
+
+    <form method="post" action="{{route('members.update', $member->info_id)}}" enctype ="multipart/form-data">
+@csrf
+@method('PUT')
+        <div class="user-details">
+
+          <div class="input-box">
+          <label for="fname">First Name</label>
+            <input type="text" class="form-control" name="fname" value="{{ $member->student->fname }}" readonly/>
           </div>
 
-          <div class="form-group">
+          <div class="input-box">
           <label for="lname">Last Name</label>
-          <input type="text" class="form-control" name="lname" value="{{ $member->student->lname }}" readonly/>
+             <input type="text" class="form-control" name="lname" value="{{ $member->student->lname }}" readonly/>
           </div>
 
-        <div class="form-group">
-         <label for="section">Section</label>
-         <input type="text" class="form-control" name="section" value="{{ $member->student->section }}" readonly/>
-        </div>
+          <div class="input-box">
+          <label for="section">Section</label>
+            <input type="text" class="form-control" name="section" value="{{ $member->student->section }}" readonly/>
+          </div>
 
-
-         <div class="form-group">
-         <label for="date_placed">Date Placed</label>
+          <div class="input-box">
+          <label for="date_placed">Date Placed</label>
               <input type="date" class="form-control" name="date_placed" value="{{ $member->date_placed }}" readonly/>
           </div>
 
-          <div class="form-group">
-         <label for="status">Status</label>
+          <div class="input-box">
+           <label for="status">Status</label>
               <input type="text" class="form-control" name="status" value="{{ $member->status }}" readonly/>
           </div>
 
-          <div class="form-group">
-              <label for="date_paid">Date to be Paid</label>
-              <input type="date" class="form-control" name="date_paid" value="{{ $member->stats->date_paid }}" readonly/>
-          </div>
-
-          <div class="form-group">
-              <label for="amount">Amount</label>
+          <div class="input-box">
+            <label for="amount">Amount</label>
               <input type="decimal" class="form-control" name="amount" value="{{ $member->stats->amount }}" readonly/>
           </div>
+  
+          </div>
 
-          <button type="submit" class="btn btn-block btn-success">Update</button>
-          <br>
+        <div class="button">
+          <input type="submit" value="Update Membership">
+        </div>
       </form>
-      <a href="{{url('user/membership')}}" class="btn btn-block btn-danger" >Back</a>
+      <a href="{{url('user/membership')}}" class="btn btn-block btn-success" >Back</a>
+    </div>
   </div>
-</div>
 @endsection

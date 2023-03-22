@@ -1,11 +1,13 @@
 @extends('layouts.officer_master')
 @section('content')
+
 <style>
   .push-top {
     margin-top: 50px;
   }
 
 </style>
+<link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
 <div class="push-top">
 <div class="card-body">
 @if ($message = Session::get('success'))
@@ -14,13 +16,15 @@
             </div>
         @endif
   </div>     
-
-
-<h3>MTICS Membership Records</h3> 
+<br>
+<div class="tuf" align="center">
+    <img src="/../images/MTICS.png" width="150px" height="150px">
+</div>
+<h3 style="text-align:center">MTICS Membership Records</h3> 
   <table class="table">
     <thead>
         <tr class="table-warning">
-          <td>ID</td>
+          <td>Membership ID</td>
           <td>First Name</td>
           <td>Last Name</td>
           <td>Section</td>
@@ -32,6 +36,7 @@
         </tr>
     </thead>
     <tbody>
+    @if(!empty($members) && $members->count())
         @foreach($members as $member)
         <tr>
             <td>{{$member->info_id}}</td>
@@ -47,7 +52,14 @@
             </td>
         </tr>
         @endforeach
+
+        @else
+                <tr>
+                    <td colspan="10">There are no data.</td>
+                </tr>
+            @endif
     </tbody>
   </table>
+  {!! $members->links() !!}
   </div>
 @endsection

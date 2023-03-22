@@ -21,7 +21,7 @@ class TransactionsController extends Controller
     
     public function index(){
 
-        $members = Member::with("student")->get();
+        $members = Member::orderBy('info_id', 'ASC')->paginate("4");
         // foreach($members as $member);
         // $member->student->fname;
         // dd($member);

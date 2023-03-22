@@ -69,7 +69,6 @@ class LogBookController extends Controller
         $logs->timeOut = $request->timeOut;
 
         $logs->update();
-
         return redirect()->route('officer.profile')->with('success','You Have Successfully Time Out!');
 
     }

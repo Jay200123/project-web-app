@@ -13,9 +13,9 @@
       </div><br />
 @endif
 
-
+<br>
  <div class="container">
-    <div class="title">Registration</div>
+    <div class="title"> Student Registration</div>
     <div class="content">
 
     <form method="post" action="{{route('student.signups')}}" enctype ="multipart/form-data">
