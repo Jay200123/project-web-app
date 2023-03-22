@@ -41,20 +41,66 @@
                         </a>
                     </li>
 
+                    @if (Auth::check())
+
+                    <li class="nav-link">
+                        <a href="{{route('student.profile')}}">
+                            <i class='bx bx-user icon' ></i>
+
+                            <span class="text nav-text">Student Profile</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{{route('getPassword')}}">
+                            <i class='bx bxs-cog icon' ></i>
+                            <span class="text nav-text">Setting</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Shop</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="{{route('events.index')}}">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Events</span>
+                        </a>
+                    </li> 
+                    
+                    @else
+
+                    @endif
+       
+                </ul>
+            </div>
+
             <div class="bottom-content">
+            @if (Auth::check())
+                <li class="">
+                    <a href="{{route('user.logout')}}">
+                        <i class='bx bx-log-out icon' ></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+            @else
                 <li class="">
                     <a href="{{route('user.signin')}}">
                     <i class='bx bx-log-in icon'></i>
                         <span class="text nav-text">Sign In</span>
                     </a>
                 </li>
-                
                 <li class=""> 
                     <a href="{{route('student.signup')}}">
                     <i class='bx bx-log-in-circle icon'></i>
                         <span class="text nav-text">Register</span>
                     </a>
                 </li>
+                @endif
 
                 <li class="mode">
                     <div class="sun-moon">

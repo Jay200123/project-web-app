@@ -53,6 +53,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('annoucements', [EventsController::class, 'index'])->name('events.index'); // routes for accessing events
         Route::get('student/{id}/edit', [StudentController::class, 'edit'])->name('students.edit'); // routes for student editing
         Route::put('student/{id}/update', [StudentController::class, 'update'])->name('students.update'); //routes for updating
+
         Route::get('students/service-form', [ServiceController::class, 'studentCreate'])->name('students.service');
     });
 
@@ -171,9 +172,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('memberships', [TransactionsController::class, 'getMembers'])->name('members.datatable');
     });
 
-});
-
-//routes for services
+    //routes for services
 Route::get('services/form', [ServiceController::class, 'create'])->name('service.create');
 Route::post('services/store', [ServiceController::class, 'store'])->name('service.store');
 
@@ -181,6 +180,9 @@ Route::post('services/store', [ServiceController::class, 'store'])->name('servic
 Route::get('service/message', [ServiceController::class, 'getMessage'])->name('service.msg');
 
 Route::get('reciept', [TransactionsController::class, 'getpdf'])->name('pdf');
+
+});
+
 
 //Routes for Login
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');

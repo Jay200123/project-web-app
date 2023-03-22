@@ -43,6 +43,10 @@ class ServiceController extends Controller
         return view('service.student_create', compact('students'));
     }
 
+    public function studentmsg(){
+        return view('service.std_msg');
+    }
+
     public function getMessage(){
         return view('service.message');
     }

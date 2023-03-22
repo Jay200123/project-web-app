@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.home-master')
 <link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
 <div class="tuf" align="center">
     <img src="{{asset('images/MTICS.png')}}" width="200px" height="200px">

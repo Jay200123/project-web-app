@@ -40,6 +40,7 @@ class ServiceEmailFired
             'section' => $service->section,
             'email' => $service->email,
             'filename' => $service->filename,
+            'size' => $service->size,
             'quantity' => $service->quantity,
             'cost' => $service->cost,
             'options' => $service->options

@@ -36,6 +36,7 @@
 <br>
 <h4><strong>Service Details</strong></h4>
 <h5>File Name: {{$filename}}</h5>
+<h5>Paper Size: {{$size}}</h5>
 <h5>Color Options: {{$options}}</h5>
 <h5>Number of Copies: {{$quantity}}</h5>
 <h5>Printing Cost: {{$cost}}</h5>
