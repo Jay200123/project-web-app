@@ -10,10 +10,12 @@
     }
 
 </style>
+<link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
+<div class="tuf" align="center">
+    <img src="/../images/MTICS.png" width="150px" height="150px">
+</div>
+<h4 align="center">MTICS Change User Role</h4>
 <div class="card push-top">
-  <div class="card-header">
-  <i class="fa fa-address-card" aria-hidden="true"></i> Update User's Role
-  </div>
 
   <div class="card-body">
     @if ($errors->any())
@@ -29,7 +31,7 @@
       @csrf 
               @method('PUT')
          <div class="form-group">
-         <label for="name">Name</label>
+         <label for="name">User Name</label>
               <input type="text" class="form-control" name="name" value="{{ $user->name }}" readonly/>
           </div>
 
@@ -51,7 +53,7 @@
           </select>
           </div>
 
-          <button type="submit" class="btn btn-block btn-danger">Update</button>
+          <button type="submit" class="btn btn-block btn-success">Update</button>
       </form>
   </div>
 </div>

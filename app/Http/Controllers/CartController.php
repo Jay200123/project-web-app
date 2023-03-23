@@ -85,7 +85,7 @@ class CartController extends Controller
             $order->student_id = $student->student_id;
             $order->save();
     
-            foreach($Cart->products as $product) {
+            foreach($Cart->products as $product ) {
                 $id  = $product['product']['product_id'];
                     
                 DB::table('orderline')->insert([

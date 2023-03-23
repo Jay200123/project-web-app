@@ -43,7 +43,7 @@ color: #606060;
   <!-- Page Heading -->
   <hr>
   <div class="text">
-  <h3>MTICS SHOP</h3>
+  <h3>MTICS Merchandise</h3>
   </div>
   <br>
 
