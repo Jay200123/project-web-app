@@ -125,12 +125,14 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
+
+        //finds the student id 
         $student = Student::findOrFail($id);
-        $student->delete();
+        $student->delete(); //performs a delete function
 
-        $Id = $student->user_id;
+        $Id = $student->user_id; //fetch the user id from the students table
 
-        // dd($Id);
+        // passes the Id variable and uses it as a parameter for finding the id for user when deleting 
         $user = User::findOrFail($id);
         $user->delete();
     }

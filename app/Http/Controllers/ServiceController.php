@@ -23,7 +23,11 @@ class ServiceController extends Controller
      */
     public function index()
     {
+
+        //fetch all the data from serviceinfo table 
         $service = Service::all();
+
+        //return to the service index views and passes the service variable as a string through compact()
         return view('service.index', compact('service'));
     }
 
@@ -34,20 +38,23 @@ class ServiceController extends Controller
      */
     public function create()
     {
+
+        //gets the service form which is accessible to anyone
         return view('service.create');
     }
 
     public function studentCreate(){
+
+        //gets the other service form which is only accessible to MTICS Students 
         $students = Student::where('user_id', Auth::id())->first();
-        // dd($students);
+
+        //return to the service student_create form and passes the student variable as a string through compact()
         return view('service.student_create', compact('students'));
     }
 
-    public function studentmsg(){
-        return view('service.std_msg');
-    }
 
     public function getMessage(){
+         // gets the service success message 
         return view('service.message');
     }
 
@@ -59,7 +66,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        
+        //performs a service transaction for Services
         try{
             DB::beginTransaction();
 
@@ -88,7 +95,7 @@ class ServiceController extends Controller
             }
 
             $service->save();
-            Event::dispatch(new ServiceMessageMail($service));
+            Event::dispatch(new ServiceMessageMail($service)); //sends an email that the service transaction is a success
             
 
         }catch(\Exception $e){
@@ -120,6 +127,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
+
+        //edit form for services
         $service = Service::findOrFail($id);
         return view('service.edit', compact('service'));
     }
@@ -133,6 +142,7 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //updates the MTICS Printing Service 
         $service = Service::findOrFail($id);
 
         $service->fname = $request->fname;
@@ -159,7 +169,7 @@ class ServiceController extends Controller
 
             
             $service->update();
-            Event::dispatch(new ServiceMail($service));
+            Event::dispatch(new ServiceMail($service)); //sends an email to the user detailing the service
 
             return redirect()->route('service.datatable')->with('success', 'Transaction Updated Sucessfully');
 
@@ -174,6 +184,7 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
+        //delete function for service 
         $service = Service::findOrFail($id);
         $service->delete();
 

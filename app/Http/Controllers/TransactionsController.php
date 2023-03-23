@@ -21,26 +21,31 @@ class TransactionsController extends Controller
     
     public function index(){
 
+        //fetch all the data from the member model and arrange it in Ascending 
         $members = Member::orderBy('info_id', 'ASC')->paginate("4");
-        // foreach($members as $member);
-        // $member->student->fname;
-        // dd($member);
+
+        //passes the member variable in the index views as a string through compact()
         return view('member.index', compact('members'));
     }
 
     public function getMembers(MemberDataTable $dataTable){
 
+        //fetch the member with student and status records
         $members = Member::with(['student', 'stats'])->get();
         return $dataTable->render('member.members');
 
     }
 
     public function getForms(){
+
+        //gets the membership form 
         return view('member.form');
     }
     
     public function register(Request $request){
 
+
+        //perform a transaction for membership 
         try{
             DB::beginTransaction();
 
@@ -50,7 +55,7 @@ class TransactionsController extends Controller
             // dd($student->student_id);
             $member->student_id = $student->student_id;
             $member->date_placed = Carbon::now();
-            $member->status='unpaid';
+            $member->status='unpaid'; //sets the status to unpaid 
             $member->save();
 
             $status = new Status();
@@ -96,7 +101,7 @@ class TransactionsController extends Controller
         $users = User::findOrFail($u_id); //gets the user id 
         $users->role="student"; //update the user role
 
-        $users->update(); 
+        $users->update(); //update the user table
         
         $stats = Status::findOrFail($id); //gets the info_id from the membership table
         $stats->date_paid = Carbon::now(); //updates the paid 

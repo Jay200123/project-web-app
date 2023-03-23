@@ -28,11 +28,13 @@ class RegisterController extends Controller
 
     public function postStudent(Request $request){
 
+        // validate the email and password from the sign up form 
         $this->validate($request, [
             'email' => 'email|required|unique:users',
             'password' => 'required|min:4',
         ]);
 
+    //  fetch the User Data from the signup form 
         $user = new User([
             'name' => $request->input('fname').''.$request->lname,
             'email' => $request->input('email'),
@@ -40,8 +42,9 @@ class RegisterController extends Controller
             'role' => $request->input('role').''.$request->role='unregistered'
         ]);
 
-        $user->save();
+        $user->save(); //saves and insert the data fetch from form
 
+        // for validating form when a user is signing up for mtics 
         $request->validate([
             'title' => 'required|max:255',
             'fname' => 'required|max:255',
@@ -55,7 +58,7 @@ class RegisterController extends Controller
         ]);
 
         $student = new Student();
-
+        // fetch the data from the sign up form through http post request
         $student->user_id = $user->id;
         $student->title = $request->title;
         $student->fname = $request->fname;
@@ -77,20 +80,22 @@ class RegisterController extends Controller
         }
 
         $student->save();
-        Event::dispatch(new SendMail($user));
+        Event::dispatch(new SendMail($user)); //dispatch an email that the user has successfully registered
         Auth::login($user);
         return redirect()->route('student.profile')->with('Successfully Registered!');
     }
 
     public function studentProfile(){
 
+        //fetch the data for student's info and passes it to the student views in profile folder
         $student = Student::where('user_id', Auth::id())->get();
         return view('profiles.students', compact('student'));
 
     }
 
     public function officerProfile(){
-        
+
+        //fetch the data for officer's info and passes it to the officer views in profile folder
         $officer = Student::where('user_id', Auth::id())->get();    
         return view('profiles.officer', compact('officer'));
     }

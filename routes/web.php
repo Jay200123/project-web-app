@@ -12,6 +12,7 @@ use App\Http\Controllers\LogBookController;
 use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 
 
@@ -55,10 +56,24 @@ Route::group(['prefix' => 'user'], function(){
         Route::put('student/{id}/update', [StudentController::class, 'update'])->name('students.update'); //routes for updating
 
         Route::get('students/service-form', [ServiceController::class, 'studentCreate'])->name('students.service');
+
+        //shop routes
+        Route::get('/shop', [CartController::class, 'shop'])->name('shop.index');
+
+        Route::get('/shopping-cart', [CartController::class, 'getCart'])->name('shop.shoppingCart');
+        Route::get('add-to-cart/{id}', [CartController::class,  'getAddToCart'])->name('shops.addToCart');
+        Route::get('remove{id}', [CartController::class, 'getRemoveItem'])->name('shop.remove');
+        Route::get('reduce/{id}', [CartController::class, 'getReduceByOne'])->name('shop.reduceByOne');
+        Route::get('checkout', [CartController::class, 'postCheckout'])->name('checkout');
     });
 
     Route::group(['middleware' => 'role:officer,president'], function(){
         Route::get('officer/profile', [RegisterController::class, 'officerProfile'])->name('officer.profile');
+         //routes for time in and time out
+        Route::get('officer/timein', [LogBookController::class, 'timeIn'])->name('officer.timeIn');
+        Route::post('officer/store', [LogBookController::class, 'store'])->name('officer.store');
+         Route::get('officer/{id}/timeout', [LogBookController::class, 'edit'])->name('officer.timeOut');
+         Route::put('officer/{id}/timeout/update', [LogBookController::class, 'update'])->name('officer.timeouts');
          
         
     });
@@ -71,14 +86,6 @@ Route::group(['prefix' => 'user'], function(){
 
     Route::group(['middleware' => 'role:officer'], function(){
         
-        //routes for time in and time out
-        Route::get('officer/timein', [LogBookController::class, 'timeIn'])->name('officer.timeIn');
-        Route::post('officer/store', [LogBookController::class, 'store'])->name('officer.store');
-
-        //routes for time in and time out
-        Route::get('officer/{id}/timeout', [LogBookController::class, 'edit'])->name('officer.timeOut');
-        Route::put('officer/{id}/timeout/update', [LogBookController::class, 'update'])->name('officer.timeouts');
-
         //routes for editing and updating officer's data
         Route::get('officer/{id}/edit', [OfficerController::class, 'edit'])->name('officers.edit');
         Route::put('officer/{id}/update', [OfficerController::class, 'update'])->name('officers.update');

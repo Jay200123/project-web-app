@@ -9,18 +9,17 @@ use App\Models\User;
 class OfficerController extends Controller
 {
 
-    public function index(){
-        $users = User::with('students')->where(['role' => 'officer'])->get();
-    }
  
     public function edit($id){
-        
+        //finds the student id in the students table 
         $officer = Student::findOrFail($id);
+        //passes the $officer variable as a string in edit form through compact()
         return view('officer.edit', compact('officer'));
     }
 
     public function update(Request $request, $id){
 
+        //finds the student id in the students table 
         $officers = Student::findOrFail($id);
 
         $request->validate([
@@ -55,7 +54,7 @@ class OfficerController extends Controller
             }
 
             // dd($students);
-            $officers->update();
+            $officers->update(); //performs a update request
             return redirect()->route('officer.profile')->with('Record Successfully Updated');
 
     }

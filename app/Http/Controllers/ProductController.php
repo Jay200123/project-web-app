@@ -19,6 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
+
+        //fetch all the data from the product table and passes it to the product index
         $products = Product::all();
         return view('product.index', compact('products'));
     }
@@ -30,6 +32,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        //gets the create form for product
         return view('product.create');
     }
 
@@ -41,7 +44,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-    
         $request->validate([
 
             'description' => 'required|max:255',
@@ -49,7 +51,7 @@ class ProductController extends Controller
             'product_image' => 'mimes:png,jpg,gif,svg',
         ]);
 
-
+        // saves and store the data from product create form 
           $product = new Product();
           $product->description = $request->description;
           $product->price = $request->price;
@@ -65,9 +67,9 @@ class ProductController extends Controller
          $product->product_image = $image;
         }
 
-        $product->save();
+        $product->save(); //saves the data 
 
-return redirect()->route('products.datatable')->with('success','Product Successfully Added');
+       return redirect()->route('products.datatable')->with('success','Product Successfully Added');
 
     }
 
@@ -90,6 +92,8 @@ return redirect()->route('products.datatable')->with('success','Product Successf
      */
     public function edit($id)
     {
+
+        //finds the product id for updating data 
         $product = Product::findOrFail($id);
         return view('product.edit', compact('product'));
     }
@@ -103,9 +107,11 @@ return redirect()->route('products.datatable')->with('success','Product Successf
      */
     public function update(Request $request, $id)
     {
+
+        //updates the data through getting the product id 
         $product = Product::findOrFail($id);
 
-        $input = $request->all();
+        $input = $request->all(); 
 
          $request->validate([
 
@@ -140,6 +146,8 @@ return redirect()->route('products.datatable')->with('success','Product Successf
      */
     public function destroy(Product $product, $id)
     {
+
+        //finds the product id to a specific row and perform a delete request
         $product = Product::findOrFail($id);
         $product->delete();
         return redirect()->route('products.datatable')->with('success', 'Product Successfully Deleted');    
