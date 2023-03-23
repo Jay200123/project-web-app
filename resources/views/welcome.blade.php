@@ -1,6 +1,6 @@
 @extends('partials.home-sidebar')
 @section('title')
-MTICS 
+MTICS Website
 @endsection 
 <link rel="stylesheet" type="text/css" href="{{asset('style.css')}}">
 <body>
