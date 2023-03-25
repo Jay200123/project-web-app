@@ -14,4 +14,8 @@ class LogBook extends Model
     protected $primaryKey='log_id'; 
 
     protected $fillable=['user_id','position','log_date','timeIn','timeOut'];
+
+    public function user(){
+        return $this->belongsTo(User::Class);
+    }
 }

@@ -127,7 +127,7 @@ Route::group(['prefix' => 'user'], function(){
         //datatable routes
         Route::get('/students', [StudentController::class, 'getStudents'])->name('students.datatable'); //routes for student datatable
         Route::get('/users/datatable', [UserController::class, 'getUsers'])->name('users.datatable'); //routes for user datatable
-
+        Route::get('/logs/datatable', [LogBookController::class, 'getLogs'])->name('log.datatable');
         // routes for edit roles
         Route::get('role/{id}/edit', [UserController::class, 'editRole'])->name('roles.edit'); //routes for user edit role
         Route::put('role/{id}/update', [UserController::class, 'updateRole'])->name('roles.update'); //routes for user update role
@@ -144,6 +144,8 @@ Route::group(['prefix' => 'user'], function(){
         Route::delete('service/{id}', [ServiceController::class, 'destroy'])->name('service.delete'); //Routes for Service Delete
 
         Route::delete('members/{id}', [TransactionsController::class, 'deletemembers'])->name('members.delete'); //Routes for members Delete
+
+        Route::delete('logs/{id}', [LogBookController::class, 'destroy'])->name('log.delete');
 
         //Routes for Chart
         Route::get('chart', [DashboardController::class, 'index'])->name('dashboard.index');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\LogBook;
 use App\Models\Student;
 use App\Models\User;
+use App\DataTables\LogDataTable;
+use Yajra\DataTables\Facades\DataTables;
 use Auth;
 use Carbon\Carbon;
 
@@ -75,5 +77,19 @@ class LogBookController extends Controller
         $logs->update();
         return redirect()->route('officer.profile')->with('success','You Have Successfully Time Out!');
 
+    }
+
+    public function destroy($id){
+
+        $logs = LogBook::findOrFail($id);
+        $logs->delete();
+
+        return redirect()->route('log.datatable')->with('success', 'LogBook Record Deleted Successfully');
+    }
+
+    public function getLogs(LogDataTable $dataTable){
+
+        $logs = LogBook::with([])->get();
+        return $dataTable->render('log.logbook');
     }
 }

@@ -34,6 +34,13 @@
                     </li>
 
                     <li class="nav-link">
+                        <a href="{{route('log.datatable')}}">
+                        <i class='bx bx-bookmarks icon'></i>
+                            <span class="text nav-text">LogBook</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
                         <a href="{{route('members.datatable')}}">
                             <i class='bx bx-bell icon'></i>
                             <span class="text nav-text">Membership</span>
