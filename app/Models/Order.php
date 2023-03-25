@@ -11,4 +11,8 @@ class Order extends Model
 
     protected $table = 'orderinfo';
     protected $fillable = ['student_id'];
+
+    public function student(){
+        return $this->belongsTo(Student::class);
+    }
 }

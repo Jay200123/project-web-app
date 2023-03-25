@@ -31,9 +31,9 @@ class LogBookController extends Controller
 
         $logs = New LogBook();
 
-        $users = User::where('id', Auth::id())->first();
-        $logs->user_id = $users->id;
-        $logs->position = $users->role;
+        $student = Student::where('user_id', Auth::id())->first();
+        $logs->student_id = $student->student_id;
+        $logs->position = $student->user->role;
         $logs->log_date = Carbon::now();
 
         //fetch the data from the request form
@@ -49,13 +49,14 @@ class LogBookController extends Controller
     public function edit($id){
 
         //fetch the User who has currently login and gets its id
-        $user = User::where('id', Auth::id())->first();
+       $student = Student::where('user_id', Auth::id())->first();
 
         //declare the variable $uid and set its value to user id 
-        $uid = $user->id;
+        $uid = $student->student_id;
 
         //gets the user who is currently login through $uid and his default TimeOut value which is 00:00
-        $logs = LogBook::where(['user_id' => $uid, 'timeOut' => "00:00"])->first();
+        $logs = LogBook::where(['student_id' => $uid, 'timeOut' => "00:00"])->first();
+        // dd($logs);
 
         $Id = $logs->log_id; //gets the log_id 
 

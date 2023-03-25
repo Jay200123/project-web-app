@@ -3,6 +3,15 @@
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <link rel="icon" href="{{asset('images/MTICS.png')}}" type = "image/x-icon"> 
 <link rel="stylesheet" type="text/css" href="{{asset('css/profile.css')}}">
+<div class="container">
+    <br />
+    @if ( Session::has('success'))
+      <div class="alert alert-success">
+        <p>{{ Session::get('success') }}</p>
+      </div><br />
+     @endif
+  </div>
+  
 @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
