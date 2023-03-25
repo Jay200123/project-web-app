@@ -18,22 +18,22 @@
 
  
     <h4 align="center">MTICS LOGBOOK</h4>
-    <form method="POST" action="{{route('officer.timeouts', $logs->user_id)}}">
+    <form method="POST" action="{{route('officer.timeouts', $log->log_id)}}">
     @csrf
     @METHOD('PUT')
     <label for="timeIn">Date Logged</label>
         <div class="field">
-        <input type="date" class="form-control" name="log_date" id="log_date" value="{{$logs->log_date}}" readonly/>       
+        <input type="date" class="form-control" name="log_date" id="log_date" value="{{$log->log_date}}" readonly/>       
         </div>
 
         <div class="field" hidden>
         <label for="timeIn">Position</label>
-        <input type="text" class="form-control" name="position" id="position" value="{{$logs->position}}" readonly/>       
+        <input type="text" class="form-control" name="position" id="position" value="{{$log->position}}" readonly/>       
         </div>
 
         <label for="timeIn">Time In</label>
         <div class="field">
-        <input type="time" class="form-control" name="timeIn" id="timeIn" value="{{$logs->timeIn}}" readonly/>       
+        <input type="time" class="form-control" name="timeIn" id="timeIn" value="{{$log->timeIn}}" readonly/>       
         </div>
 
         <label for="timeOut">Time Out</label>

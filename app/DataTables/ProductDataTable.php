@@ -35,7 +35,7 @@ class ProductDataTable extends DataTable
 
         ->addColumn('Photo', function($products){
             $url = asset("$products->product_image");
-            return '<img src= '.$url.' img alt="product.jpeg" height="80" width="80">'; 
+            return '<img src="'.$url.'" alt="product.jpeg" height="80" width="80">';
         })
 
         ->rawColumns(['action', 'Photo']);

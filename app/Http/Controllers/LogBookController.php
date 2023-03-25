@@ -53,22 +53,18 @@ class LogBookController extends Controller
         $uid = $user->id;
 
         //gets the user who is currently login through $uid and his default TimeOut value which is 00:00
-        $logs = LogBook::where(['user_id' => $uid, 'timeOut' => "00:00"])
-        ->whereDate('created_at', now()->format('Y-m-d'))
-        ->first();
-       
-        return view('log.edit', compact('logs')); //returns to edit view and passes the $logs variable as a string
+        $logs = LogBook::where(['user_id' => $uid, 'timeOut' => "00:00"])->first();
+
+        $Id = $logs->log_id; //gets the log_id 
+
+        $log = LogBook::findOrFail($Id);
+        return view('log.edit', compact('log')); //returns to edit view and passes the $logs variable as a string
 
     }
 
-    public function update(Request $request ){
+    public function update(Request $request, $id){
 
-          //fetch the User who has currently login and gets its id
-        $user = User::where('id', Auth::id())->first();
-        $uid = $user->id;
-
-        //uses the $uid for finding the specific row to perform update function
-        $logs = LogBook::where(['user_id' => $uid])->first();
+        $logs = LogBook::findOrFail($id);
 
         //gets all the data from the edit form 
         $logs->log_date = $request->log_date;

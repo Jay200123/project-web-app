@@ -1,9 +1,10 @@
 @extends('layouts.home-master')
+@section('title')
+User Sign In
+@endsection
+<style>
+</style>
 <link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
-<div class="tuf" align="center">
-    <img src="{{asset('images/MTICS.png')}}" width="200px" height="200px">
-</div>
-<br>
 @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -14,7 +15,10 @@
       </div><br />
       
     @endif
-
+    <div class="tuf" align="center">
+    <img src="{{asset('images/MTICS.png')}}" width="150px" height="150px">
+</div>
+<br>
     <div class="wrapper">
     <div class="title">MTICS Login</div>
       <form class="" action="{{route('login')}}" method="post">{{ csrf_field() }}

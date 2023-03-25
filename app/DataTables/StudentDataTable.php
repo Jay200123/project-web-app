@@ -35,7 +35,7 @@ class StudentDataTable extends DataTable
            
         ->addColumn('Photo', function($students){
             $url = asset("$students->student_image");
-            return '<img src= '.$url.' img alt="customer.jpeg" height="80" width="80">'; 
+            return '<img src="'.$url.'" alt="customer.jpeg" height="80" width="80">';
         })
 
         ->rawColumns(['action', 'Photo']);

@@ -35,7 +35,7 @@ class EventsDataTable extends DataTable
            
         ->addColumn('Photo', function($events){
             $url = asset("$events->event_image");
-            return '<img src= '.$url.' img alt="customer.jpeg" height="80" width="80">'; 
+            return '<img src="'.$url.'" alt="product.jpeg" height="80" width="80">';
         })
 
         ->rawColumns(['action', 'Photo']);

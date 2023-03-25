@@ -1,5 +1,8 @@
 @extends('layouts.home-master')
 @section('content')
+@section('title')
+MTICS Printing Service
+@endsection
 <link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
 <div class="card-body">
     @if ($errors->any())
