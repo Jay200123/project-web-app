@@ -45,7 +45,7 @@
 
                     <li class="nav-link">
                         <a href="{{route('student.profile')}}">
-                            <i class='bx bx-user icon' ></i>
+                            <i class='bx bx-user icon'></i>
 
                             <span class="text nav-text">Student Profile</span>
                         </a>

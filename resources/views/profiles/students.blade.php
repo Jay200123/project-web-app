@@ -106,31 +106,33 @@ Student Profile
         
     </div>
 </div>
+
 <div class="margin">
-<h3 style="text-align:center">My Orders</h3> 
-  <table class="table">
-    <thead>
-        <tr class="table-warning">
-          <td>Orderinfo ID</td>
-          <td>Date Placed</td>
-          <td>Product Description</td>
-          <td>Product Price</td>
-          <td>Product Image</td>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach($orders as $order)
-    @foreach($order->products as $product)
-        <tr>
-            <td>{{ $order->id }}</td>
-            <td>{{$order->date_placed}}</td>
-            <td>{{ $product->description }}</td>
-            <td>{{ $product->price }}</td>
-            <td><img src="{{ asset($product->product_image)}}" width="80" height="80" alt="product.jpeg"></td>
-        </tr>
-    @endforeach
-@endforeach
-    </tbody>
-  </table>
+<div class="container mt-3">
+    @if($orders->isEmpty())
+        <h2>You Don't Have Any Orders yet!</h2>
+    @else
+        <h3 class="text-center">My Orders</h3> 
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach($orders as $order)
+                @foreach($order->products as $product)
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="{{ asset($product->product_image) }}" class="card-img-top" alt="{{ $product->name }}" height="120" width="120" alt="image.jpeg">
+                            <div class="card-body">
+                                <h3 class="card-text">{{ $product->description }}</h3>
+                                <h5 class="card-subtitle mb-2 text-muted">Price {{ $product->price }}</h5>
+                            </div>
+                            <div class="card-footer text-end">
+                                <h5 class="text-muted">Status:   {{ $order->status }}</h5>
+                                <h5 class="text-muted">Date Placed:   {{ $order->date_placed }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endforeach
+        </div>
+    @endif
+</div>
 </div>
 @endsection

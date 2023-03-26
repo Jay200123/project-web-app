@@ -90,12 +90,9 @@ class RegisterController extends Controller
 
         //fetch the data for student's info and passes it to the student views in profile folder
         $student = Student::where('user_id', Auth::id())->first();  
-        $id = $student->student_id;
-          
+        $id = $student->student_id;  
         $orders = Order::with('student','products')->where(['student_id' => $id])->get();
-        // dd($orders);
-
-        // dd($order);
+        
         return view('profiles.students', compact('student','orders'));
 
     }

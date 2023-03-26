@@ -1,0 +1,33 @@
+<div class="margin">
+@if($orders->isEmpty())
+    <h3>You Don't Have Any Orders yet!</h3>
+@else
+<h3 style="text-align:center">My Orders</h3> 
+  <table class="table">
+    <thead>
+        <tr class="table-warning">
+          <td>Orderinfo ID</td>
+          <td>Order Status</td>
+          <td>Date Placed</td>
+          <td>Product Description</td>
+          <td>Product Price</td>
+          <td>Product Image</td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($orders as $order)
+    @foreach($order->products as $product)
+        <tr>
+            <td>{{ $order->id }}</td>
+            <td>{{$order->status}}</td>
+            <td>{{$order->date_placed}}</td>
+            <td>{{ $product->description }}</td>
+            <td>{{ $product->price }}</td>
+            <td><img src="{{ asset($product->product_image)}}" width="80" height="80" alt="product.jpeg"></td>
+        </tr>
+    @endforeach
+@endforeach
+    </tbody>
+  </table>
+  @endif
+</div>
