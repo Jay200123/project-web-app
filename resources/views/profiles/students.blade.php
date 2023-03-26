@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+Student Profile
+@endsection
 @section('content')
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <link rel="icon" href="{{asset('images/MTICS.png')}}" type = "image/x-icon"> 
@@ -23,7 +26,6 @@
   </div>     
 @endif
 
-@foreach($student as $student)
 
 <div align="right">
 <span class="image">
@@ -99,9 +101,36 @@
               </div>
             </div>
         </div>
-@endforeach
+
       
         
     </div>
+</div>
+<div class="margin">
+<h3 style="text-align:center">My Orders</h3> 
+  <table class="table">
+    <thead>
+        <tr class="table-warning">
+          <td>Orderinfo ID</td>
+          <td>Date Placed</td>
+          <td>Product Description</td>
+          <td>Product Price</td>
+          <td>Product Image</td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach($orders as $order)
+    @foreach($order->products as $product)
+        <tr>
+            <td>{{ $order->id }}</td>
+            <td>{{$order->date_placed}}</td>
+            <td>{{ $product->description }}</td>
+            <td>{{ $product->price }}</td>
+            <td><img src="{{ asset($product->product_image)}}" width="80" height="80" alt="product.jpeg"></td>
+        </tr>
+    @endforeach
+@endforeach
+    </tbody>
+  </table>
 </div>
 @endsection

@@ -1,4 +1,7 @@
 @extends('layouts.officer_base')
+@section('title')
+Printing Service Records
+@endsection
 @section('body')
   <div class="container">
     <br />

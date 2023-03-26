@@ -36,7 +36,14 @@ color: #606060;
       </p> 
 </div>
 
-
+<div class="container">
+    <br />
+    @if ( Session::has('success'))
+      <div class="alert alert-success">
+        <p>{{ Session::get('success') }}</p>
+      </div><br />
+     @endif
+  </div>
 <div class="card">
 <div id="viewport">
 <div class="container ">

@@ -1,5 +1,9 @@
 @extends('layouts.admin_base')
+@section('title')
+LogBook Records
+@endsection
 @section('body')
+
   <div class="container">
     <br />
     @if ( Session::has('success'))

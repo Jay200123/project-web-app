@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+Password Settings
+@endsection
 @section('content')
 <style>
 .row{

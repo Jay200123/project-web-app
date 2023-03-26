@@ -22,9 +22,9 @@ class LogDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        $user = LogBook::with(['user']);
+        $logs = LogBook::with(['student']);
         return datatables()
-        ->eloquent($user)
+        ->eloquent($logs)
 
         ->addColumn('action', function($row){
             return "<form action=". route('log.delete', $row->log_id) ." method=\"POST\" >". csrf_field().
@@ -34,11 +34,15 @@ class LogDataTable extends DataTable
     
            })
 
-           ->addColumn('name', function(LogBook $user){
-            return $user->user->name;
+           ->addColumn('fname', function(LogBook $logs){
+            return $logs->student->fname;
            })
 
-           ->rawColumns(['name','action']);
+           ->addColumn('lname', function(LogBook $logs){
+            return $logs->student->lname;
+           })
+
+           ->rawColumns(['fname','action']);
     }
 
     /**
@@ -86,7 +90,8 @@ class LogDataTable extends DataTable
     {
         return [
             Column::make('log_id')->title('Log ID'),
-            Column::make('name')->name('user.name')->title('Officer Name'),
+            Column::make('fname')->name('student.fname')->title('Officer Name'),
+            Column::make('lname')->name('student.lname')->title('Last Name'),
             Column::make('position')->title('Position'),
             Column::make('log_date')->title('Log Date'),
             Column::make('timeIn')->title('Time IN'),

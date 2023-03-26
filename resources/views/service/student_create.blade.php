@@ -1,4 +1,7 @@
 @extends('layouts.master')
+@section('title')
+MTICS Printing Service
+@endsection
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
 <div class="card-body">

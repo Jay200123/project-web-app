@@ -1,4 +1,7 @@
 @extends('layouts.admin_base')
+@section('title')
+User Records
+@endsection
 @section('body')
   <div class="container">
     <br />

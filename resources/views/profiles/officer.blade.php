@@ -1,4 +1,7 @@
 @extends('layouts.officer_master')
+@section('title')
+Officer Profile
+@endsection
 @section('content')
 <link rel="icon" href="{{asset('images/MTICS.png')}}" type = "image/x-icon"> 
 <link rel="stylesheet" type="text/css" href="{{asset('css/profile.css')}}">
@@ -11,6 +14,7 @@
       </div><br />
      @endif
   </div>
+  
 @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -22,7 +26,6 @@
   </div>     
 @endif
 
-@foreach($officer as $officer)
 
 <div align="right">
 <span class="image">
@@ -100,13 +103,7 @@
                     <p>{{$officer->city}}</p>
               </div>
             </div>
-        </div>
-
-    
-      
-@endforeach
-      
-        
+</div>      
     </div>
 </div>
 @endsection

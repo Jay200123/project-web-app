@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Student;
+use App\Models\Order;
 use App\Events\SendMail;
 use Auth;
 use DB;
@@ -88,15 +89,21 @@ class RegisterController extends Controller
     public function studentProfile(){
 
         //fetch the data for student's info and passes it to the student views in profile folder
-        $student = Student::where('user_id', Auth::id())->get();
-        return view('profiles.students', compact('student'));
+        $student = Student::where('user_id', Auth::id())->first();  
+        $id = $student->student_id;
+          
+        $orders = Order::with('student','products')->where(['student_id' => $id])->get();
+        // dd($orders);
+
+        // dd($order);
+        return view('profiles.students', compact('student','orders'));
 
     }
 
     public function officerProfile(){
 
         //fetch the data for officer's info and passes it to the officer views in profile folder
-        $officer = Student::where('user_id', Auth::id())->get();    
+        $officer = Student::where('user_id', Auth::id())->first();    
         return view('profiles.officer', compact('officer'));
     }
 }

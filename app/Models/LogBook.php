@@ -15,7 +15,7 @@ class LogBook extends Model
 
     protected $fillable=['student_id','position','log_date','timeIn','timeOut'];
 
-    public function user(){
-        return $this->belongsTo(User::Class);
+    public function student(){
+        return $this->belongsTo(Student::Class, 'student_id');
     }
 }

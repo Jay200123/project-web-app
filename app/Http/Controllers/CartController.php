@@ -7,6 +7,7 @@ use App\Models\Student;
 use App\Models\Product;
 use App\Models\Order;
 use App\Cart;
+use Carbon\Carbon;
 
 use Session;
 use DB;
@@ -81,11 +82,13 @@ class CartController extends Controller
         try {
             DB::beginTransaction();
                 
-            $order = new Order;
+            $order = new Order();
             $order->student_id = $student->student_id;
+            $order->date_placed = Carbon::now();
+            $order->status = 'processing';
             $order->save();
     
-            foreach($Cart->products as $product ) {
+            foreach($Cart->products as $product) {
                 $id  = $product['product']['product_id'];
                     
                 DB::table('orderline')->insert([
@@ -100,6 +103,6 @@ class CartController extends Controller
              
         DB::commit();
         Session::forget('Cart');
-        return redirect()->route('shop.index')->with('success','Items Successfully Avail!');
+        return redirect()->route('shop.index')->with('success','Product Checkout Successful!');
     }
 }

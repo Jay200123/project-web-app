@@ -14,4 +14,8 @@ class Product extends Model
     protected $primaryKey='product_id';
 
     protected $fillable = ['description','price','product_image'];
+
+    public function  orders(){
+        return $this->belongsToMany(Order::class, 'orderline','orderinfo_id','product_id');
+       }
 }

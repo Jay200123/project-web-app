@@ -1,4 +1,7 @@
 @extends('layouts.officer_master')
+@section('title')
+Membership Transactions
+@endsection
 @section('content')
 
 <style>
@@ -20,7 +23,7 @@
 <div class="tuf" align="center">
     <img src="/../images/MTICS.png" width="150px" height="150px">
 </div>
-<h3 style="text-align:center">MTICS Membership Records</h3> 
+<h3 style="text-align:center">MTICS Membership Transactions</h3> 
   <table class="table">
     <thead>
         <tr class="table-warning">
@@ -62,4 +65,5 @@
   </table>
   {!! $members->links() !!}
   </div>
+  <footer>@2023 Manila Technician Institute Computer Society TUP Taguig All rights reserved.</footer>
 @endsection
