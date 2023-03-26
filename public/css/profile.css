@@ -125,8 +125,12 @@ body{
 
 .margin{
   margin-top: 75px;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 75px;
+  margin-right: 75px;
+  border-radius: 5px;
+  width: 90%;
+  background: #FFFFFF;
+  /* padding: 50px; */
 }
 
 .margin h2{

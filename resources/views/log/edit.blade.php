@@ -16,7 +16,6 @@
       
     @endif
 
- 
     <h4 align="center">MTICS LOGBOOK</h4>
     <form method="POST" action="{{route('officer.timeouts', $log->log_id)}}">
     @csrf

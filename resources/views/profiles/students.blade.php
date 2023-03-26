@@ -107,6 +107,7 @@ Student Profile
     </div>
 </div>
 
+<div class="card">
 <div class="margin">
 <div class="container mt-3">
     @if($orders->isEmpty())
@@ -116,8 +117,8 @@ Student Profile
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach($orders as $order)
                 @foreach($order->products as $product)
-                    <div class="col">
-                        <div class="card h-100">
+                <div class="col-lg-4 col-sm-6 mb-4">
+                   <div class="card">
                             <img src="{{ asset($product->product_image) }}" class="card-img-top" alt="{{ $product->name }}" height="120" width="120" alt="image.jpeg">
                             <div class="card-body">
                                 <h3 class="card-text">{{ $product->description }}</h3>
@@ -133,6 +134,7 @@ Student Profile
             @endforeach
         </div>
     @endif
+</div>
 </div>
 </div>
 @endsection

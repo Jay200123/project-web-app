@@ -37,7 +37,7 @@
                     <li class="nav-link">
                         <a href="{{route('students.service')}}">
                             <i class='bx bx-abacus icon'></i>
-                            <span class="text nav-text">Services</span>
+                            <span class="text nav-text">Printing Services</span>
                         </a>
                     </li>
 
@@ -46,7 +46,6 @@
                     <li class="nav-link">
                         <a href="{{route('student.profile')}}">
                             <i class='bx bx-user icon'></i>
-
                             <span class="text nav-text">Student Profile</span>
                         </a>
                     </li>

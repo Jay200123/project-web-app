@@ -60,6 +60,7 @@ MTICS Printing Service
           <option value="small">Small</option>
           <option value="medium">Medium</option>
           <option value="large">Large</option>
+          <option value="A4">A4</option>
           </select>
           </div>
   

@@ -6,24 +6,23 @@
                 <span class="image">
                     <img src="{{asset('images/MTICS3.gif')}}">
                 </span>
-                
                 <div class="text logo-text">
                     <span class="name">MTICS</span>
                     <span class="profession">TUP-T</span>
                 </div>
             </div>
-
             <i class='bx bx-chevron-right toggle'></i>
         </header>
-
         <div class="menu-bar">
             <div class="menu">
             @if (Auth::check())
-
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="{{route('order.index')}}">
+                        <i class='bx bx-cart icon'></i>
+                            <span class="text nav-text">Orders</span>
+                        </a>
+                    </li>
 
                 <ul class="menu-links">
                     <li class="nav-link">
@@ -71,15 +70,11 @@
                             <span class="text nav-text">Membership</span>
                         </a>
                     </li>
-                    @else
-
-                    @endif
        
                 </ul>
             </div>
 
             <div class="bottom-content">
-            @if (Auth::check())
                 <li class="">
                     <a href="{{route('user.logout')}}">
                         <i class='bx bx-log-out icon' ></i>

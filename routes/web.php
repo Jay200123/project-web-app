@@ -13,6 +13,7 @@ use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 
 
@@ -117,6 +118,9 @@ Route::group(['prefix' => 'user'], function(){
         Route::post('event/store', [EventsController::class, 'store'])->name('events.store'); //routes for store data in events
         Route::get('/events', [EventsController::class, 'getEvents'])->name('getEvents'); //routes for event datatable
         Route::delete('/event/{id}', [EventsController::class, 'destroy'])->name('events.destroy'); //routes for deleting event
+
+        //Routes for Orders
+        Route::get('order', [OrderController::class, 'index'])->name('order.index');
     });
 
     Route::group(['middleware' => 'role:admin'], function(){

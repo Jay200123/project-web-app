@@ -4,30 +4,6 @@
 @section('title')
    MTICS Events Setting
 @endsection 
-
-<style>
-  .row{
-    background: #FFFFFF;
-    padding-right: 60px;
-    padding-left: 280px;
-  }
-
-
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: white;
-}
-
-</style>
-
 <div class="row">
 <br>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -37,7 +13,7 @@
 <br>
 
 <div>
-{{$dataTable->table(['class' => 'table table-bordered table-striped table-hover '], true)}}
+{{$dataTable->table(['class' => 'table table-bordered table-striped table-hover'], true)}}
 </div>
 
 <div class="modal " id="serviceModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

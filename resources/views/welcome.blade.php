@@ -19,6 +19,7 @@
 <h4>WELCOME TO</h4>
 <h1>Manila Technician <span>Institute Computer Society</span></h1>
 <h3>To bridge the gap and strengthen the bond among mtics family members</h3>
+<footer style="color:white">@2023 Manila Technician Institute Computer Society TUP Taguig All rights reserved.</footer>
 </div>
     
 </body>
