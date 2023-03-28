@@ -26,7 +26,7 @@
 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="{{route('service.datatable')}}">
+                        <a href="{{route('service.index')}}">
                             <i class='bx bx-abacus icon' ></i>
                             <span class="text nav-text">Service</span>
                         </a>

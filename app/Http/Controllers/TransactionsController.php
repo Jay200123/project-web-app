@@ -109,10 +109,9 @@ class TransactionsController extends Controller
         $stats->update();
 
         $data = [
-            'title' => 'MTICS Reciept',
-            'member_id' =>  $member->info_id,
+            'title' => 'MTICS Merchandise',
+            'order_id' =>  $member->info_id,
             'date_placed' => $member->date_placed,
-            'date_paid' => now(),
             'fname' => $member->student->fname,
             'lname' => $member->student->lname,
             'section' => $member->student->section,

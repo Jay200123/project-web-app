@@ -27,4 +27,8 @@ class Student extends Model
     public function orders(){
         return $this->belongsToMany(Order::class, 'student_id');
     }
+
+    public function logs(){
+        return $this->hasMany(LogBook::class, 'student_id');
+    }
 }

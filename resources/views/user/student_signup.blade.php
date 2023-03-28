@@ -1,8 +1,8 @@
 @extends('layouts.home-master')
-@section('content')
 @section('title')
 User Sign Up
 @endsection
+@section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
 <div class="card-body">
     @if ($errors->any())
@@ -22,7 +22,7 @@ User Sign Up
     <div class="content">
 
     <form method="post" action="{{route('student.signups')}}" enctype ="multipart/form-data">
-@csrf
+       @csrf
         <div class="user-details">
 
          <div class="input-box">
@@ -88,6 +88,7 @@ User Sign Up
           </div>
 
         </div>
+
         <div class="button">
           <input type="submit" value="Register">
         </div>

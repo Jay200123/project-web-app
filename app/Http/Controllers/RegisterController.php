@@ -100,7 +100,36 @@ class RegisterController extends Controller
     public function officerProfile(){
 
         //fetch the data for officer's info and passes it to the officer views in profile folder
-        $officer = Student::where('user_id', Auth::id())->first();    
+        $officer = Student::with('logs')->where('user_id', Auth::id())->first();    
         return view('profiles.officer', compact('officer'));
+    }
+
+    public function createAdmin(){
+
+        return view('admin.create');
+
+    }
+
+    public function storeAdmin(Request $request){
+
+        
+        // validate the email and password from the sign up form 
+        $this->validate($request, [
+            'email' => 'email|required|unique:users',
+            'password' => 'required|min:4',
+        ]);
+
+    //  fetch the User Data from the signup form 
+        $user = new User([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+            'role' => $request->input('role').''.$request->role='admin'
+        ]);
+
+        $user->save();
+        Auth::login($user);
+        return redirect()->route('dashboard.index')->with('success', 'Registered Successfully');
+
     }
 }

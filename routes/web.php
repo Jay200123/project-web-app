@@ -49,6 +49,11 @@ Route::group(['prefix' => 'user'], function(){
         //post request for sign in
         Route::post('login', [LoginController::class, 'postSignin'])->name('login');
 
+        //Route for Admin
+        Route::get('admin/create', [RegisterController::class, 'createAdmin'])->name('admin.create');
+
+        Route::post('admin/store', [RegisterController::class, 'storeAdmin'])->name('admin.store');
+
     });
 
     Route::group(['middleware' => 'role:student'], function(){
@@ -69,7 +74,13 @@ Route::group(['prefix' => 'user'], function(){
     });
 
     Route::group(['middleware' => 'role:officer,president'], function(){
+
         Route::get('officer/profile', [RegisterController::class, 'officerProfile'])->name('officer.profile'); //routes for officer profile
+
+         //routes for editing and updating officer's data
+         Route::get('officer/{id}/edit', [OfficerController::class, 'edit'])->name('officers.edit'); //routes for officer profile edit
+         Route::put('officer/{id}/update', [OfficerController::class, 'update'])->name('officers.update'); //routes for update 
+         
          //routes for time in and time out
         Route::get('officer/timein', [LogBookController::class, 'timeIn'])->name('officer.timeIn'); //routes for getting the form for Time In
         Route::post('officer/store', [LogBookController::class, 'store'])->name('officer.store'); //routes for storing time in and time out
@@ -88,10 +99,6 @@ Route::group(['prefix' => 'user'], function(){
 
     Route::group(['middleware' => 'role:officer'], function(){
         
-        //routes for editing and updating officer's data
-        Route::get('officer/{id}/edit', [OfficerController::class, 'edit'])->name('officers.edit'); //routes for officer profile edit
-        Route::put('officer/{id}/update', [OfficerController::class, 'update'])->name('officers.update'); //routes for update 
-
         //service index
         Route::get('service', [ServiceController::class, 'index'])->name('service.index'); //routes for service index
 
@@ -121,6 +128,8 @@ Route::group(['prefix' => 'user'], function(){
 
         //Routes for Orders
         Route::get('order', [OrderController::class, 'index'])->name('order.index');
+        Route::get('order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
+        Route::put('order/{id}/update', [OrderController::class, 'update'])->name('order.update');
     });
 
     Route::group(['middleware' => 'role:admin'], function(){

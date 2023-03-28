@@ -94,6 +94,14 @@
                         <span class="text nav-text">Sign In</span>
                     </a>
                 </li>
+
+                <li class="">
+                    <a href="{{route('admin.create')}}">
+                    <i class='bx bxs-user-circle icon'></i>
+                        <span class="text nav-text">Admin</span>
+                    </a>
+                </li>
+
                 <li class=""> 
                     <a href="{{route('student.signup')}}">
                     <i class='bx bx-log-in-circle icon'></i>

@@ -1,0 +1,42 @@
+MTICS WEB APP 
+
+
+ADMIN HAS ACCCESS TO 
+-DASHBOARD	
+-LOGBOOK RECORDS
+-- can perform delete logbook records
+-STUDENT RECORDS
+-- can delete student records
+-USER RECORDS
+--can change and update the user's role in the web app
+--can delete user records
+
+STUDENT HAS RECORDS TO 
+--Printing Service
+--Student Profile (can update his/her own record & can see all of his orders)
+--Settings (which has a change password setting)
+-- Shop (the student can order mtics merchandise)
+--Events (can see the upcoming MTICS Events)
+
+--UNREGISTERED STUDENTS 
+can only access student and can only perform a membership transaction(membership records can be accessible by the mtics president and can update wether it was
+paid or not)
+
+PRESIDENT 
+--can access and update his/her own profile.
+--can change any membership status (like it can update wether the membership was paid by the student(unregistered))
+--Settings (which has a change password setting)
+--can perform time  in and time out functions (logbook records can only access by admin of the web app)
+
+OFFICER
+-- can access and update his/her own profile.
+-- can perform time  in and time out functions (logbook records can only access by admin of the web app)
+-- can make announcements (events).
+-- can add or delete products 
+-- can update any order (change status to finish).
+-- Settings (which has a change password setting).
+-- can also update any service.
+
+admin 
+username: renyel123@gmail.com
+pass: renyel123

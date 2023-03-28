@@ -69,7 +69,7 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        $orders = Order::with('products')->findOrFail($id);
+        $orders = Order::findOrFail($id);
         return view('order.edit', compact('orders'));
   
     }
@@ -83,7 +83,15 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $orders = Order::find($id);
+
+        $orders->date_placed = $request->date_placed;
+        $orders->status = "Finished";
+
+        // dd($orders);
+        $orders->update();
+
+        return redirect()->route('order.index')->with('success', 'Order Transaction Updated Successfully');
     }
 
     /**
@@ -94,6 +102,9 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $orders = Order::findOrFail($id);
+        $orders->delete();
+
+        return redirect()->route('order.index')->with('success','Transaction Record Deleted Successfully');
     }
 }

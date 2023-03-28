@@ -16,7 +16,7 @@ Shop Transactions
   border-radius: 5px;
   width: 90%;
   background: #FFFFFF;
-  padding: 10px;
+  padding: 10px;   
     }
 
 </style>
@@ -65,7 +65,7 @@ Shop Transactions
             </ul>
         </td>
             <td class="text-center">
-            <a href="#" class = "btn btn-primary btn-sm">Update</a>
+            <a href="{{route('order.edit', $order->id)}}" class = "btn btn-primary btn-sm">Update</a>
             </td>
         </tr>
         @endforeach

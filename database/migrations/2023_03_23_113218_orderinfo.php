@@ -22,7 +22,7 @@ return new class extends Migration
 
         Schema::create('orderline', function(Blueprint $table) {
             $table->integer('orderinfo_id')->unsigned();
-            $table->foreign('orderinfo_id')->references('id')->on('orderinfo');
+            $table->foreign('orderinfo_id')->references('id')->on('orderinfo')->onDelete('cascade');
             $table->integer('product_id')->unsigned();
             $table->foreign('product_id')->references('product_id')->on('products');
             $table->timestamps();

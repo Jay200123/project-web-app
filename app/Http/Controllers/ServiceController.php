@@ -25,7 +25,7 @@ class ServiceController extends Controller
     {
 
         //fetch all the data from serviceinfo table 
-        $service = Service::all();
+        $service = Service::orderBy('service_id', 'ASC')->paginate('5');
 
         //return to the service index views and passes the service variable as a string through compact()
         return view('service.index', compact('service'));
@@ -171,7 +171,7 @@ class ServiceController extends Controller
             $service->update();
             Event::dispatch(new ServiceMail($service)); //sends an email to the user detailing the service
 
-            return redirect()->route('service.datatable')->with('success', 'Transaction Updated Sucessfully');
+            return redirect()->route('service.index')->with('success', 'Transaction Updated Sucessfully');
 
 
     }

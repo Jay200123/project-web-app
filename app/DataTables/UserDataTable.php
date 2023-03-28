@@ -88,8 +88,6 @@ class UserDataTable extends DataTable
                   ->width(60)
                   ->addClass('text-center'),
             // Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
         ];
     }
 

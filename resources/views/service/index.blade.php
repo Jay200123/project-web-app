@@ -3,7 +3,19 @@
 <style>
   .push-top {
     margin-top: 50px;
+
+    
   }
+
+  .margin{
+  margin-top: 75px;
+  margin-left: 75px;
+  margin-right: 75px;
+  border-radius: 5px;
+  width: 90%;
+  background: #FFFFFF;
+  padding: 15px;
+}
 
 </style>
 <div class="push-top">
@@ -13,6 +25,11 @@
     </div><br />
   @endif
  
+  <div class="tuf" align="center">
+    <img src="/../images/MTICS.png" width="150px" height="150px">
+</div>
+<h3 style="text-align:center">MTICS Service Transactions</h3> 
+<div class="margin">
   <table class="table">
     <thead>
         <tr class="table-warning">
@@ -22,6 +39,7 @@
           <td>Section</td>
           <td>Email</td>
           <td>File Name</td>
+          <td>Size</td>
           <td>Color Option</td>
           <td>Cost</td>
           <td>Quantity</td>
@@ -30,6 +48,7 @@
         </tr>
     </thead>
     <tbody>
+    @if(!empty($service) && $service->count())
         @foreach($service as $services)
         <tr>
             <td>{{$services->service_id}}</td>
@@ -38,6 +57,7 @@
             <td>{{$services->section}}</td>
             <td>{{$services->email}}</td>
             <td>{{$services->filename}}</td>
+            <td>{{$services->size}}</td>
             <td>{{$services->options}}</td>
             <td>{{$services->cost}}</td>
             <td>{{$services->quantity}}</td>
@@ -52,7 +72,15 @@
             </td>
         </tr>
         @endforeach
+        
+        @else
+                <tr>
+                    <td colspan="10">There are no data.</td>
+                </tr>
+            @endif
     </tbody>
   </table>
+</div>
+  {!! $service->links() !!}
   </div>
 @endsection

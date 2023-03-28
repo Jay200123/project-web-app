@@ -135,6 +135,8 @@ class StudentController extends Controller
         // passes the Id variable and uses it as a parameter for finding the id for user when deleting 
         $user = User::findOrFail($id);
         $user->delete();
+
+        return redirect()->route('students.datatable')->with('success','Student Record Deleted Successfully');
     }
 
     public function getStudents(StudentDataTable $dataTable){
