@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTICS Payment Receipt</title>
     <style>
-          body {
+        body {
             font-family: Arial, sans-serif;
             font-size: 14px;
             margin: 0;
@@ -83,11 +83,10 @@
 </head>
 <body>
     <div class="receipt">
-
-    <div class="university-address">
+        <div class="university-address">
             <p>Manila Technician Institute Computer Society</p>
-            <p>Tehnological University of the Philippines Taguig</p>
-            <p> Km. 14, East Service Road, South Luzon Expressway, Taguig, 1630 Metro Manila</p>
+            <p>Technological University of the Philippines Taguig</p>
+            <p>Km. 14, East Service Road, South Luzon Expressway, Taguig, 1630 Metro Manila</p>
             <p>(02) 8823 2456</p>
         </div>
 
@@ -96,17 +95,22 @@
             <h4>Membership ID: {{$order_id}}</h4>
             <h4>Date Placed: {{$date_placed}}</h4>
         </div>
+
         <div class="content">
-            <p class="title">Payment for {{$title}}</p>
+            <p class="title">Payment for: {{$title}}</p>
             <p class="name">Student Name: {{$fname}} {{$lname}}</p>
             <p class="section">Section: {{$section}}</p>
-            <p class="amount"> Product: {{$product}}</p>
+            <ul>
+            @foreach($products as $product)
+         <li>
+            <p class="amount"> Product: {{$product->description}}</p>
+            <p class="amount"> Price: {{$product->price}}</p>
+         </li>
+     @endforeach
+            </ul>
         </div>
        
-        <div class="payment-amount">
-            <p class="amount">Price {{$price}}</p>
-        </div>
-        <footer>@2023 Manila Technician Institute Computer Society TUP Taguig All rights reserved.</footer>
+        <footer>&copy;2023 Manila Technician Institute Computer Society TUP Taguig. All Rights Reserved.</footer>
     </div>
 </body>
 </html>

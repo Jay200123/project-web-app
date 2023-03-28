@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Session;
 use DB;
 use Auth;
+use View;
 
 class CartController extends Controller
 {
@@ -97,6 +98,22 @@ class CartController extends Controller
                     'orderinfo_id' => $order->id,
                 ]);
             }
+
+            $products = $order->products;
+
+            $data = [
+                'title' => 'MTICS Merchandise',
+                'order_id' =>  $order->id,
+                'date_placed' => $order->date_placed,
+                'date_paid' => now(),
+                'fname' => $order->student->fname,
+                'lname' => $order->student->lname,
+                'section' => $order->student->section,
+                'products' => $products,
+            ];
+
+            $pdf = DomPDF::loadView('shop.reciept', $data)->setOptions(['defaultFont' => 'sans-serif']);
+
         } catch(Exception $e) {
             DB::rollBack();
             return redirect()->route('shop.shopping-cart')->with('error', $e->getMessage());
@@ -105,27 +122,9 @@ class CartController extends Controller
         DB::commit();
         Session::forget('Cart');
 
-        foreach($order->products as $product)
-
-        $data = [
-            'title' => 'MTICS Merchandise',
-            'order_id' =>  $order->id,
-            'date_placed' => $order->date_placed,
-            'date_paid' => now(),
-            'fname' => $order->student->fname,
-            'lname' => $order->student->lname,
-            'section' => $order->student->section,
-            'product' => $product->description,
-            'price' => $product->price,
-        ];
-
-        
-
-        $pdf = DomPDF::loadView('shop.reciept', $data)->setOptions(['defaultFont' => 'sans-serif']);
-
         Session::flash('success', 'Transaction Successful');
 
-        return $pdf->download('mtics_reciept.pdf');
+        return $pdf->download('shopreciept.pdf', ['order' =>$order]);
 
     }
 }
