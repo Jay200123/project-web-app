@@ -119,9 +119,9 @@ Officer Profile
                         @else
                         @foreach($officer->logs as $logs)
                         <div class="card-body">
-                            <h3 class="card-text">Log Date {{ $logs->log_date }}</h3>
-                            <h5 class="card-subtitle mb-2 text-muted">Time In {{ $logs->timeIn }}</h5>
-                            <h5 class="card-subtitle mb-2 text-muted">Time Out {{ $logs->timeOut }}</h5>
+                            <h3 class="card-text">Log Date: {{ $logs->log_date }}</h3>
+                            <h5 class="card-subtitle mb-2 text-muted">Time In: {{ $logs->timeIn }}</h5>
+                            <h5 class="card-subtitle mb-2 text-muted">Time Out: {{ $logs->timeOut }}</h5>
                         </div>
                         @endforeach
                         @endif

@@ -101,7 +101,7 @@ class CartController extends Controller
 
             $products = $order->products;
 
-            $data = [
+            $data = [   
                 'title' => 'MTICS Merchandise',
                 'order_id' =>  $order->id,
                 'date_placed' => $order->date_placed,
@@ -120,6 +120,7 @@ class CartController extends Controller
         }
              
         DB::commit();
+       
         Session::forget('Cart');
 
         Session::flash('success', 'Transaction Successful');

@@ -37,6 +37,7 @@ OFFICER
 -- Settings (which has a change password setting).
 -- can also update any service.
 
-admin 
-username: renyel123@gmail.com
-pass: renyel123
+additional functionalities
+-- admin register
+-- officers can view their own time in and time out records through their profiles(mtics president included).
+-- students can view their their past transactions like orders.

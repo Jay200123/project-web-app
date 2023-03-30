@@ -92,7 +92,7 @@
 
         <div class="header">
             <h1>MTICS Payment Receipt</h1>
-            <h4>Membership ID: {{$order_id}}</h4>
+            <h4>Order ID: {{$order_id}}</h4>
             <h4>Date Placed: {{$date_placed}}</h4>
         </div>
 

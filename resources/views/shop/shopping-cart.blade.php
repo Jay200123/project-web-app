@@ -23,6 +23,17 @@
 }
 </style>
 
+@if (Session::has('success'))
+    <div class="alert alert-success">
+        <p>{{ Session::get('success') }}</p>
+    </div>
+    <script>
+        setTimeout(function(){
+            window.location.href = "{{ route('shop.index') }}"; // Replace with your desired route
+        }, 3000); 
+    </script>
+@endif
+
 
 <br>
 <div class="rows">

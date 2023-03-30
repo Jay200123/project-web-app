@@ -54,11 +54,11 @@ Student Profile
             <div class="info_data">
                  <div class="data">
                     <h4>Email</h4>
-                    <p>{{Auth::user()->email}}</p>
+                    <h4 style="color:black">{{Auth::user()->email}}</h4>
                  </div> 
                  <div class="data">
                     <h4>Phone</h4>
-                    <p>{{$student->phone}}</p>                
+                    <h4 style="color:black">{{$student->phone}}</h4>                
                 </div> 
             </div>
 
@@ -89,15 +89,15 @@ Student Profile
             <div class="projects_data">
                  <div class="data">
                     <h4>Address</h4>
-                    <p>{{$student->address}}</p>
+                    <h4 style="color:black">{{$student->address}}</h4>
                  </div>
                  <div class="data">
                     <h4>Town</h4>
-                    <p>{{$student->town}}</p>
+                    <h4 style="color:black">{{$student->town}}</h4>
                  </div>
                  <div class="data">
                    <h4>City</h4>
-                    <p>{{$student->city}}</p>
+                   <h4 style="color:black">{{$student->city}}</h4>
               </div>
             </div>
         </div>

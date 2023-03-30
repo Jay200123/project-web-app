@@ -52,9 +52,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Student $student)
+    public function show($id)
     {
-        //
+        $student = Student::with('members')->findOrFail($id);
+        return view('student.show', compact('student'));
     }
 
     /**
@@ -133,7 +134,7 @@ class StudentController extends Controller
         $Id = $student->user_id; //fetch the user id from the students table
 
         // passes the Id variable and uses it as a parameter for finding the id for user when deleting 
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($Id);
         $user->delete();
 
         return redirect()->route('students.datatable')->with('success','Student Record Deleted Successfully');

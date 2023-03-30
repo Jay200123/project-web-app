@@ -20,8 +20,11 @@
             <div class="menu">
 
                 <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
+                <i class='bx bx-search icon'></i>
+                <form method="GET" role="search" action="{{url('/search')}}">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="text" name="search" placeholder="Search...">
+                </form>
                 </li>
 
                 <ul class="menu-links">

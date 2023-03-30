@@ -17,7 +17,7 @@ class Student extends Model
     protected $fillable = ['title','fname','lname','section','phone','address','town','city','student_image','user_id'];
 
     public function members(){
-        return $this->belongsToMany(Member::class, 'student_id');
+        return $this->hasMany(Member::class, 'student_id');
     } 
 
     public function user(){
@@ -25,10 +25,12 @@ class Student extends Model
     }
 
     public function orders(){
-        return $this->belongsToMany(Order::class, 'student_id');
+        return $this->hasMany(Order::class, 'student_id');
     }
 
     public function logs(){
         return $this->hasMany(LogBook::class, 'student_id');
     }
+
+    
 }

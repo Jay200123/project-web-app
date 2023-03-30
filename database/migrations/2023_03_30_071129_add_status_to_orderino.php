@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('orderinfo', function (Blueprint $table) {
+            $table->string('date_placed');
             $table->string('status');
         });
     }

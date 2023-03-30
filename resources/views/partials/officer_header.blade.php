@@ -17,6 +17,12 @@
             <div class="menu">
             @if (Auth::check())
                 <ul class="menu-links">
+
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search...">
+                </li>
+                
                     <li class="nav-link">
                         <a href="{{route('order.index')}}">
                         <i class='bx bx-cart icon'></i>

@@ -14,6 +14,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SearchController;
 
 
 
@@ -60,7 +61,6 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('annoucements', [EventsController::class, 'index'])->name('events.index'); // routes for accessing events
         Route::get('student/{id}/edit', [StudentController::class, 'edit'])->name('students.edit'); // routes for student editing
         Route::put('student/{id}/update', [StudentController::class, 'update'])->name('students.update'); //routes for updating
-
         Route::get('students/service-form', [ServiceController::class, 'studentCreate'])->name('students.service'); // routes for service form exclusive for students
 
         //shop routes
@@ -84,10 +84,9 @@ Route::group(['prefix' => 'user'], function(){
          //routes for time in and time out
         Route::get('officer/timein', [LogBookController::class, 'timeIn'])->name('officer.timeIn'); //routes for getting the form for Time In
         Route::post('officer/store', [LogBookController::class, 'store'])->name('officer.store'); //routes for storing time in and time out
-         Route::get('officer/{id}/timeout', [LogBookController::class, 'edit'])->name('officer.timeOut'); //routes for getting the form for Time Out
-         Route::put('officer/{id}/timeout/update', [LogBookController::class, 'update'])->name('officer.timeouts'); //routes for updating time out
-         
-        
+        Route::get('officer/{id}/timeout', [LogBookController::class, 'edit'])->name('officer.timeOut'); //routes for getting the form for Time Out
+        Route::put('officer/{id}/timeout/update', [LogBookController::class, 'update'])->name('officer.timeouts'); //routes for updating time out
+
     });
 
     Route::group(['middleware' => 'role:president'], function(){
@@ -130,6 +129,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('order', [OrderController::class, 'index'])->name('order.index');
         Route::get('order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
         Route::put('order/{id}/update', [OrderController::class, 'update'])->name('order.update');
+        Route::delete('order/{id}', [OrderController::class, 'destroy'])->name('order.delete');
     });
 
     Route::group(['middleware' => 'role:admin'], function(){
@@ -204,8 +204,11 @@ Route::get('service/message', [ServiceController::class, 'getMessage'])->name('s
 
 Route::get('reciept', [TransactionsController::class, 'getpdf'])->name('pdf');
 
-});
-
-
 //Routes for Login
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
+
+});
+
+Route::get('/search/{search?}', [SearchController::class, 'search'])->name('search');
+Route::get('/show-product/{id}', [ProductController::class, 'show'])->name('product.show'); // routes for searching a specific product
+Route::get('/show-user/{id}', [StudentController::class, 'show'])->name('student.show');
