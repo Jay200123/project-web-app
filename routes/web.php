@@ -57,6 +57,7 @@ Route::group(['prefix' => 'user'], function(){
 
     });
 
+
     Route::group(['middleware' => 'role:student'], function(){
         Route::get('annoucements', [EventsController::class, 'index'])->name('events.index'); // routes for accessing events
         Route::get('student/{id}/edit', [StudentController::class, 'edit'])->name('students.edit'); // routes for student editing
@@ -71,6 +72,8 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('remove{id}', [CartController::class, 'getRemoveItem'])->name('shop.remove'); //routes for removing all product to cart
         Route::get('reduce/{id}', [CartController::class, 'getReduceByOne'])->name('shop.reduceByOne'); //routes for removing one product to cart
         Route::get('checkout', [CartController::class, 'postCheckout'])->name('checkout'); //routes for checkout
+
+        Route::get('/show-product/{id}', [ProductController::class, 'show'])->name('product.show'); //routes for product search
     });
 
     Route::group(['middleware' => 'role:officer,president'], function(){
@@ -86,6 +89,8 @@ Route::group(['prefix' => 'user'], function(){
         Route::post('officer/store', [LogBookController::class, 'store'])->name('officer.store'); //routes for storing time in and time out
         Route::get('officer/{id}/timeout', [LogBookController::class, 'edit'])->name('officer.timeOut'); //routes for getting the form for Time Out
         Route::put('officer/{id}/timeout/update', [LogBookController::class, 'update'])->name('officer.timeouts'); //routes for updating time out
+
+        Route::get('/show-user/{id}', [StudentController::class, 'show'])->name('student.show');
 
     });
 
@@ -207,8 +212,6 @@ Route::get('reciept', [TransactionsController::class, 'getpdf'])->name('pdf');
 //Routes for Login
 Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
 
-});
+   Route::get('/search/{search?}', [SearchController::class, 'search'])->name('search'); // routes for searching a specific product
 
-Route::get('/search/{search?}', [SearchController::class, 'search'])->name('search');
-Route::get('/show-product/{id}', [ProductController::class, 'show'])->name('product.show'); // routes for searching a specific product
-Route::get('/show-user/{id}', [StudentController::class, 'show'])->name('student.show');
+});

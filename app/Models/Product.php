@@ -23,11 +23,11 @@ class Product extends Model implements Searchable
 
        public function getSearchResult(): SearchResult
        {
-        $url = url('show-product/'.$this->product_id);
+        $url = route('product.show', $this->product_id);
         return new SearchResult(
             $this,
             $this->description,
-            $this->$url
+            $url
         );
        }
 }

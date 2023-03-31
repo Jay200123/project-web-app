@@ -21,8 +21,7 @@
 
                 <li class="search-box">
                 <i class='bx bx-search icon'></i>
-                <form method="GET" role="search" action="{{url('/search')}}">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <form method="GET" role="search" action="{{route('search')}}">
                 <input type="text" name="search" placeholder="Search...">
                 </form>
                 </li>

@@ -1,4 +1,10 @@
 @extends('layouts.master')
+@section('content')
+<div class="tuf" align="center">
+    <img src="/../images/MTICS.png" width="150px" height="150px">
+</div>
+<h3>Search Product</h3>
+<link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
 <table class="table table-striped">
     <thead>
       <tr>
@@ -16,3 +22,4 @@
         </tr>
     </tbody>
 </table>
+@endsection

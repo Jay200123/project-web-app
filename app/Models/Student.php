@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Searchable\Searchable;
+use Spatie\Searchable\SearchResult;
 use App\Models\User;
 
-class Student extends Model
+class Student extends Model implements Searchable
 {
     use HasFactory;
 
@@ -30,6 +32,16 @@ class Student extends Model
 
     public function logs(){
         return $this->hasMany(LogBook::class, 'student_id');
+    }
+
+    public function getSearchResult(): SearchResult
+    {
+     $url = route('student.show', $this->student_id);
+     return new SearchResult(
+         $this,
+         $this->fname,
+         $url
+     );
     }
 
     

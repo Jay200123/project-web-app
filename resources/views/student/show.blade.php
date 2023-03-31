@@ -19,6 +19,9 @@
        </tr>
     </thead>
 
+    @if($student->members->count() === 0)
+        <h2>Student Has No Membership Records!</h2>
+    @else
     <tbody>
     @foreach($student->members as $members)
         <tr>
@@ -33,5 +36,6 @@
         </tr>
         @endforeach
     </tbody>
+    @endif
 </table>
 @endsection

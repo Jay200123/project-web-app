@@ -19,8 +19,10 @@
                 <ul class="menu-links">
 
                 <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
+                <i class='bx bx-search icon'></i>
+                <form method="GET" role="search" action="{{route('search')}}">
+                <input type="text" name="search" placeholder="Search...">
+                </form>
                 </li>
                 
                     <li class="nav-link">
