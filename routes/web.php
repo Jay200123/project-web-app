@@ -74,6 +74,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('checkout', [CartController::class, 'postCheckout'])->name('checkout'); //routes for checkout
 
         Route::get('/show-product/{id}', [ProductController::class, 'show'])->name('product.show'); //routes for product search
+        Route::get('/show-event/{id}', [EventsController::class, 'show'])->name('event.show');
     });
 
     Route::group(['middleware' => 'role:officer,president'], function(){

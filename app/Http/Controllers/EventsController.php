@@ -23,6 +23,12 @@ class EventsController extends Controller
         return view('announcements.create');
     }
 
+    public function show($id){
+
+        $event = Events::findOrFail($id);
+        return view('announcements.show', compact('event'));
+    }
+
     public function store(Request $request){
 
         //fetch and store the data from the create form through post http request
