@@ -132,6 +132,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('event/create', [EventsController::class, 'create'])->name('events.create'); //routes for getting the create form
         Route::post('event/store', [EventsController::class, 'store'])->name('events.store'); //routes for store data in events
         Route::get('/events', [EventsController::class, 'getEvents'])->name('getEvents'); //routes for event datatable
+        Route::get('/event/{id}/edit', [EventsController::class, 'edit'])->name('events.edit');
         Route::delete('/event/{id}', [EventsController::class, 'destroy'])->name('events.destroy'); //routes for deleting event
 
         //Routes for Orders

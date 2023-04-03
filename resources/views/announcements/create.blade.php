@@ -1,6 +1,8 @@
 @extends('layouts.officer_master')
+@section('title')
+Event Forms
+@endsection
 @section('content')
-
 <style>
     .container {
       max-width: 450px;
@@ -9,14 +11,13 @@
       margin-top: 50px;
     }
 </style>
-
-
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+<div class="margin">
 <div class="card push-top">
   <div class="card-header">
   <h3>Welcome to MTICS Official Website<i class="fa fa-globe" aria-hidden="true"></i></h3>
-  <h5>Make an Event</h5>
   </div>
-
+  <h3>Make an Event</h3>
   <div class="push-top">
     @if(session()->get('success'))
       <div class="alert alert-success">
@@ -58,9 +59,10 @@
           @enderror
    
           </div>
-          <button type="submit" class="btn btn-block btn-danger">Submit Event</button>
+          <button type="submit" class="btn btn-block btn-success">Submit Event</button>
       </form>
 
 </div>
 </div>
+  </div>
 @endsection

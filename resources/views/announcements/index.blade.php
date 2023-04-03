@@ -39,7 +39,7 @@ MTICS Event Records
 <h3 style="text-align:center">MTICS Event Records</h3>
 <div class="margin">
 <div class="col col-md-6">
-    <a href="#" class="btn btn-success btn-sm">Add New Event</a>
+    <a href="{{route('events.create')}}" class="btn btn-success btn-sm">Add New Event</a>
   </div>
   <table class="table">
     <thead>
@@ -62,7 +62,7 @@ MTICS Event Records
             <td>{{$event->date_occured}}</td>
             <td><img src="{{ asset($event->event_image) }}" width = "120" height="90" alt="event.jpeg"></td>
             <td class="text-center">
-            <a href="#" class ="btn btn-primary btn-sm">Edit</a>
+            <a href="{{route('events.edit', $event->event_id)}}" class ="btn btn-primary btn-sm">Edit</a>
             <td>
             <form method="post" action="{{route('events.destroy', $event->event_id)}}">
                 @csrf
