@@ -26,7 +26,7 @@ class LoginController extends Controller
             }
             
             else if(auth()->user()->role === 'student'){
-                return redirect()->route('events.index');
+                return redirect()->route('events.page');
             }
             else{
                 return redirect()->route('student.profile');

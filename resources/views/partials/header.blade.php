@@ -67,7 +67,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="{{route('events.index')}}">
+                        <a href="{{route('events.page')}}">
                             <i class='bx bx-bell icon'></i>
                             <span class="text nav-text">Events</span>
                         </a>

@@ -13,10 +13,17 @@ class EventsController extends Controller
     public function index(){
         
         // fetch all the data from the events table 
-        $events = Events::All();
+        $events = Events::orderBy('event_id','ASC')->paginate('5');
         return view('announcements.index',compact('events'));
 
     }
+
+    public function getPage(){
+
+        $events = Events::all();
+        return view('announcements.page', compact('events'));
+
+     }
 
     public function create(){
         // redirect to create views for events 
@@ -62,7 +69,7 @@ class EventsController extends Controller
         // find the  id and perform a delete function
         Events::find($id)->delete();
 
-        return redirect()->route('getEvents')->with('success','Event Successfully Removed');
+        return redirect()->route('events.index')->with('success','Event Successfully Removed');
     }
 
     public function getEvents(EventsDataTable $dataTable){

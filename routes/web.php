@@ -59,7 +59,7 @@ Route::group(['prefix' => 'user'], function(){
 
 
     Route::group(['middleware' => 'role:student'], function(){
-        Route::get('annoucements', [EventsController::class, 'index'])->name('events.index'); // routes for accessing events
+        Route::get('annoucements', [EventsController::class, 'getPage'])->name('events.page'); // routes for accessing events
         Route::get('student/{id}/edit', [StudentController::class, 'edit'])->name('students.edit'); // routes for student editing
         Route::put('student/{id}/update', [StudentController::class, 'update'])->name('students.update'); //routes for updating
         Route::get('students/service-form', [ServiceController::class, 'studentCreate'])->name('students.service'); // routes for service form exclusive for students
@@ -128,6 +128,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('services', [ServiceController::class, 'getService'])->name('service.datatable'); //routes for service datatable
 
         //routes for events
+        Route::get('/event', [EventsController::class, 'index'])->name('events.index');
         Route::get('event/create', [EventsController::class, 'create'])->name('events.create'); //routes for getting the create form
         Route::post('event/store', [EventsController::class, 'store'])->name('events.store'); //routes for store data in events
         Route::get('/events', [EventsController::class, 'getEvents'])->name('getEvents'); //routes for event datatable

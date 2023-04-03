@@ -65,9 +65,9 @@
                     </li>
 
                     <li class="nav-link">
-                    <a href="{{route('getEvents')}}">
+                    <a href="{{route('events.index')}}">
                             <i class='bx bx-calendar-event icon' ></i>
-                            <span class="text nav-text">Events Setting</span>
+                            <span class="text nav-text">MTICS Events</span>
                         </a>
                     </li>
 

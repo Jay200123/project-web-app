@@ -1,94 +1,87 @@
-@extends('layouts.master')
-@section('content')
-
+@extends('layouts.officer_base')
 @section('title')
-   MTICS Events
-@endsection 
-
+MTICS Event Records
+@endsection
+@section('content')
 <style>
+  .push-top {
+    margin-top: 50px;
+  }
 
-.container {
-    padding-top: 30px;
-    
-
+  .background{
+  background-color: lightblue;
+  color: black;
 }
 
-.row {
-    padding-top: 50px;
-    border-radius: 25px;
-
-  background-color: #fff;
-  padding: 25px 30px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
-
-}
-
-.carousel-caption{
-    top: 590px;
-}
-
-.slider-image {
-  text-align: center;
-}
-
-.slider-image img {
-  max-width: 100%;
-  height: 750px;
-}
-
-
-
-.text {
-    color: #606060;
+.margin{
+  margin-top:50px;
+  margin-bottom:50px;
+  margin-right:50px;
+  margin-left:50px;
+  background: white;
+  width: 90%;
+  border-radius:10px;
+  color:black;
+  padding: 15px;
 }
 </style>
-
-
-
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-<div class="container">
-<div class="text">
-  
-<h2>MTICS EVENTS</h2>
+<body class="background">
+<div class="push-top">
+  @if(session()->get('success'))
+    <div class="alert alert-success">
+      {{ session()->get('success') }}  
+    </div><br />
+  @endif
+  <div class="tuf" align="center">
+    <img src="/../images/MTICS.png" width="150px" height="150px">
 </div>
-<br>
-        <div class="row">    
-                    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-
-                            @foreach($events as $events)
-                                <div class="carousel-item @if($loop->first) active @endif">
-
-                                    <div class="slider-image"  align="center">
-                                    <img src="{{ asset($events->event_image) }}" alt="{{ $events->event_image }}" >
-                                    </div>
-<!-- 
-                                    <div class="carousel-caption" style="text-align: left; color:black;">
-                                    <h1>{{ $events->title }}</h1>
-                                    <h4>will occured at: {{ $events->date_occured }}</h4>
-                                    </div> -->
-
-                                </div>
-                            @endforeach
-                     
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-
-                        </button>
-
-                    </div>
-        </div>
-        </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-  <!----About gallery carousel end---->
-
+ 
+<h3 style="text-align:center">MTICS Event Records</h3>
+<div class="margin">
+<div class="col col-md-6">
+    <a href="#" class="btn btn-success btn-sm">Add New Event</a>
+  </div>
+  <table class="table">
+    <thead>
+        <tr class="table-warning">
+          <td>Event ID</td>
+          <td>Title</td>
+          <td>Date Placed</td>
+          <td>Date Occured</td>
+          <td>Event Image</td>
+          <td class="text-center">Action</td>
+        </tr>
+    </thead>
+    <tbody>
+    @if(!empty($events) && $events->count())
+        @foreach($events as $event)
+        <tr>
+            <td>{{$event->event_id}}</td>
+            <td>{{$event->title}}</td>
+            <td>{{$event->date_placed}}</td>
+            <td>{{$event->date_occured}}</td>
+            <td><img src="{{ asset($event->event_image) }}" width = "120" height="90" alt="event.jpeg"></td>
+            <td class="text-center">
+            <a href="#" class ="btn btn-primary btn-sm">Edit</a>
+            <td>
+            <form method="post" action="{{route('events.destroy', $event->event_id)}}">
+                @csrf
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </td>
+            </td>
+        </tr>
+        @endforeach
+        @else
+                <tr>
+                    <td colspan="10">There are no data.</td>
+                </tr>
+            @endif
+    </tbody>
+  </table>
+  {!! $events->links() !!}
+</div>
+<div>
+</body>
 @endsection
