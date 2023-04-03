@@ -36,6 +36,38 @@ class EventsController extends Controller
         return view('announcements.edit', compact('event'));
     }
 
+    public function update(Request $request, $id){
+
+        $events = Events::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required|max:255',
+            'date_placed' => 'required|max:255',
+            'date_occured' => 'required|max:255',
+            'event_image' => 'mimes:png,jpg,gif,svg'
+        ]);
+
+        $events->title = $request->title;
+        $events->date_placed = $request->date_placed;
+        $events->date_occured = $request->date_occured;
+
+        
+        if($file = $request->hasFile('event_image')){
+            $file = $request->file('event_image');
+            $fileName = $file->getClientOriginalName();
+            $destinationPath  = public_path().'/images';
+            $input['event_image'] = 'images/'.$fileName;
+            $image = $input['event_image'] = 'images/'.$fileName;
+            $file->move($destinationPath, $fileName);
+            $events->event_image = $image;
+            }
+
+            $events->update();
+
+            return redirect()->route('events.index')->with('success', 'Record Successfully Updated');
+
+    }
+
     public function show($id){
 
         $event = Events::findOrFail($id);

@@ -37,8 +37,9 @@ Event Forms
       </div><br/> 
     @endif
 
-      <form method="post" action="#" enctype ="multipart/form-data">
+      <form method="post" action="{{route('events.update', $event->event_id)}}" enctype ="multipart/form-data">
         @csrf
+        @method('PUT')
           <div class="form-group">
               @csrf
               <label for="title">Event Title</label>

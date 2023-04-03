@@ -7,24 +7,8 @@ MTICS Event Records
   .push-top {
     margin-top: 50px;
   }
-
-  .background{
-  background-color: lightblue;
-  color: black;
-}
-
-.margin{
-  margin-top:50px;
-  margin-bottom:50px;
-  margin-right:50px;
-  margin-left:50px;
-  background: white;
-  width: 90%;
-  border-radius:10px;
-  color:black;
-  padding: 15px;
-}
 </style>
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <body class="background">
 <div class="push-top">
   @if(session()->get('success'))
@@ -32,6 +16,7 @@ MTICS Event Records
       {{ session()->get('success') }}  
     </div><br />
   @endif
+  
   <div class="tuf" align="center">
     <img src="/../images/MTICS.png" width="150px" height="150px">
 </div>

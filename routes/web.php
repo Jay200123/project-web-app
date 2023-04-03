@@ -133,6 +133,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::post('event/store', [EventsController::class, 'store'])->name('events.store'); //routes for store data in events
         Route::get('/events', [EventsController::class, 'getEvents'])->name('getEvents'); //routes for event datatable
         Route::get('/event/{id}/edit', [EventsController::class, 'edit'])->name('events.edit');
+        Route::put('/event/{id}/update', [EventsController::class, 'update'])->name('events.update');
         Route::delete('/event/{id}', [EventsController::class, 'destroy'])->name('events.destroy'); //routes for deleting event
 
         //Routes for Orders
