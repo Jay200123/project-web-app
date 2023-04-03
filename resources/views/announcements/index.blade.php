@@ -10,6 +10,13 @@ MTICS Event Records
 </style>
 <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <body class="background">
+  
+  <div class="tuf" align="center">
+    <img src="/../images/MTICS.png" width="150px" height="150px">
+</div>
+ 
+<h3 style="text-align:center">MTICS Event Records</h3>
+
 <div class="push-top">
   @if(session()->get('success'))
     <div class="alert alert-success">
@@ -17,11 +24,6 @@ MTICS Event Records
     </div><br />
   @endif
   
-  <div class="tuf" align="center">
-    <img src="/../images/MTICS.png" width="150px" height="150px">
-</div>
- 
-<h3 style="text-align:center">MTICS Event Records</h3>
 <div class="margin">
 <div class="col col-md-6">
     <a href="{{route('events.create')}}" class="btn btn-success btn-sm">Add New Event</a>

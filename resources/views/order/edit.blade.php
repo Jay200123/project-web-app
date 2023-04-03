@@ -49,11 +49,11 @@ Update Transactions
            <label for="status">Status</label>
               <input type="text" class="form-control" name="status" value="{{ $orders->status }}" readonly/>
           </div>
-
+          
           <div class="user-details">
           @foreach($orders->products as $product)
           <div class="input-box">
-            <label for="product">Orders</label>
+            <label for="product">Items</label>
               <input type="text" class="form-control" name="amount" value="{{$product->description}}" readonly/>
           </div>
           @endforeach

@@ -112,8 +112,6 @@ class ProductController extends Controller
         //updates the data through getting the product id 
         $product = Product::findOrFail($id);
 
-        $input = $request->all(); 
-
          $request->validate([
 
         'description' => 'required|max:255',
@@ -122,6 +120,9 @@ class ProductController extends Controller
             
         ]);
 
+        $product->description = $request->description;
+        $product->price = $request->price;
+
         if($file = $request->hasFile('product_image')) {
         $file = $request->file('product_image');
         $fileName = $file->getClientOriginalName();
@@ -129,14 +130,11 @@ class ProductController extends Controller
         $input['product_image'] = 'img_path/'.$fileName;
         $image = $input['product_image'] = 'img_path/'.$fileName;
         $file->move($destinationPath, $fileName);
-        }
-
-        $product->description = $request->description;
-        $product->price = $request->price;
         $product->product_image = $image;
+        }
         
-        $product->update($input);
-        return redirect()->route('products.datatable')->with('Success', 'Product Record Updated Successfully!!');
+        $product->update();
+        return redirect()->route('product.index')->with('success', 'Product Record Updated Successfully!!');
     }
 
     /**
@@ -151,7 +149,7 @@ class ProductController extends Controller
         //finds the product id to a specific row and perform a delete request
         $product = Product::findOrFail($id);
         $product->delete();
-        return redirect()->route('products.datatable')->with('success', 'Product Successfully Deleted');    
+        return redirect()->route('product.index')->with('success', 'Product Successfully Deleted');    
     }
 
     public function getProduct(ProductDataTable $dataTable){

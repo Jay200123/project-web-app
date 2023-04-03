@@ -10,10 +10,14 @@
     }
 </style>
 
-
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+<body class="background">
+  
+<div class="margin">
+<h3>Welcome to MTICS Official Website<i class="fa fa-globe" aria-hidden="true"></i></h3>
 <div class="card push-top">
   <div class="card-header">
-    Edit Product Record
+   <h3> Edit Product Record</h3>
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -41,7 +45,18 @@
           </div>
 
           <div class="form-group">
-          <label for="imagePath" class="control-label">Product Image</label>
+           <label for="image" class="control-label">Product Image</label>
+           @if ($product->product_image)
+           <div class="image-box">
+            <img class="profile" src="{{ asset($product->product_image) }}" height="250" width="350" alt="event.jpeg">
+            </div>
+          @else
+           <p>No image uploaded</p>
+        @endif
+        </div>
+
+          <div class="form-group">
+          <label for="imagePath" class="control-label">Update Image</label>
           <input type="file" class="form-control"  name="product_image" value="{{asset($product->product_image)}}" multiple>
 
           @error('images')
@@ -49,9 +64,12 @@
           @enderror
    
   </div>
-          <button type="submit" class="btn btn-block btn-danger">Update Product Record</button>
+          <button type="submit" class="btn btn-block btn-success">Update Product Record</button>
       </form>
   </div>
 
 </div>
+
+  </div>
+  </body>
 @endsection

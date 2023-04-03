@@ -10,10 +10,12 @@
     }
 </style>
 
-
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
+<body class="background">
+  <div class="margin">
 <div class="card push-top">
   <div class="card-header">
-    Add New Record
+    Add New Record Products
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -48,9 +50,11 @@
           @enderror
    
   </div>
-          <button type="submit" class="btn btn-block btn-danger">Add New Item</button>
+          <button type="submit" class="btn btn-block btn-success">Add New Item</button>
       </form>
   </div>
 
 </div>
+  </div>
+</body>
 @endsection

@@ -9,23 +9,8 @@ Service Records
 
     
   }
-
-  .margin{
-  margin-top: 75px;
-  margin-left: 75px;
-  margin-right: 75px;
-  border-radius: 5px;
-  width: 90%;
-  background: white;
-  padding: 15px;
-}
-
-.background{
-  background-color: lightblue;
-  color: black;
-}
-
 </style>
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <body class="background">
  
   <div class="tuf" align="center">

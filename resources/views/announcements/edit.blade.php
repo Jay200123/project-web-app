@@ -62,10 +62,10 @@ Event Forms
            <div class="image-box">
             <img class="pic" src="{{ asset($event->event_image) }}" height="200" width="350" alt="event.jpeg">
             </div>
-  @else
-    <p>No image uploaded</p>
-  @endif
-</div>
+          @else
+           <p>No image uploaded</p>
+        @endif
+        </div>
 
           <div class="form-group">
           <label for="image" class="control-label">Update Image</label>
