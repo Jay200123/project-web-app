@@ -122,6 +122,8 @@ Route::group(['prefix' => 'user'], function(){
 
         //edit service
         Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); //routes for service edit
+        Route::delete('service/{id}', [ServiceController::class, 'destroy'])->name('service.delete'); //Routes for Service Delete
+
         Route::put('service/{id}/update', [ServiceController::class, 'update'])->name('service.update'); //routes for service update
         Route::get('services', [ServiceController::class, 'getService'])->name('service.datatable'); //routes for service datatable
 
@@ -159,8 +161,6 @@ Route::group(['prefix' => 'user'], function(){
 
         //Routes for deleting user 
         Route ::delete('users/{id}', [UserController::class, 'delete'])->name('users.delete');    //Routes for deleting user 
-
-        Route::delete('service/{id}', [ServiceController::class, 'destroy'])->name('service.delete'); //Routes for Service Delete
 
         Route::delete('members/{id}', [TransactionsController::class, 'deletemembers'])->name('members.delete'); //Routes for members Delete
 

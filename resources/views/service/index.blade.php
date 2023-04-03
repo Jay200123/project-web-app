@@ -1,4 +1,7 @@
 @extends('layouts.officer_master')
+@section('title')
+Service Records
+@endsection
 @section('content')
 <style>
   .push-top {
@@ -13,21 +16,27 @@
   margin-right: 75px;
   border-radius: 5px;
   width: 90%;
-  background: #FFFFFF;
+  background: white;
   padding: 15px;
 }
 
+.background{
+  background-color: lightblue;
+  color: black;
+}
+
 </style>
-<div class="push-top">
-  @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}  
-    </div><br />
-  @endif
+<body class="background">
  
   <div class="tuf" align="center">
     <img src="/../images/MTICS.png" width="150px" height="150px">
 </div>
+@if ( Session::has('success'))
+      <div class="alert alert-success">
+        <p>{{ Session::get('success') }}</p>
+      </div><br />
+     @endif
+  </div>
 <h3 style="text-align:center">MTICS Service Transactions</h3> 
 <div class="margin">
   <table class="table">
@@ -64,8 +73,11 @@
             <td>{{$services->date_placed}}</td>
             <td class="text-center">
             <a href="{{route('service.edit', $services->service_id)}}" class = "btn btn-primary btn-sm">Update</a>
+            </td>
+            <td>
             <form method="post" action="{{route('service.delete', $services->service_id)}}">
               @csrf
+              @METHOD('DELETE')
               <input type="hidden" name="_method" value="DELETE" />
               <button type="submit" class="btn btn-danger btn-sm">Delete</button>
             </form>
@@ -80,7 +92,8 @@
             @endif
     </tbody>
   </table>
-</div>
   {!! $service->links() !!}
+</div>
   </div>
+</body>
 @endsection

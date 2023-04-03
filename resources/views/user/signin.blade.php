@@ -3,8 +3,13 @@
 User Sign In
 @endsection
 <style>
+  .background{
+    background: linear-gradient(to bottom, #6CA6CD,  #D3D3D3);
+}
+
 </style>
 <link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
+<body class="background">
 @if ($errors->any())
       <div class="alert alert-danger">
         <ul>
@@ -52,6 +57,7 @@ User Sign In
         <div class="signup-link">Not a member? <a href="{{route('student.signup')}}">Signup now</a></div>
       </form>
     </div>
+</body>
 
 
  

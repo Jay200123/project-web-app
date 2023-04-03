@@ -21,7 +21,7 @@ class ProductController extends Controller
     {
 
         //fetch all the data from the product table and passes it to the product index
-        $products = Product::all();
+        $products = Product::orderBy('product_id', 'ASC')->paginate('5');
         return view('product.index', compact('products'));
     }
 

@@ -42,7 +42,7 @@
 
                     <ul class="menu-links">
                     <li class="nav-link">
-                        <a href="{{route('products.datatable')}}">
+                        <a href="{{route('product.index')}}">
                         <i class='bx bxl-product-hunt icon'></i>
                             <span class="text nav-text">Product</span>
                         </a>
