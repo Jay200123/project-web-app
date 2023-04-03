@@ -53,7 +53,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->delete();
 
-        return redirect()->routes('users.datatable')->with('success', 'Record Deleted Successfully');
+        return redirect()->route('users.datatable')->with('success', 'Record Deleted Successfully');
     }
 
     public function changePassword(){

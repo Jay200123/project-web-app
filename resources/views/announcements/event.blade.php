@@ -4,9 +4,13 @@
 @section('title')
    MTICS Events Setting
 @endsection 
-<div class="row">
+<style>
+  .vertical-center {
+  text-align:center;
+}
+</style>
 <br>
-<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+<div class="vertical-center">
   <a href="#" class="btn btn-success btn-sm" data-toggle="modal" data-target="#serviceModal"><strong> Add New Event</strong></a>
 </div>
 
@@ -63,7 +67,6 @@
 </div>
 </div>
 </div> 
-</div>
 
 @push('scripts')
     {{$dataTable->scripts()}}

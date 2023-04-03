@@ -61,7 +61,7 @@
                     </li>
 
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{route('shop.index')}}">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>
                             <span class="text nav-text">Shop</span>
                         </a>

@@ -62,7 +62,7 @@ class EventsController extends Controller
         // find the  id and perform a delete function
         Events::find($id)->delete();
 
-        return redirect()->route('announcements.index')->with('success','Event Successfully Removed');
+        return redirect()->route('getEvents')->with('success','Event Successfully Removed');
     }
 
     public function getEvents(EventsDataTable $dataTable){

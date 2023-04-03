@@ -73,7 +73,7 @@ class EventsDataTable extends DataTable
                         // Button::make('export'),
                         // Button::make('print'),
                         // Button::make('reset'),
-                        Button::make('reload')
+                        // Button::make('reload')
                     ]);
     }
 
@@ -86,7 +86,7 @@ class EventsDataTable extends DataTable
     {
         return [
                   
-            Column::make('event_id'),
+            Column::make('event_id')->title('Event ID'),
             Column::make('title'),
             Column::make('date_placed'),
             Column::make('date_occured'),

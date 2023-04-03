@@ -64,11 +64,11 @@
                                     <div class="slider-image"  align="center">
                                     <img src="{{ asset($events->event_image) }}" alt="{{ $events->event_image }}" >
                                     </div>
-
+<!-- 
                                     <div class="carousel-caption" style="text-align: left; color:black;">
                                     <h1>{{ $events->title }}</h1>
                                     <h4>will occured at: {{ $events->date_occured }}</h4>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                             @endforeach
