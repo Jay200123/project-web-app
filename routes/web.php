@@ -92,6 +92,7 @@ Route::group(['prefix' => 'user'], function(){
         Route::put('officer/{id}/timeout/update', [LogBookController::class, 'update'])->name('officer.timeouts'); //routes for updating time out
 
         Route::get('/show-user/{id}', [StudentController::class, 'show'])->name('student.show');
+        Route::get('/show-service/{id}', [ServiceController::class, 'show'])->name('service.show');
 
     });
 
@@ -219,3 +220,5 @@ Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
    Route::get('/search/{search?}', [SearchController::class, 'search'])->name('search'); // routes for searching a specific product
 
 });
+
+Route::get('/orders', [DashboardController::class, 'orderProducts']);

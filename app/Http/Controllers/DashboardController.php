@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Order;
 
 class DashboardController extends Controller
 {
@@ -60,5 +61,20 @@ class DashboardController extends Controller
 
         return response()->json(array('data' => $data, 'labels' => $labels));
         
+    }
+
+    public function orderProducts(){
+
+      $products = DB::table('orderinfo')
+        ->leftJoin('orderline', 'orderinfo.id', '=', 'orderline.orderinfo_id')
+        ->leftJoin('products', 'orderline.product_id', '=', 'products.product_id')
+        ->groupBy('products.description')
+        ->orderBy('total')
+        ->pluck(DB::raw('count(products.description) as total'), 'products.description')->all();
+
+        $labels = (array_keys($products));
+        $data  = array_values($products);
+
+        return response()->json(array('data' => $data, 'labels' => $labels));
     }
 }

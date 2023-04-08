@@ -213,7 +213,50 @@ $(document).ready(function () {
             console.log(error);
         }
     });
-
-
+        $.ajax({
+            type: "GET",
+            url: "/api/chart/orders",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+        
+                new Chart(document.getElementById("orderChart"), {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Total Products Ordered',
+                            data: data.data,
+                        backgroundColor: [
+                            "#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(255,99,132,1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            stepSize: 1
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Total Products Ordered by Order'
+                        }
+                    }
+                }
+            });
+    
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
 
 });

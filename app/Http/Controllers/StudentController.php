@@ -54,7 +54,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        $student = Student::with('members')->findOrFail($id);
+        $student = Student::with('members','orders')->findOrFail($id);
         return view('student.show', compact('student'));
     }
 

@@ -60,6 +60,13 @@
     </div>
     </div>
 
+    <div class="row">
+    <div class="card">
+      <canvas id="orderChart"></canvas>
+    </div>
+    </div>
+
+
 
 </div>
 </div>
