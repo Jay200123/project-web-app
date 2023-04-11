@@ -1,5 +1,4 @@
-edit
-@extends('layouts.master')
+@extends('layouts.officer_master')
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
 <div class="card-body">

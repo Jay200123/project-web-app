@@ -61,30 +61,41 @@ Officer Profile
         </div>
 
         <div class="social_media">
+
+        <ul>
+            <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <a href="{{route('officers.edit', $officer->student_id)}}" type="button" class="btn btn-success m-2" id="button1">Update Record
+              </a>
+            </div>
+          </div>
+        </ul>
+          
+
             <ul>
             <div class="row">
             <div class="col-sm-6 col-md-6">
-            <a href="{{route('officers.edit', $officer->student_id)}}" type="button" class="btn btn-success">Update</a>
-            </div>
-            </div>
-          </ul>
-          <ul>
-            <div class="row">
-            <div class="col-sm-6 col-md-6">
-            <a href="{{route('officer.timeIn')}}" type="button" class="btn btn-primary">Time In</a>
-            </div>
-            </div>
-          </ul>
-
-          <ul>
-            <div class="row">
-            <div class="col-sm-6 col-md-6">
-            <a href="{{route('officer.timeOut', $officer->user_id)}}" type="button" class="btn btn-primary">Time Out  </a>
-            </div>
-            </div>
-          </ul>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Log Records</button>
         </div>
+          </ul>
 
+              <ul>
+            <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <a href="{{route('officer.timeIn')}}" type="button" class="btn btn-primary" id="button1">Time In</a>
+            </div>
+          </div>
+        </ul>
+
+        <ul>
+          <div class="row">
+            <div class="col-sm-6 col-md-6">
+              <a href="{{route('officer.timeOut', $officer->user_id)}}" type="button" class="btn btn-primary" id="button2">Time Out</a>
+            </div>
+          </div>
+        </ul>
+
+        </div>
         <br>
       
       <div class="projects">
@@ -104,18 +115,29 @@ Officer Profile
               </div>
             </div>
 </div>      
-    </div>
+</div>
 </div>
 
-<div class="card">
-    <div class="margin">
-        <div class="container mt-3">
-            <h3 class="text-center">My Past Log Records</h3>
+
+       
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Log Records</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <h3 class="text-center">Past Log Records</h3>
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="card">
                         @if($officer->logs->count() === 0)
-                        <h2>You Don't Have Any LogBook Records Yet!</h2>
+                        <h2 class="text-center">No Records Yet!</h2>
                         @else
                         @foreach($officer->logs as $logs)
                         <div class="card-body">
@@ -128,7 +150,14 @@ Officer Profile
                     </div>
                 </div>
             </div>
-        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
     </div>
+  </div>
 </div>
+
 @endsection

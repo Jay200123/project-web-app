@@ -172,7 +172,7 @@ class ServiceController extends Controller
             $service->update();
             Event::dispatch(new ServiceMail($service)); //sends an email to the user detailing the service
 
-            return redirect()->route('service.index')->with('success', 'Transaction Updated Sucessfully');
+            return redirect()->route('service.datatable')->with('success', 'Transaction Updated Sucessfully');
 
 
     }
@@ -189,7 +189,7 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
         $service->delete();
 
-        return redirect()->route('service.index')->with('success', 'Record Deleted');
+        return redirect()->back()->with('success', 'Record Deleted');
         
     }
 

@@ -1,19 +1,23 @@
 @extends('layouts.master')
 @section('title')
+
 Student Profile
 @endsection
 @section('content')
+
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 <link rel="icon" href="{{asset('images/MTICS.png')}}" type = "image/x-icon"> 
 <link rel="stylesheet" type="text/css" href="{{asset('css/profile.css')}}">
+
 <div class="container">
-    <br />
-    @if ( Session::has('success'))
-      <div class="alert alert-success">
+<br/>
+@if ( Session::has('success'))
+    <div class="alert alert-success">
         <p>{{ Session::get('success') }}</p>
-      </div><br />
-     @endif
-  </div>
+    </div>
+    <br/>
+@endif
+</div>
   
 @if ($errors->any())
       <div class="alert alert-danger">
@@ -26,7 +30,6 @@ Student Profile
   </div>     
 @endif
 
-
 <div align="right">
 <span class="image">
     <img src="/../images/MTICS1.png" width="500px">
@@ -34,7 +37,6 @@ Student Profile
 </div>
 
 <div class="wrapper">
-  
     <div class="left" id="stud">
         <div class="stud">
         <img src="{{ asset($student->student_image) }}" alt="user">
@@ -76,10 +78,16 @@ Student Profile
           <ul>
             <div class="row">
             <div class="col-sm-6 col-md-6">
-            <a href="{{route('students.edit', $student->student_id)}}" type="button" class="btn btn-primary">Update  Record<Datag></Datag></a>
+            <a href="{{route('students.edit', $student->student_id)}}" type="button" class="btn btn-primary">Update Record<Datag></Datag></a>
             </div>
             </div>
           </ul>
+        </div>
+
+        <div class="row">
+        <div class="col-sm-6 col-md-6">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">My Order List</button>
+        </div>
         </div>
 
         <br>
@@ -107,13 +115,23 @@ Student Profile
     </div>
 </div>
 
-<div class="card">
-<div class="margin">
-<div class="container mt-3">
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Order List</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
     @if($orders->isEmpty())
         <h2>You Don't Have Any Orders yet!</h2>
     @else
         <h3 class="text-center">My Orders</h3> 
+        
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach($orders as $order)
                 @foreach($order->products as $product)
@@ -134,7 +152,15 @@ Student Profile
             @endforeach
         </div>
     @endif
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
+
 @endsection

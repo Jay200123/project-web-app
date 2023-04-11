@@ -38,7 +38,7 @@
                     <ul class="menu-links">
                     <li class="nav-link">
                         <a href="{{route('students.service')}}">
-                            <i class='bx bx-abacus icon'></i>
+                        <i class='bx bx-printer icon'></i>
                             <span class="text nav-text">Printing Services</span>
                         </a>
                     </li>
