@@ -117,22 +117,14 @@ class TallyController extends Controller
           $total = 0;
 
           // Sum up the value of the "total" column for each variable
-          $total += $finished[0]->total;
-          $total += $process[0]->total;
-          $total += $small[0]->total;
-          $total += $lace[0]->total;
-          $total += $medium[0]->total;
-          $total += $large[0]->total;
-          $total += $print[0]->total;
-          $total += $colored[0]->total;
-          $total += $black[0]->total;
-          $total += $sml[0]->total;
-          $total += $mdm[0]->total;
-          $total += $lrg[0]->total;
-          $total += $a4[0]->total;
-          $total += $member[0]->total;
-          $total += $unpaid[0]->total;
-          $total += $paid[0]->total;
+          $total += $finished[0]->total; // gets the sum for finished orders
+          $total += $print[0]->total; //gets the sum for paid printing services
+          $total += $paid[0]->total; // gets the sum for paid membership
+
+          $total2 = 0;
+
+          $total2 += $process[0]->total;
+          $total2 += $unpaid[0]->total;
 
          $data = [
              'finished' => $finished,
@@ -153,7 +145,7 @@ class TallyController extends Controller
              'paid' => $paid,
          ];
  
-         return view('tally', compact('data', 'total'));
+         return view('tally', compact('data', 'total', 'total2'));
      }
 
 }
