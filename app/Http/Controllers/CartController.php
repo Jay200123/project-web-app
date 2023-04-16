@@ -7,7 +7,6 @@ use App\Models\Student;
 use App\Models\Product;
 use App\Models\Order;
 use App\Cart;
-use DomPDF;
 use Carbon\Carbon;
 
 use Session;
@@ -99,33 +98,13 @@ class CartController extends Controller
                 ]);
             }
 
-            $products = $order->products;
-
-            $data = [   
-                'title' => 'MTICS Merchandise',
-                'order_id' =>  $order->id,
-                'date_placed' => $order->date_placed,
-                'date_paid' => now(),
-                'fname' => $order->student->fname,
-                'lname' => $order->student->lname,
-                'section' => $order->student->section,
-                'products' => $products,
-            ];
-
-            $pdf = DomPDF::loadView('shop.reciept', $data)->setOptions(['defaultFont' => 'sans-serif']);
-
         } catch(Exception $e) {
             DB::rollBack();
             return redirect()->route('shop.shopping-cart')->with('error', $e->getMessage());
         }
-             
         DB::commit();
-       
         Session::forget('Cart');
-
-        Session::flash('success', 'Transaction Successful');
-
-        return $pdf->download('shopreciept.pdf', ['order' =>$order]);
-
+        return redirect()->route('shop.index')->with('success', 'Transaction Placed Successfully!');
     }
+
 }

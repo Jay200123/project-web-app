@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\DataTables\OrderDataTable;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\Order;
+use DomPDF;
 
 class OrderController extends Controller
 {
@@ -85,15 +86,30 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $orders = Order::find($id);
+        $order = Order::find($id);
 
-        $orders->date_placed = $request->date_placed;
-        $orders->status = "Finished";
+        $order->date_placed = $request->date_placed;
+        $order->status = "Finished";
+
+        $products = $order->products;
+
+        $data = [   
+            'title' => 'MTICS Merchandise',
+            'order_id' =>  $order->id,
+            'date_placed' => $order->date_placed,
+            'date_paid' => now(),
+            'fname' => $order->student->fname,
+            'lname' => $order->student->lname,
+            'section' => $order->student->section,
+            'products' => $products,
+        ];
+
+        $pdf = DomPDF::loadView('shop.reciept', $data)->setOptions(['defaultFont' => 'sans-serif']);
 
         // dd($orders);
-        $orders->update();
+        $order->update();
 
-        return redirect()->route('order.index')->with('success', 'Order Transaction Updated Successfully');
+        return $pdf->download('shopreciept.pdf', ['order' =>$order]);
     }
 
     /**
