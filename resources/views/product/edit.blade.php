@@ -2,34 +2,31 @@
 @section('content')
 
 <style>
-    .container {
-      max-width: 450px;
-    }
-    .push-top {
-      margin-top: 50px;
-    }
-</style>
 
-<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-<body class="background">
-  
-<div class="margin">
-<h3>Welcome to MTICS Official Website<i class="fa fa-globe" aria-hidden="true"></i></h3>
-<div class="card push-top">
-  <div class="card-header">
-   <h3> Edit Product Record</h3>
-  </div>
-  <div class="card-body">
+  .profile{
+    border-radius: 50%;
+    border: solid 1px;
+  }
+  </style>
+
+
+<link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
+<div class="card-body">
     @if ($errors->any())
+    <h1>Update Service Record</h1>
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
             @endforeach
         </ul>
-      </div><br/>
-    @endif
-    
+      </div><br />
+@endif
+<br>
+ <div class="container">
+    <div class="title">Update Service</div>
+    <div class="content">
+    <br>
       <form method="post" action="{{ route('product.update', $product->product_id) }}" enctype ="multipart/form-data">
         @csrf
         @METHOD('PUT')
@@ -43,7 +40,6 @@
               <label for="price">Price</label>
               <input type="number" class="form-control" name="price" value="{{$product->price}}"/>
           </div>
-
           <div class="form-group">
            <label for="image" class="control-label">Product Image</label>
            @if ($product->product_image)

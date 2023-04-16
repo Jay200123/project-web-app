@@ -1,49 +1,52 @@
-@extends('layouts.officer_base')
+@extends('layouts.officer_master')
+@section('title')
+Shop Product
+@endsection
 @section('content')
+
 <style>
   .push-top {
     margin-top: 50px;
   }
 
-  .background{
-  background-color: lightblue;
-  color: black;
-}
-
-.margin{
-  margin-top:50px;
-  margin-bottom:50px;
-  margin-right:50px;
-  margin-left:50px;
-  background: white;
+  .content{
+  margin-top: 75px;
+  margin-left: 75px;
+  margin-right: 75px;
+  border-radius: 5px;
   width: 90%;
-  border-radius:10px;
-  color:black;
-  padding: 15px;
-}
+  background: #FFFFFF;
+  padding: 10px;   
+    }
+
 </style>
-<body class="background">
-  <div class="tuf" align="center">
-    <img src="/../images/MTICS.png" width="150px" height="150px">
-</div>
- 
-<h3 style="text-align:center">Product Records</h3>
+
+
 
 <div class="push-top">
-  @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}  
-    </div><br />
-  @endif
+<div class="card-body">
+@if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+  </div> 
 
-<div class="margin">
+<br>
+
+<div class="tuf" align="center">
+    <img src="/../images/MTICS.png" width="150px" height="150px">
+</div>
+
+<h3 style="text-align:center">MTICS Shop Products</h3> 
+<div class="content">
 <div class="col col-md-6">
     <a href="{{route('product.create')}}" class="btn btn-success btn-sm">Add New Product</a>
   </div>
   <table class="table">
     <thead>
         <tr class="table-warning">
-          <td> Product ID</td>
+          <td>Product ID</td>
           <td>Description</td>
           <td>Price</td>
           <td>Image</td>
@@ -78,7 +81,7 @@
     </tbody>
   </table>
   {!! $products->links() !!}
-</div>
-<div>
-</body>
+  </div>
+  
+  <footer style="text-align:center">@2023 Manila Technician Institute Computer Society TUP Taguig All rights reserved.</footer>
 @endsection

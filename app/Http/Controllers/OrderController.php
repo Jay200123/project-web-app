@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\DataTables\OrderDataTable;
+use Yajra\DataTables\Facades\DataTables;
 use App\Models\Order;
 
 class OrderController extends Controller
@@ -106,5 +108,12 @@ class OrderController extends Controller
         $orders->delete();
 
         return redirect()->route('order.index')->with('success','Transaction Record Deleted Successfully');
+    }
+
+    public function getOrder(OrderDataTable $dataTable){
+
+        $orders = Order::with([])->get();
+        return $dataTable->render('order.orders');
+
     }
 }

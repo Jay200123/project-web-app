@@ -65,7 +65,7 @@
 
           <div class="input-box">
           <label for="file">Photo</label>
-            <input type="file" class="form-control" name="city"value="{{asset($students->student_image)}}"/>
+            <input type="file" class="form-control" name="student_image" value="{{asset($students->student_image)}}"/>
           </div>
   
           </div>

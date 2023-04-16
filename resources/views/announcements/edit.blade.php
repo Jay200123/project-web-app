@@ -3,39 +3,24 @@
 Event Forms
 @endsection
 @section('content')
-<style>
-    .container {
-      max-width: 450px;
-    }
-    .push-top {
-      margin-top: 50px;
-    }
-</style>
-<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-<div class="margin">
-<div class="card push-top">
-  <div class="card-header">
-  <h3>Welcome to MTICS Official Website<i class="fa fa-globe" aria-hidden="true"></i></h3>
-  </div>
-  <h3>Edit Event</h3>
-  <div class="push-top">
-    @if(session()->get('success'))
-      <div class="alert alert-success">
-        {{ session()->get('success') }}  
-      </div><br />
-    @endif
 
-  <div class="card-body">
+<link rel="stylesheet" type="text/css" href="{{asset('css/signup.css')}}">
+<div class="card-body">
     @if ($errors->any())
-    <h1>Sign Up</h1>
+    <h1>Update Service Record</h1>
       <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
               <li>{{ $error }}</li>
             @endforeach
         </ul>
-      </div><br/> 
-    @endif
+      </div><br />
+@endif
+<br>
+ <div class="container">
+    <div class="title">Update Events</div>
+    <div class="content">
+    <br>
 
       <form method="post" action="{{route('events.update', $event->event_id)}}" enctype ="multipart/form-data">
         @csrf
@@ -56,6 +41,7 @@ Event Forms
               <input type="date" class="form-control" name="date_occured" value="{{$event->date_occured}}"/>
           </div>
 
+       
           <div class="form-group">
            <label for="image" class="control-label">Event Image</label>
            @if ($event->event_image)
@@ -76,9 +62,11 @@ Event Forms
           @enderror
    
           </div>
-          <button type="submit" class="btn btn-block btn-success">Update Event</button>
+          
+          <div class="button">
+          <input type="submit" value="Update Event">
+        </div> 
       </form>
-
 </div>
 </div>
   </div>

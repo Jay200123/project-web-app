@@ -69,7 +69,7 @@ class ProductController extends Controller
 
         $product->save(); //saves the data 
 
-       return redirect()->route('products.datatable')->with('success','Product Successfully Added');
+       return redirect()->route('product.index')->with('success','Product Successfully Added');
 
     }
 

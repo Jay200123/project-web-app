@@ -22,9 +22,27 @@ class OrderDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
-        return (new EloquentDataTable($query))
-            ->addColumn('action', 'order.action')
-            ->setRowId('id');
+
+        $orders = Order::with(['student','products']);
+        return datatables()
+        ->eloquent($orders)
+        ->addColumn('action', function($row){
+            return "<a href=". route('order.edit', $row->order_id)." class=\"btn btn-warning\">Edit</a>".
+                "<form action=". route('order.delete', $row->order_id) ." method=\"POST\" >". csrf_field().
+                '<input name="_method" type="hidden" value="DELETE">
+                <button class="btn btn-danger" type="submit">Delete</button>
+                </form>';
+        })
+
+        ->addColumn('orders', function(Member $orders){
+           return $orders->products->map(function($products){
+
+            return "<li>".$products->description. "</li>";
+           })->implode('<br>');
+        })
+    
+        ->rawColumns(['orders','action']);
+
     }
 
     /**

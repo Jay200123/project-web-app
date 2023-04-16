@@ -15,6 +15,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TallyController;
 
 
 
@@ -222,3 +223,7 @@ Route::get('logout', [LoginController::class, 'logout'])->name('user.logout');
 });
 
 Route::get('/orders', [DashboardController::class, 'orderProducts']);
+
+Route::get('/order-datatable', [OrderController::class, 'getOrder'])->name('order.datatable');
+
+Route::get('/transactions',[TallyController::class, 'testTally'])->name('test.tally');

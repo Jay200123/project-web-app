@@ -26,6 +26,13 @@
 
                 <ul class="menu-links">
 
+                <li class="nav-link">
+                        <a href="{{route('test.tally')}}">
+                            <i class='bx bx-bar-chart-alt-2 icon' ></i>
+                            <span class="text nav-text">Transactions</span>
+                        </a>
+                    </li>
+
                     <li class="nav-link">
                         <a href="{{route('dashboard.index')}}">
                             <i class='bx bx-bar-chart-alt-2 icon' ></i>

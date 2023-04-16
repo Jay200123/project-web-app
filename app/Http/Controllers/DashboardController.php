@@ -77,4 +77,5 @@ class DashboardController extends Controller
 
         return response()->json(array('data' => $data, 'labels' => $labels));
     }
+
 }

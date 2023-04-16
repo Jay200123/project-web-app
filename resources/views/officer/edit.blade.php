@@ -59,7 +59,7 @@
 
           <div class="input-box">
           <label for="city">City</label>
-            <input type="text" class="form-control" name="city"value="{{ $officer->city }}"/>
+            <input type="text" class="form-control" name="city" value="{{ $officer->city }}"/>
           </div>
 
           <div class="input-box">

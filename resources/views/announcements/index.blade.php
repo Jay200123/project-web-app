@@ -1,4 +1,4 @@
-@extends('layouts.officer_base')
+@extends('layouts.officer_master')
 @section('title')
 MTICS Event Records
 @endsection
@@ -7,27 +7,42 @@ MTICS Event Records
   .push-top {
     margin-top: 50px;
   }
+
+  .content{
+  margin-top: 75px;
+  margin-left: 75px;
+  margin-right: 75px;
+  border-radius: 5px;
+  width: 90%;
+  background: #FFFFFF;
+  padding: 10px;   
+    }
+
 </style>
-<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
-<body class="background">
-  
-  <div class="tuf" align="center">
-    <img src="/../images/MTICS.png" width="150px" height="150px">
-</div>
- 
-<h3 style="text-align:center">MTICS Event Records</h3>
+
+
 
 <div class="push-top">
-  @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}  
-    </div><br />
-  @endif
-  
-<div class="margin">
+<div class="card-body">
+@if ($message = Session::get('success'))
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+  </div> 
+
+<br>
+
+<div class="tuf" align="center">
+    <img src="/../images/MTICS.png" width="150px" height="150px">
+</div>
+
+<h3 style="text-align:center">MTICS Shop Products</h3> 
+<div class="content"> 
 <div class="col col-md-6">
     <a href="{{route('events.create')}}" class="btn btn-success btn-sm">Add New Event</a>
-  </div>
+</div>
+
   <table class="table">
     <thead>
         <tr class="table-warning">
@@ -68,7 +83,7 @@ MTICS Event Records
     </tbody>
   </table>
   {!! $events->links() !!}
-</div>
-<div>
-</body>
+  </div>
+  
+  <footer style="text-align:center">@2023 Manila Technician Institute Computer Society TUP Taguig All rights reserved.</footer>
 @endsection
