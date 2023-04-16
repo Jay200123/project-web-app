@@ -10,6 +10,7 @@ Printing Service Records
     padding-right: 60px;
     padding-left: 280px;
     padding-left: 60;
+    
   }
 
   .row{
@@ -24,7 +25,7 @@ Printing Service Records
 </style>
 
 <div class="container">
-  <h3 class="title1">SERVICE RECORDS</h3>
+<h3 class="title1">SERVICE RECORDS</h3>
     <br />
     @if ( Session::has('success'))
       <div class="alert alert-success">
@@ -35,6 +36,7 @@ Printing Service Records
 <div class="row">
 {{$dataTable->table(['class' => 'table table-bordered table-striped table-hover '], true)}}
 </div>
+
 </div>
 @push('scripts')
     {{$dataTable->scripts()}}

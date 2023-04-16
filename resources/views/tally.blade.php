@@ -181,4 +181,20 @@ Total Page
 
 </div>
 </div>
+
+<h4>Sum of All Membership Transactions:</h4>
+<div class="container">
+<div class="row">
+
+<div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Overall Total From All Transactions</h4>
+          <p class="card-text">Total: (₱{{ $total }})</p>
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>
 @endsection
