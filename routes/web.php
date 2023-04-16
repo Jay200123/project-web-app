@@ -102,6 +102,18 @@ Route::group(['prefix' => 'user'], function(){
         Route::get('/membership', [TransactionsController::class, 'index'])->name('members.index'); //routes for membership index
         Route::get('membership/{id}/edit', [TransactionsController::class, 'editMember'])->name('members.edit'); //routes for edit membership
         Route::put('membership/{id}/update', [TransactionsController::class, 'updateMember'])->name('members.update'); //routes for update
+
+        Route::get('services', [ServiceController::class, 'getService'])->name('service.datatable'); //routes for service datatable
+        Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); //routes for service edit
+        Route::put('service/{id}/update', [ServiceController::class, 'update'])->name('service.update'); //routes for service update
+        Route::delete('service/{id}', [ServiceController::class, 'destroy'])->name('service.delete'); //Routes for Service Delete
+
+        //Routes for Orders
+        Route::get('order', [OrderController::class, 'index'])->name('order.index');
+        Route::get('order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
+        Route::put('order/{id}/update', [OrderController::class, 'update'])->name('order.update');
+        Route::delete('order/{id}', [OrderController::class, 'destroy'])->name('order.delete');
+        
     });
 
     Route::group(['middleware' => 'role:officer'], function(){
@@ -122,13 +134,6 @@ Route::group(['prefix' => 'user'], function(){
         //routes for excel product import
         Route::post('product/import', [ProductController::class, 'import'])->name('product.import');
 
-        //edit service
-        Route::get('service/{id}/edit', [ServiceController::class, 'edit'])->name('service.edit'); //routes for service edit
-        Route::delete('service/{id}', [ServiceController::class, 'destroy'])->name('service.delete'); //Routes for Service Delete
-
-        Route::put('service/{id}/update', [ServiceController::class, 'update'])->name('service.update'); //routes for service update
-        Route::get('services', [ServiceController::class, 'getService'])->name('service.datatable'); //routes for service datatable
-
         //routes for events
         Route::get('/event', [EventsController::class, 'index'])->name('events.index');
         Route::get('event/create', [EventsController::class, 'create'])->name('events.create'); //routes for getting the create form
@@ -138,11 +143,6 @@ Route::group(['prefix' => 'user'], function(){
         Route::put('/event/{id}/update', [EventsController::class, 'update'])->name('events.update');
         Route::delete('/event/{id}', [EventsController::class, 'destroy'])->name('events.destroy'); //routes for deleting event
 
-        //Routes for Orders
-        Route::get('order', [OrderController::class, 'index'])->name('order.index');
-        Route::get('order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
-        Route::put('order/{id}/update', [OrderController::class, 'update'])->name('order.update');
-        Route::delete('order/{id}', [OrderController::class, 'destroy'])->name('order.delete');
     });
 
     Route::group(['middleware' => 'role:admin'], function(){
