@@ -227,3 +227,5 @@ Route::get('/orders', [DashboardController::class, 'orderProducts']);
 Route::get('/order-datatable', [OrderController::class, 'getOrder'])->name('order.datatable');
 
 Route::get('/transactions',[TallyController::class, 'testTally'])->name('test.tally');
+
+Route::get('transactions-pdf', [TallyController::class, 'generatePDF'])->name('records.pdf');

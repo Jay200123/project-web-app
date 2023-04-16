@@ -6,6 +6,8 @@ Total Page
 <div class="tuf" align="center">
     <img src="/../images/MTICS.png" width="150px" height="150px">
 </div>
+
+<a href="{{ route('records.pdf') }}" type="button" class="btn btn-danger">Generate PDF Report</a>
 <div class="container">
   <h4 style="text-align:center">Sum of all MTICS Transactions</h4>
   =================================================================================================================================================== 
