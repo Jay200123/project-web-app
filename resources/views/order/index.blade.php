@@ -67,13 +67,6 @@ Shop Transactions
             <td class="text-center">
             <a href="{{route('order.edit', $order->id)}}" class = "btn btn-primary btn-sm">Update</a>
             </td>
-            <td>
-            <form method="post" action="{{route('order.delete', $order->id)}}">
-              @csrf
-              <input type="hidden" name="_method" value="DELETE" />
-              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-            </form>
-            </td>
         </tr>
         @endforeach
 

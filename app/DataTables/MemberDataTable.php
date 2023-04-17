@@ -27,13 +27,13 @@ class MemberDataTable extends DataTable
         return datatables()
         ->eloquent($members)
 
-    ->addColumn('action', function($row){   
-        return "<a href=". route('members.edit', $row->info_id)." class=\"btn btn-warning\">Edit</a>".
-        "<form action=". route('members.delete', $row->info_id) ." method=\"POST\" >". csrf_field().
-        '<input name="_method" type="hidden" value="DELETE">
-        <button class="btn btn-danger" type="submit">Delete</button>
-        </form>';
-    })
+    // ->addColumn('action', function($row){   
+    //     return "<a href=". route('members.edit', $row->info_id)." class=\"btn btn-warning\">Edit</a>".
+    //     "<form action=". route('members.delete', $row->info_id) ." method=\"POST\" >". csrf_field().
+    //     '<input name="_method" type="hidden" value="DELETE">
+    //     <button class="btn btn-danger" type="submit">Delete</button>
+    //     </form>';
+    // })
 
     ->addColumn('fname', function(Member $members){
         return $members->student->fname;
@@ -55,7 +55,7 @@ class MemberDataTable extends DataTable
         return $members->stats->date_paid;
     })
 
-    ->rawColumns([ 'fname', 'lname','section','email','amount','date_paid','action']);
+    ->rawColumns([ 'fname', 'lname','section','email','amount','date_paid']);
     }
 
     /**
@@ -110,11 +110,11 @@ class MemberDataTable extends DataTable
             Column::make('Amount')->name('stats.amount')->title('Amount'),
             Column::make('date_placed')->title('Date Placed'),
             Column::make('datepaid')->name('stats.date_paid')->title('Date Paid'),
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
+            // Column::computed('action')
+                //   ->exportable(false)
+                //   ->printable(false)
+                //   ->width(60)
+                //   ->addClass('text-center'),
             // Column::make('add your columns'),
             // Column::make('created_at'),
             // Column::make('updated_at'),

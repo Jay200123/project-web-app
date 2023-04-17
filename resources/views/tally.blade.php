@@ -36,6 +36,7 @@ Total Page
         <div class="card-body">
           <h4 class="card-title">Sum for ID Lace Orders</h4>
           <p class="card-text">Total:(₱{{ $data['lace'][0]->total }})</p>
+          <p class="card-text">Quantity Ordered:({{ $data['lace'][0]->quantity }})</p> 
         </div>
       </div>
     </div>
@@ -46,7 +47,8 @@ Total Page
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Sum for Orders for Small Tech Shirt</h4>
-          <p class="card-text">Total:(₱{{ $data['small'][0]->total }})</p>
+           <p class="card-text">Total:(₱{{ $data['small'][0]->total }})</p>
+           <p class="card-text">Quantity Ordered:({{ $data['small'][0]->quantity }})</p>
         </div>
       </div>
     </div>
@@ -55,7 +57,8 @@ Total Page
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Sum for Orders for Medium Tech Shirt</h4>
-          <p class="card-text">Total: (₱{{ $data['medium'][0]->total }})</p>
+            <p class="card-text">Total: (₱{{ $data['medium'][0]->total }})</p>
+            <p class="card-text">Quantity Ordered:({{ $data['medium'][0]->quantity }})</p>
         </div>
       </div>
     </div>
@@ -64,7 +67,8 @@ Total Page
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Sum for Orders for Large Tech Shirt</h4>
-          <p class="card-text">Total:(₱{{ $data['large'][0]->total }})</p>
+            <p class="card-text">Total:(₱{{ $data['large'][0]->total }})</p>
+            <p class="card-text">Quantity Ordered:({{ $data['large'][0]->quantity }})</p>
         </div>
       </div>
     </div>
@@ -91,6 +95,7 @@ Total Page
         <div class="card-body">
           <h4 class="card-title">Sum for All of the Colored Printing Service</h4>
           <p class="card-text">Total: (₱{{ $data['colored'][0]->total }})</p>
+          <p class="card-text">Quantity: ({{ $data['colored'][0]->quantity }})</p>
         </div>
       </div>
     </div>
@@ -100,6 +105,7 @@ Total Page
         <div class="card-body">
           <h4 class="card-title">Sum for All of the Black and White Printing Service</h4>
           <p class="card-text">Total: (₱{{ $data['black'][0]->total }})</p>
+          <p class="card-text">Quantity: ({{ $data['black'][0]->quantity }})</p>
         </div>
       </div>
     </div>
@@ -115,25 +121,40 @@ Total Page
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Sum for All Small Size Printing Service</h4>
-          <p class="card-text">Total: (₱{{ $data['sml'][0]->total }})</p>
+          @if(count($data['sml']) > 0)
+          <p class="card-text">Total: (₱{{$data['sml'][0]->total }})</p>
+          <p class="card-text">Quantity ({{ $data['sml'][0]->quantity }})</p>
+          @else
+          <p class="card-text">No data found for small size printing service.</p>
+          @endif
         </div>
       </div>
     </div>
 
     <div class="col-md-3">
-      <div class="card">
+    <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Sum for All Medium Size Printing Service</h4>
-          <p class="card-text">Total: (₱{{ $data['mdm'][0]->total }})</p>
+            <h4 class="card-title">Sum for All Medium Size Printing Service</h4>
+            @if (count($data['mdm']) > 0)
+                <p class="card-text">Total: (₱{{ $data['mdm'][0]->total }})</p>
+                <p class="card-text">Quantity ({{ $data['mdm'][0]->quantity }})</p>
+            @else
+                <p class="card-text">No data found for medium size printing service.</p>
+            @endif
         </div>
-      </div>
     </div>
+</div>
 
     <div class="col-md-3">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Sum for All Large Size Printing Service</h4>
+          @if(count($data['lrg']) > 0)
           <p class="card-text">Total: (₱{{ $data['lrg'][0]->total }})</p>
+          <p class="card-text">Quantity ({{ $data['lrg'][0]->quantity }})</p>
+          @else
+          <p class="card-text">No data found for Large size printing service.</p>
+          @endif
         </div>
       </div>
     </div>
@@ -142,7 +163,12 @@ Total Page
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Sum for All A4 Size Printing Service</h4>
+          @if(count($data['a4']) > 0)
           <p class="card-text">Total: (₱{{ $data['a4'][0]->total }})</p>
+          <p class="card-text">Quantity ({{ $data['a4'][0]->quantity }})</p>
+          @else
+          <p class="card-text">No Data Found for A4 Size Printing Service</p>
+          @endif
         </div>
       </div>
     </div>

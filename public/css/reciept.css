@@ -1,0 +1,24 @@
+.university-address {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+footer{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+.test{
+width:100%;
+}

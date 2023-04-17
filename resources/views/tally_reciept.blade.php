@@ -23,6 +23,7 @@ footer{
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
+  padding: 10px;
 }
 th, td {
   padding: 5px;
@@ -45,27 +46,40 @@ width:100%;
 
 <h3>Total for All Orders</h3>
 <table class="test">
+<tr>
+    <th>Orders</th>
+    <th>Quantity</th>
+    <th>Cost</th>
+  </tr>
+
   <tr>
-    <th>ID Lace Orders:</th>
+    <th>MTICS ID Lace</th>
+    <td>{{$lace->quantity}}</td>
     <td> {{$lace->total}}</td>
   </tr>
 
   <tr>
     <th>Tech Shirt (Size Small):</th>
+    <td>{{$small->quantity}}</td>
     <td>{{$small->total}}</td>
   </tr>
 
   <tr>
     <th>Tech Shirt (Size Medium):</th>
+    <td>{{$medium->quantity}}</td>
     <td>{{$medium->total}}</td>
   </tr>
 
   <tr>
     <th>Tech Shirt (Size Large):</th>
+    <td>{{$large->quantity}}</td>
     <td> {{$large->total}}</td>
   </tr>
 
-  <tr>
+</table>
+<h3>Overall Total for Order Transactions</h3>
+<table class="test">
+<tr>
     <th>Process Orders:</th>
     <td> {{$process->total}}</td>
   </tr>
@@ -74,7 +88,6 @@ width:100%;
     <th>Finished Orders:</th>
     <td>  {{$finished->total}}</td>
   </tr>
-  
 
 </table>
 
@@ -82,36 +95,56 @@ width:100%;
 <table class="test">
 
 <tr>
+    <th>Services</th>
+    <th>Quantity</th>
+    <th>Cost</th>
+  </tr>
+
+<tr>
     <th>Colored Printing Services:</th>
+    <td>{{$colored->quantity}}</td>
     <td>{{$colored->total}}</td>
 </tr>
 
   <tr>
     <th>Black and White Printing Services:</th>
-    <td>  {{$black->total}}</td>
+    <td>{{$black->quantity}}</td>
+    <td>{{$black->total}}</td>
   </tr>
 
   <tr>
     <th>Small Size Printing Service:</th>
+    <td>{{$sml->quantity}}</td>
     <td>{{$sml->total}}</td>
   </tr>
 
   <tr>
     <th>Medium Size Printing Service:</th>
+    @if($mdm && $mdm->quantity)
+    <td>{{$mdm->quantity}}</td>
     <td>{{$mdm->total}}</td>
+    @else
+    <td>No Data</td>
+    <td>No Data</td>
+    @endif
   </tr>
 
   <tr>
     <th>Large Size Printing Service:</th>
+    <td>{{$lrg->quantity}}</td>
     <td>{{$lrg->total}}</td>
   </tr>
 
   <tr>
     <th>A4 Size Printing Service:</th>
+    <td>{{$a4->quantity}}</td>
     <td>{{$a4->total}}</td>
   </tr>
+</table>
 
-  <tr>
+<h3>Service Overall Total</h3>
+<table class="center">
+<tr>
     <th>Total</th>
     <td>{{$print->total}}</td>
   </tr>

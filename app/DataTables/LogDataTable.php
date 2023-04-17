@@ -26,13 +26,13 @@ class LogDataTable extends DataTable
         return datatables()
         ->eloquent($logs)
 
-        ->addColumn('action', function($row){
-            return "<form action=". route('log.delete', $row->log_id) ." method=\"POST\" >". csrf_field().
-            '<input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
-            </form>';
+        // ->addColumn('action', function($row){
+        //     return "<form action=". route('log.delete', $row->log_id) ." method=\"POST\" >". csrf_field().
+        //     '<input name="_method" type="hidden" value="DELETE">
+        //     <button class="btn btn-danger" type="submit">Delete</button>
+        //     </form>';
     
-           })
+        //    })
 
            ->addColumn('fname', function(LogBook $logs){
             return $logs->student->fname;
@@ -42,7 +42,7 @@ class LogDataTable extends DataTable
             return $logs->student->lname;
            })
 
-           ->rawColumns(['fname','action']);
+           ->rawColumns(['fname']);
     }
 
     /**
@@ -96,11 +96,11 @@ class LogDataTable extends DataTable
             Column::make('log_date')->title('Log Date'),
             Column::make('timeIn')->title('Time IN'),
             Column::make('timeOut')->title('Time Out'),
-            Column::computed('action')
-            ->exportable(false)
-            ->printable(false)
-            ->width(60)
-            ->addClass('text-center'),
+            // Column::computed('action')
+            // ->exportable(false)
+            // ->printable(false)
+            // ->width(60)
+            // ->addClass('text-center'),
         ];
     }
 

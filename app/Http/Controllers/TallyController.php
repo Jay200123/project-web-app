@@ -31,33 +31,45 @@ class TallyController extends Controller
          $lace = DB::table('products')
          ->join('orderline', 'products.product_id', '=', 'orderline.product_id')
          ->join('orderinfo', 'orderline.orderinfo_id', '=', 'orderinfo.id')
-         ->where('products.description', '=', 'ID Lace  ')
-         ->select(DB::raw('SUM(price) as total'))
-         ->get('total');
+         ->where('products.description', '=', 'ID Lace')
+         ->select(DB::raw('SUM(price) as total'), DB::raw('COUNT(orderline.product_id) as quantity'))
+         ->groupBy('products.description')
+         ->get();
 
         //  tally for tech shirt small 
          $small = DB::table('products')
          ->join('orderline', 'products.product_id', '=', 'orderline.product_id')
          ->join('orderinfo', 'orderline.orderinfo_id', '=', 'orderinfo.id')
          ->where('products.description', '=', 'Tech Shirt - Small')
-         ->select(DB::raw('SUM(price) as total'))
-         ->get('total');
+         ->select(DB::raw('SUM(price) as total'), DB::raw('COUNT(orderline.product_id) as quantity'))
+         ->groupBy('products.description')
+         ->get();
 
           //  tally for tech shirt medium 
          $medium = DB::table('products')
          ->join('orderline', 'products.product_id', '=', 'orderline.product_id')
          ->join('orderinfo', 'orderline.orderinfo_id', '=', 'orderinfo.id')
          ->where('products.description', '=', 'Tech Shirt Medium')
-         ->select(DB::raw('SUM(price) as total'))
-         ->get('total');
+         ->select(DB::raw('SUM(price) as total'), DB::raw('COUNT(orderline.product_id) as quantity'))
+         ->groupBy('products.description')
+         ->get();
+     
 
         //  tally for tech shirt large
          $large = DB::table('products')
          ->join('orderline', 'products.product_id', '=', 'orderline.product_id')
          ->join('orderinfo', 'orderline.orderinfo_id', '=', 'orderinfo.id')
          ->where('products.description', '=', 'Tech Shirt Large')
-         ->select(DB::raw('SUM(price) as total'))
-         ->get('total');
+         ->select(DB::raw('SUM(price) as total'), DB::raw('COUNT(orderline.product_id) as quantity'))
+         ->groupBy('products.description')
+         ->get();
+
+            //gets the quantity ordered for tech shirt sized medium
+            $qty4 = DB::table('orderline')
+            ->join('products', 'orderline.product_id', '=', 'products.product_id')
+            ->WHERE('products.description', '=', 'Tech Shirt Large')
+            ->SELECT(DB::raw('COUNT(orderline.product_id) as total'))
+            ->get('total');
 
         //  total tally for printing service
          $print = DB::table('serviceinfo')
@@ -67,38 +79,45 @@ class TallyController extends Controller
          //total for colored printing service
          $colored = DB::table('serviceinfo')
          ->where('options', '=', 'colored')
-         ->select(DB::raw('SUM(cost) as total'))
-         ->get('total');
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('options')
+         ->get();
 
          //total for black printing service
          $black = DB::table('serviceinfo')
          ->where('options', '=', 'blackWhite')
-         ->select(DB::raw('SUM(cost) as total'))
-         ->get('total');
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('options')
+         ->get();
 
          //total for small size printing service
          $sml = DB::table('serviceinfo')
          ->where('size', '=', 'small')
-         ->select(DB::raw('SUM(cost) as total'))
-         ->get('total');
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('size')
+         ->get();
+
 
          //total for medium size printing service
          $mdm = DB::table('serviceinfo')
          ->where('size', '=', 'medium')
-         ->select(DB::raw('SUM(cost) as total'))
-         ->get('total');
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('size')
+         ->get();
 
          //total for large size printing service
          $lrg = DB::table('serviceinfo')
          ->where('size', '=', 'large')
-         ->select(DB::raw('SUM(cost) as total'))
-         ->get('total');
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('size')
+         ->get();
 
           //total for a4 size printing service
           $a4 = DB::table('serviceinfo')
           ->where('size', '=', 'A4')
-          ->select(DB::raw('SUM(cost) as total'))
-          ->get('total');
+          ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+          ->groupBy('size')
+          ->get();
 
           $member = DB::table('membershipinfo')
           ->join('statusline', 'membershipinfo.info_id', '=', 'statusline.info_id')
@@ -130,12 +149,17 @@ class TallyController extends Controller
           $total2 += $unpaid[0]->total;
 
          $data = [
+            //orders
              'finished' => $finished,
              'process' => $process,
+
+             //products
              'small' => $small,
              'lace' => $lace,
              'medium' => $medium,
              'large' => $large,
+
+             //printing services
              'print' => $print,
              'colored' => $colored,
              'black' => $black,
@@ -143,6 +167,7 @@ class TallyController extends Controller
              'mdm' => $mdm,
              'lrg' => $lrg,
              'a4' => $a4,
+             //memberships
              'member' => $member,
              'unpaid' => $unpaid,
              'paid' => $paid,
@@ -174,7 +199,8 @@ class TallyController extends Controller
          ->join('orderline', 'products.product_id', '=', 'orderline.product_id')
          ->join('orderinfo', 'orderline.orderinfo_id', '=', 'orderinfo.id')
          ->where('products.description', '=', 'ID Lace  ')
-         ->select(DB::raw('SUM(price) as total'))
+         ->select(DB::raw('SUM(price) as total'), DB::raw('COUNT(orderline.product_id) as quantity'))
+         ->groupBy('products.description')
          ->first();
 
         //  tally for tech shirt small 
@@ -182,7 +208,8 @@ class TallyController extends Controller
          ->join('orderline', 'products.product_id', '=', 'orderline.product_id')
          ->join('orderinfo', 'orderline.orderinfo_id', '=', 'orderinfo.id')
          ->where('products.description', '=', 'Tech Shirt - Small')
-         ->select(DB::raw('SUM(price) as total'))
+         ->select(DB::raw('SUM(price) as total'), DB::raw('COUNT(orderline.product_id) as quantity'))
+         ->groupBy('products.description')
          ->first();
 
           //  tally for tech shirt medium 
@@ -190,7 +217,8 @@ class TallyController extends Controller
          ->join('orderline', 'products.product_id', '=', 'orderline.product_id')
          ->join('orderinfo', 'orderline.orderinfo_id', '=', 'orderinfo.id')
          ->where('products.description', '=', 'Tech Shirt Medium')
-         ->select(DB::raw('SUM(price) as total'))
+         ->select(DB::raw('SUM(price) as total'), DB::raw('COUNT(orderline.product_id) as quantity'))
+         ->groupBy('products.description')
          ->first();
 
         //  tally for tech shirt large
@@ -198,7 +226,8 @@ class TallyController extends Controller
          ->join('orderline', 'products.product_id', '=', 'orderline.product_id')
          ->join('orderinfo', 'orderline.orderinfo_id', '=', 'orderinfo.id')
          ->where('products.description', '=', 'Tech Shirt Large')
-         ->select(DB::raw('SUM(price) as total'))
+         ->select(DB::raw('SUM(price) as total'), DB::raw('COUNT(orderline.product_id) as quantity'))
+         ->groupBy('products.description')
          ->first();
 
         //  total tally for printing service
@@ -209,37 +238,43 @@ class TallyController extends Controller
          //total for colored printing service
          $colored = DB::table('serviceinfo')
          ->where('options', '=', 'colored')
-         ->select(DB::raw('SUM(cost) as total'))
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('options')
          ->first();
 
          //total for black printing service
          $black = DB::table('serviceinfo')
          ->where('options', '=', 'blackWhite')
-         ->select(DB::raw('SUM(cost) as total'))
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('options')
          ->first();
 
          //total for small size printing service
          $sml = DB::table('serviceinfo')
          ->where('size', '=', 'small')
-         ->select(DB::raw('SUM(cost) as total'))
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('size')
          ->first();
 
          //total for medium size printing service
          $mdm = DB::table('serviceinfo')
          ->where('size', '=', 'medium')
-         ->select(DB::raw('SUM(cost) as total'))
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('size')
          ->first();
 
          //total for large size printing service
          $lrg = DB::table('serviceinfo')
          ->where('size', '=', 'large')
-         ->select(DB::raw('SUM(cost) as total'))
+         ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+         ->groupBy('size')
          ->first();
 
           //total for a4 size printing service
           $a4 = DB::table('serviceinfo')
           ->where('size', '=', 'A4')
-          ->select(DB::raw('SUM(cost) as total'))
+          ->select(DB::raw('SUM(cost) as total'), DB::raw('COUNT(quantity) as quantity'))
+          ->groupBy('size')
           ->first();
 
           $member = DB::table('membershipinfo')
